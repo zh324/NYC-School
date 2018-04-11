@@ -1,11 +1,26 @@
 <html>
 <head>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//d3js.org/topojson.v2.min.js"></script>
- <script src="liquidFillGauge.js"></script>
+<script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+ <!-- <script src="liquidFillGauge.js"></script> -->
+
+<script>
+
+var aitoff = d3.geoAitoff();
+
+</script>
+
 <style>
 body {
-    font: 14px Arial;
+    font-family: 'Roboto', Calibri, sans-serif;
+
 }
 
 .background {
@@ -16,6 +31,8 @@ body {
 .map-layer {
   fill: rgb(184, 179, 179);
   stroke: rgb(61, 60, 60);
+  stroke-width: 0.5;
+  stroke-opacity: 0.8;
 }
 .feature {
   /* fill: #ccc; */
@@ -26,26 +43,56 @@ body {
   fill: orange;
 }
 
-svg { border: solid #ccc 1px; }
+/* svg { border: solid #ccc 1px; } */
 
 #states {
   fill: #aaa;
 }
 
+circle{
+    cursor: pointer;
+}
+
+path.slice{
+	stroke-width:2px;
+}
+
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}
+
+#mainMap{
+    float: left;
+}
+
+#chart{
+    float: left;
+}
 
 </style>
 </head>
 <body>
 
+<div id="mainMap">
 <svg id="p1"></svg>
-<svg id="p2"></svg>
-<svg id="fillgauge6" width="19%" height="200"></svg>
+</div>
+
+<!-- new added -->
+
+<div id="chart"></div>
+
+<div id="pie"></div>
+<!-- <button class="randomize">randomize</button> -->
+
+
 
 <script>
 
 var stats;
 var districts;
-var projection;
 
 d3.csv("Data.csv", function(error, datum) {
   stats = datum;
@@ -58,25 +105,33 @@ d3.csv("Data.csv", function(error, datum) {
   .domain([200,800])
   .range(['#fff', "#409A99"])
 
-  var povertyScale = d3.scaleLinear()
-  .domain([0, 100])
-  .range([1, 10])
-
   d3.json('school_districts.geo.json', function(error, mapData) {
       if (error) throw error;
       var data = mapData;
 
       var features = data.features;
 
-      var width = 960,
-      height = 700,
+      var width = 1000,
+      height = 1000,
       centered,
       active = d3.select(null);
+      var margin = { top: 30, right: 30, bottom: 40, left: 50}
 
 
-      projection = d3.geoMercator()
-      .fitSize([width,height], data)
+
+      var projection = d3.geoMercator()
+      .fitSize([width * 0.9 ,height], data)
+      .fitExtent([[200, 50], [width, height-50]],data)
       // Center the Map in Colombia
+
+      var color = d3.scaleLinear()
+      .domain([1, 20])
+      .clamp(true)
+      .range(['#fff', '#409A99']);
+
+      var povertyScale = d3.scaleLinear()
+      .domain([0, 100])
+      .range([1, 10])
 
       var path = d3.geoPath()
       .projection(projection);
@@ -85,6 +140,9 @@ d3.csv("Data.csv", function(error, datum) {
       .attr('width', width)
       .attr('height', height)
       .on("click", stopped, true);;
+
+     
+
 
       var g = svg.append("rect")
       .attr("class", "background")
@@ -96,6 +154,7 @@ d3.csv("Data.csv", function(error, datum) {
       var maplayer = svg.append('g')
       .classed('map-layer', true);
 
+
       var zoom = d3.zoom()
       // no longer in d3 v4 - zoom initialises with zoomIdentity, so it's already at origin
       // .translate([0, 0])
@@ -103,8 +162,207 @@ d3.csv("Data.csv", function(error, datum) {
       .scaleExtent([1, 8])
       .on("zoom", zoomed);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // PIE CHART
+
+
+        var width_3 = 450,
+        height_3 = 350,
+        radius = Math.min(width_3, height_3) / 2;
+
+        var piechart = d3.select("#pie")
+        .append("svg")
+        .attr('width', width_3 + margin.left + margin.left + margin.right + margin.right)
+        .attr('height', height_3 + margin.top + margin.top + margin.bottom + margin.bottom + margin.bottom)
+        .append("g")
+
+        piechart.append("g")
+            .attr("class", "slices");
+        piechart.append("g")
+            .attr("class", "labels");
+        piechart.append("g")
+            .attr("class", "lines");
+
+       
+        var pie = d3.pie()
+            .sort(null)
+            .value(function(d) {
+                return d.value;
+        });
+
+        var arc = d3.arc()
+            .outerRadius(radius * 0.8)
+            .innerRadius(radius * 0.4);
+
+        var outerArc = d3.arc()
+            .innerRadius(radius * 0.9)
+            .outerRadius(radius * 0.9);
+
+        piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
+
+        var key = function(d){ return d.data.label; };
+
+
+        var color_pie = d3.scaleOrdinal()
+        .domain(["White", "Hispanic", "Black", "Asian", "Other"])
+        .range(["#7FDBFF", "#FF4136", "#001f3f", "#3D9970", "#B10DC9"]);
+
+
+
+        
+        console.log('run');
+
+        function generatePie(){
+            console.log('ok');
+            change(randomData());
+            
+        }
+
+        generatePie();
+        generatePie();
+       
+
+        // d3.select(".randomize")
+        //     .on("click", function(){
+        //         generatePie();
+        // });
+
+
+        function randomData (){
+            var labels = color_pie.domain();
+            return labels.map(function(label){
+                return { label: label, value: Math.random() }
+            });
+        }
+
+
+
+
+        function change(data) {
+
+        /* ------- PIE SLICES -------*/
+        var slice = piechart.select(".slices").selectAll("path.slice")
+            .data(pie(data), key);
+
+        slice.enter()
+            .insert("path")
+            .style("fill", function(d) { return color_pie(d.data.label); })
+            .attr("class", "slice");
+
+        slice		
+            .transition().duration(1000)
+            .attrTween("d", function(d) {
+                this._current = this._current || d;
+                var interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function(t) {
+                    return arc(interpolate(t));
+                };
+            })
+
+        slice.exit()
+            .remove();
+
+        /* ------- TEXT LABELS -------*/
+
+        var text = piechart.select(".labels").selectAll("text")
+            .data(pie(data), key);
+
+        text.enter()
+            .append("text")
+            .attr("dy", ".35em")
+            .text(function(d) {
+                return d.data.label;
+            });
+
+        function midAngle(d){
+            return d.startAngle + (d.endAngle - d.startAngle)/2;
+        }
+
+        text.transition().duration(1000)
+            .attrTween("transform", function(d) {
+                this._current = this._current || d;
+                var interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function(t) {
+                    var d2 = interpolate(t);
+                    var pos = outerArc.centroid(d2);
+                    pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                    return "translate("+ pos +")";
+                };
+            })
+            .styleTween("text-anchor", function(d){
+                this._current = this._current || d;
+                var interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function(t) {
+                    var d2 = interpolate(t);
+                    return midAngle(d2) < Math.PI ? "start":"end";
+                };
+            });
+
+        text.exit()
+            .remove();
+
+        /* ------- SLICE TO TEXT POLYLINES -------*/
+
+        var polyline = piechart.select(".lines").selectAll("polyline")
+            .data(pie(data), key);
+
+        polyline.enter()
+            .append("polyline");
+
+        polyline.transition().duration(1000)
+            .attrTween("points", function(d){
+                this._current = this._current || d;
+                var interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function(t) {
+                    var d2 = interpolate(t);
+                    var pos = outerArc.centroid(d2);
+                    pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                    return [arc.centroid(d2), outerArc.centroid(d2), pos];
+                };			
+            });
+
+        polyline.exit()
+            .remove();
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       function zoomed() {
-      maplayer.style("stroke-width", 1.5 / d3.event.transform.k + "px");
+      maplayer.style("stroke-width", 0.8 / d3.event.transform.k + "px");
       // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
       maplayer.attr("transform", d3.event.transform); // updated for d3 v4
       }
@@ -120,7 +378,6 @@ d3.csv("Data.csv", function(error, datum) {
       }
 
       var defs = maplayer.append("defs");
-
       var gradient = defs.append("linearGradient")
          .attr("id", "svgGradient")
          .attr("x1", "0%")
@@ -143,13 +400,13 @@ d3.csv("Data.csv", function(error, datum) {
       gradient.append("stop")
          .attr('class', 'start')
          .attr("offset", ".5")
-         .attr("stop-color", "blue")
+         .attr("stop-color", "#48687C")
          .attr("stop-opacity", 1);
 
        gradient.append("stop")
           .attr('class', 'end')
           .attr("offset", "1")
-          .attr("stop-color", "blue")
+          .attr("stop-color", "#48687C")
           .attr("stop-opacity", 1);
 
       maplayer.selectAll('path')
@@ -159,44 +416,34 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('d', path)
         //.attr('vector-effect', 'non-scaling-stroke')
         .attr("class","feature")
-        // .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
+        //.style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
         .style("fill", "url(#svgGradient)")
-        .style('stroke', 'gray')
-        .style('stroke-width', '.5px')
+        //.style('stroke', '#212020')
+        .style('stroke', '#85144b')
+        .style('stroke-width', 1)
         //.on('mouseover', mouseover)
         //.on('mouseout',mouseout)
         .on('click', clicked)
 
-        maplayer.selectAll("circle")
-    		.data(stats).enter()
-    		.append("circle")
-    		.attr("cx", d => projection([d.Longitude, d.Latitude])[0])
-    		.attr("cy", d => projection([d.Longitude, d.Latitude])[1])
-    		.attr("r", d => povertyScale(d.Poverty))
-        .attr("stroke", "url(#svgGradient)")
-        .attr("fill", "none")
-    		// .attr("fill", "rgb(255,0,0,.1)")
-        // .attr("stroke", "none")
-        .attr("stroke", "gray")
-        .attr("stroke-width", "1px")
 
-        // var config5 = liquidFillGaugeDefaultSettings();
-        // config5.circleThickness = 0.4;
-        // config5.circleColor = "#6DA398";
-        // config5.textColor = "#0E5144";
-        // config5.waveTextColor = "#6DA398";
-        // config5.waveColor = "#246D5F";
-        // config5.textVertPosition = 0.52;
-        // config5.waveAnimateTime = 5000;
-        // config5.waveHeight = 0;
-        // config5.waveAnimate = false;
-        // config5.waveCount = 2;
-        // config5.waveOffset = 0.25;
-        // config5.textSize = 1.2;
-        // config5.minValue = 30;
-        // config5.maxValue = 150
-        // config5.displayPercent = false;
-        // var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
+      maplayer.selectAll("circle")
+        .data(stats)
+        .enter()
+        .append("circle")
+        .attr('fill', 'orange')
+        .attr("cx", d => projection([d.Longitude, d.Latitude])[0])
+        .attr("cy", d => projection([d.Longitude, d.Latitude])[1])
+        .attr("r", 2.5)
+        .attr("stroke", "url(#svgGradient)")
+        .attr("stroke", "gray")
+        .attr("stroke-width", "0.5px")
+        .on('click', function (d){
+            clicked_circle(d);
+            generatePie(d);})
+
+
+
+      
 
       function mouseover(d){
       // Highlight hovered province
@@ -206,8 +453,9 @@ d3.csv("Data.csv", function(error, datum) {
 
       function mouseout(d){
       // Reset province color
+      
       maplayer.selectAll('path')
-          .style('fill', function(d){return 'blue';});
+          .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math));
 
       }
 
@@ -216,6 +464,9 @@ d3.csv("Data.csv", function(error, datum) {
       if (active.node() === this) return reset();
       active.classed("active", false);
       active = d3.select(this).classed("active", true);
+      
+
+      console.log(d.properties.SchoolDist);
 
       var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
@@ -238,35 +489,390 @@ d3.csv("Data.csv", function(error, datum) {
       }
 
 
-      /*
-      function clicked(d) {
-      var x, y, k;
 
-      // Compute centroid of the selected path
-      if (d && centered !== d) {
-          var centroid = path.centroid(d);
-          x = centroid[0];
-          y = centroid[1];
-          k = 4;
-          centered = d;
-      } else {
-          x = width / 2;
-          y = height / 2;
-          k = 1;
-          centered = null;
-      }
 
-      // Highlight the clicked province
-      maplayer.selectAll('path')
-          .style('fill', function(d){return centered && d===centered ? 'red' : 'blue';});
 
-      // Zoom
-      g.transition()
-          .duration(750)
-          .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')');
-      }
 
-      */
+
+
+
+
+
+      // ADD TEXT
+
+
+      svg.append("text")
+        .attr("x", 50)
+        .attr("y", 150)
+        .attr("font-size", "55px")
+        .attr("font-weight", "900")
+        .style("fill", "#000000")
+        .text("NYC Public Schools");
+
+        svg.append("text")
+        .attr("x", 50)
+        .attr("y", 150+40)
+        .attr("font-size", "30px")
+        .style("fill", "#000000")
+        .text("Average SAT Scores & Poverty Rates");
+
+        svg.append("text")
+        .attr("x", 50)
+        .attr("y", 150+80)
+        .attr("font-size", "30px")
+        .style("fill", "#000000")
+        .text("by School District");
+
+
+
+
+
+
+    
+
+
+            // for (var i=0; i<50; i++){
+            //     bardata.push(Math.round(Math.random()*30))
+            // }
+
+            // bardata.sort(function compareNumbers(a,b){
+            //     return a-b;
+            // })
+
+        
+       
+        
+
+
+
+
+
+
+
+        // BAR CHART
+
+        
+
+        var height_2 = 350 - margin.top - margin.bottom,
+            width_2 = 500 - margin.right - margin.left,
+            barWidth = 50,
+            barOffset = 5;
+
+        var tempColor;
+
+        var tooltip = d3.select('#chart').append('div')
+                    .style('position', 'absolute')
+                    .style('padding', '0 10px')
+                    .style('background', 'white')
+                    .style('opacity', 0)
+
+        
+        var myChart = d3.select('#chart').append('svg')
+        .style('background', 'white')
+        .attr("id", "bar")
+        .attr('width', width_2 + margin.left + margin.right)
+        .attr('height', height_2 + margin.top + margin.bottom)
+
+        //console.log(xScale);
+
+        var allbars = myChart.append('g')
+                    .attr('transform','translate(' + margin.left+','+ margin.top + ')')
+                    .attr('id', 'gbars')
+
+        var bardata = [410, 406, 381, 505, 474, 469];
+
+
+        var xScale;
+        var yScale;
+
+        
+
+        updateBar(bardata);
+
+
+        // var vGuideScale = d3.scaleLinear()
+        //                 .domain([0, d3.max(bardata)])
+        //                 .range([height_2, 0])
+
+        // var vAxis = d3.axisLeft(vGuideScale)
+        //             //.scale(vGuideScale)
+        //             .ticks(10)
+
+        // var vGuide = d3.select('#bar').append('g')
+        //     vAxis(vGuide)
+
+        //     vGuide.attr('transform','translate('+margin.left+',' + margin.top + ')')
+        //     vGuide.selectAll('path')
+        //         .style({fill: 'none', stroke: '#000'})
+        //     vGuide.selectAll('line')
+        //         .style({stroke: '#000'})
+
+        // var hAxis = d3.axisBottom(xScale)
+        //         //.scale(xScale)
+        //         .tickValues(xScale.domain().filter(function(d,i){
+        //                 return !(i % (bardata.length/5));
+        //             }))
+
+        // var hGuide = d3.select('#bar').append('g')
+        //             hAxis(hGuide)
+        //     hGuide.attr('transform', 'translate('+margin.left+',' + (height_2 + margin.top)                            + ')')
+        //     hGuide.selectAll('path')
+        //         .style({fill: 'none', stroke: '#000'})
+        //     hGuide.selectAll('line')
+        //         .style({stroke: '#000'})
+        
+
+
+
+        function updateBar(bardata){
+
+        
+        yScale = d3.scaleLinear()
+                    .domain([0, d3.max(bardata)])
+                    .range([0, height_2])
+
+        xScale = d3.scaleBand()
+                    .domain(d3.range(0,bardata.length))
+                    .rangeRound([0,width_2])
+                    .padding(0.3)
+
+        var color = d3.scaleLinear()
+                    .domain([0, bardata.length*.63, bardata.length])
+                    .range(['#ffb832','#c61c6f','#d33682'])
+        
+                    
+        var rectan = allbars.selectAll('rect')
+                    .data(bardata);
+
+        var allrec = rectan.enter()
+                    .append('rect')
+                    .merge(rectan)
+                    .style('fill', function(d,i){
+                            return color(i);
+                        })
+                    .attr('width', xScale.bandwidth())
+                    .attr('x', function(d,i){
+                            return xScale(i);
+                        })
+                    .attr('height', 0)
+                    .attr('y', height_2)
+
+                    .on('mouseover', function(d){
+
+                        tooltip.transition()
+                            .style('opacity', 0.9)
+                        tooltip.html(d)
+                                .style('left', (d3.event.pageX - 35)+'px')
+                                .style('top', (d3.event.pageY - 40)+'px')
+
+
+                    tempColor = this.style.fill;
+                    d3.select(this)
+                        .style('opacity', .5)
+                        .style('fill', 'yellow')
+                    })
+                    .on('mouseout', function(d){
+                    d3.select(this)
+                            .style('opacity', 1)
+                            .style('fill', tempColor)
+                    })
+
+                    allrec.transition()
+                            .attr('height', function(d){
+                                    return yScale(d);
+                    })
+                            .attr('y', function(d){
+                                    return height_2 - yScale(d);
+                    })
+                    .delay(function(d,i){
+                            return i*20;
+                    })
+                    .duration(5000)
+                    .ease(d3.easeElastic)
+                    
+        // remove old data
+        rectan.exit().remove();
+  
+        }
+
+       
+        
+        function clicked_circle(d) {
+            console.log(d.SAT_Math)
+            bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing, d.avgSAT_Math, d.avgSAT_Reading, d.avgSAT_Writing];
+            updateBar(bardata);
+        }
+
+
+
+
+
+
+
+
+
+        // PIE CHART
+
+
+        // var width_3 = 960,
+        // height_3 = 450,
+        // radius = Math.min(width_3, height_3) / 2;
+
+        // var piechart = d3.select("#pie")
+        // .append("svg")
+        // .attr('width', width_3 + margin.left + margin.right)
+        // .attr('height', height_3 + margin.top + margin.bottom)
+        // .append("g")
+
+        // piechart.append("g")
+        //     .attr("class", "slices");
+        // piechart.append("g")
+        //     .attr("class", "labels");
+        // piechart.append("g")
+        //     .attr("class", "lines");
+
+       
+        // var pie = d3.pie()
+        //     .sort(null)
+        //     .value(function(d) {
+        //         return d.value;
+        // });
+
+        // var arc = d3.arc()
+        //     .outerRadius(radius * 0.8)
+        //     .innerRadius(radius * 0.4);
+
+        // var outerArc = d3.arc()
+        //     .innerRadius(radius * 0.9)
+        //     .outerRadius(radius * 0.9);
+
+        // piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
+
+        // var key = function(d){ return d.data.label; };
+
+
+        // var color_pie = d3.scaleOrdinal()
+        // .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
+        // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+
+
+
+
+        // generatePie();
+
+        // function generatePie(){
+        //     change(randomData());
+        // }
+       
+
+        // d3.select(".randomize")
+        //     .on("click", function(){
+        //         generatePie();
+        // });
+
+
+        // function randomData (){
+        //     var labels = color_pie.domain();
+        //     return labels.map(function(label){
+        //         return { label: label, value: Math.random() }
+        //     });
+        // }
+
+
+
+
+        // function change(data) {
+
+        // /* ------- PIE SLICES -------*/
+        // var slice = piechart.select(".slices").selectAll("path.slice")
+        //     .data(pie(data), key);
+
+        // slice.enter()
+        //     .insert("path")
+        //     .style("fill", function(d) { return color_pie(d.data.label); })
+        //     .attr("class", "slice");
+
+        // slice		
+        //     .transition().duration(1000)
+        //     .attrTween("d", function(d) {
+        //         this._current = this._current || d;
+        //         var interpolate = d3.interpolate(this._current, d);
+        //         this._current = interpolate(0);
+        //         return function(t) {
+        //             return arc(interpolate(t));
+        //         };
+        //     })
+
+        // slice.exit()
+        //     .remove();
+
+        // /* ------- TEXT LABELS -------*/
+
+        // var text = piechart.select(".labels").selectAll("text")
+        //     .data(pie(data), key);
+
+        // text.enter()
+        //     .append("text")
+        //     .attr("dy", ".35em")
+        //     .text(function(d) {
+        //         return d.data.label;
+        //     });
+
+        // function midAngle(d){
+        //     return d.startAngle + (d.endAngle - d.startAngle)/2;
+        // }
+
+        // text.transition().duration(1000)
+        //     .attrTween("transform", function(d) {
+        //         this._current = this._current || d;
+        //         var interpolate = d3.interpolate(this._current, d);
+        //         this._current = interpolate(0);
+        //         return function(t) {
+        //             var d2 = interpolate(t);
+        //             var pos = outerArc.centroid(d2);
+        //             pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+        //             return "translate("+ pos +")";
+        //         };
+        //     })
+        //     .styleTween("text-anchor", function(d){
+        //         this._current = this._current || d;
+        //         var interpolate = d3.interpolate(this._current, d);
+        //         this._current = interpolate(0);
+        //         return function(t) {
+        //             var d2 = interpolate(t);
+        //             return midAngle(d2) < Math.PI ? "start":"end";
+        //         };
+        //     });
+
+        // text.exit()
+        //     .remove();
+
+        // /* ------- SLICE TO TEXT POLYLINES -------*/
+
+        // var polyline = piechart.select(".lines").selectAll("polyline")
+        //     .data(pie(data), key);
+
+        // polyline.enter()
+        //     .append("polyline");
+
+        // polyline.transition().duration(1000)
+        //     .attrTween("points", function(d){
+        //         this._current = this._current || d;
+        //         var interpolate = d3.interpolate(this._current, d);
+        //         this._current = interpolate(0);
+        //         return function(t) {
+        //             var d2 = interpolate(t);
+        //             var pos = outerArc.centroid(d2);
+        //             pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+        //             return [arc.centroid(d2), outerArc.centroid(d2), pos];
+        //         };			
+        //     });
+
+        // polyline.exit()
+        //     .remove();
+        // };
+
 
 
   });
