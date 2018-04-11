@@ -2,7 +2,7 @@
 <head>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//d3js.org/topojson.v2.min.js"></script>
-
+ <script src="liquidFillGauge.js"></script>
 <style>
 body {
     font: 14px Arial;
@@ -39,6 +39,7 @@ svg { border: solid #ccc 1px; }
 
 <svg id="p1"></svg>
 <svg id="p2"></svg>
+<svg id="fillgauge6" width="19%" height="200"></svg>
 
 <script>
 
@@ -57,6 +58,10 @@ d3.csv("Data.csv", function(error, datum) {
   .domain([200,800])
   .range(['#fff', "#409A99"])
 
+  var povertyScale = d3.scaleLinear()
+  .domain([0, 100])
+  .range([1, 10])
+
   d3.json('school_districts.geo.json', function(error, mapData) {
       if (error) throw error;
       var data = mapData;
@@ -73,11 +78,6 @@ d3.csv("Data.csv", function(error, datum) {
       .fitSize([width,height], data)
       // Center the Map in Colombia
 
-      var color = d3.scaleLinear()
-      .domain([1, 20])
-      .clamp(true)
-      .range(['#fff', '#409A99']);
-
       var path = d3.geoPath()
       .projection(projection);
 
@@ -85,7 +85,6 @@ d3.csv("Data.csv", function(error, datum) {
       .attr('width', width)
       .attr('height', height)
       .on("click", stopped, true);;
-
 
       var g = svg.append("rect")
       .attr("class", "background")
@@ -97,15 +96,12 @@ d3.csv("Data.csv", function(error, datum) {
       var maplayer = svg.append('g')
       .classed('map-layer', true);
 
-
       var zoom = d3.zoom()
       // no longer in d3 v4 - zoom initialises with zoomIdentity, so it's already at origin
       // .translate([0, 0])
       // .scale(1)
       .scaleExtent([1, 8])
       .on("zoom", zoomed);
-
-
 
       function zoomed() {
       maplayer.style("stroke-width", 1.5 / d3.event.transform.k + "px");
@@ -123,6 +119,39 @@ d3.csv("Data.csv", function(error, datum) {
           .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
       }
 
+      var defs = maplayer.append("defs");
+
+      var gradient = defs.append("linearGradient")
+         .attr("id", "svgGradient")
+         .attr("x1", "0%")
+         .attr("x2", "0%")
+         .attr("y1", "0%")
+         .attr("y2", "100%");
+
+      gradient.append("stop")
+         .attr('class', 'start')
+         .attr("offset", "0")
+         .attr("stop-color", "white")
+         .attr("stop-opacity", 1);
+
+     gradient.append("stop")
+        .attr('class', 'end')
+        .attr("offset", ".5")
+        .attr("stop-color", "white")
+        .attr("stop-opacity", 1);
+
+      gradient.append("stop")
+         .attr('class', 'start')
+         .attr("offset", ".5")
+         .attr("stop-color", "blue")
+         .attr("stop-opacity", 1);
+
+       gradient.append("stop")
+          .attr('class', 'end')
+          .attr("offset", "1")
+          .attr("stop-color", "blue")
+          .attr("stop-opacity", 1);
+
       maplayer.selectAll('path')
         .data(features)
         .enter()
@@ -130,8 +159,10 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('d', path)
         //.attr('vector-effect', 'non-scaling-stroke')
         .attr("class","feature")
-        .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
-        .style('stroke', 'black')
+        // .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
+        .style("fill", "url(#svgGradient)")
+        .style('stroke', 'gray')
+        .style('stroke-width', '.5px')
         //.on('mouseover', mouseover)
         //.on('mouseout',mouseout)
         .on('click', clicked)
@@ -141,8 +172,31 @@ d3.csv("Data.csv", function(error, datum) {
     		.append("circle")
     		.attr("cx", d => projection([d.Longitude, d.Latitude])[0])
     		.attr("cy", d => projection([d.Longitude, d.Latitude])[1])
-    		.attr("r", "8px")
-    		.attr("fill", "red")
+    		.attr("r", d => povertyScale(d.Poverty))
+        .attr("stroke", "url(#svgGradient)")
+        .attr("fill", "none")
+    		// .attr("fill", "rgb(255,0,0,.1)")
+        // .attr("stroke", "none")
+        .attr("stroke", "gray")
+        .attr("stroke-width", "1px")
+
+        // var config5 = liquidFillGaugeDefaultSettings();
+        // config5.circleThickness = 0.4;
+        // config5.circleColor = "#6DA398";
+        // config5.textColor = "#0E5144";
+        // config5.waveTextColor = "#6DA398";
+        // config5.waveColor = "#246D5F";
+        // config5.textVertPosition = 0.52;
+        // config5.waveAnimateTime = 5000;
+        // config5.waveHeight = 0;
+        // config5.waveAnimate = false;
+        // config5.waveCount = 2;
+        // config5.waveOffset = 0.25;
+        // config5.textSize = 1.2;
+        // config5.minValue = 30;
+        // config5.maxValue = 150
+        // config5.displayPercent = false;
+        // var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
 
       function mouseover(d){
       // Highlight hovered province
