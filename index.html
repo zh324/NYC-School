@@ -124,11 +124,6 @@ d3.csv("Data.csv", function(error, datum) {
       .fitExtent([[200, 50], [width, height-50]],data)
       // Center the Map in Colombia
 
-      // var color = d3.scaleLinear()
-      // .domain([1, 20])
-      // .clamp(true)
-      // .range(['#fff', '#409A99']);
-
       var povertyScale = d3.scaleLinear()
       .domain([0, 100])
       .range([1, 10])
@@ -371,38 +366,6 @@ d3.csv("Data.csv", function(error, datum) {
           .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
       }
 
-     // var defs = maplayer.append("defs");
-     // var gradient = defs.append("linearGradient")
-     //    .attr("id", "svgGradient")
-     //    .attr("x1", "0%")
-     //    .attr("x2", "0%")
-     //    .attr("y1", "0%")
-     //    .attr("y2", "100%");
-     //
-     // gradient.append("stop")
-     //    .attr('class', 'start')
-     //    .attr("offset", "0")
-     //    .attr("stop-color", "white")
-     //    .attr("stop-opacity", 1);
-     //
-     //gradient.append("stop")
-     //   .attr('class', 'end')
-     //   .attr("offset", ".5")
-     //   .attr("stop-color", "white")
-     //   .attr("stop-opacity", 1);
-     //
-     // gradient.append("stop")
-     //    .attr('class', 'start')
-     //    .attr("offset", ".5")
-     //    .attr("stop-color", "#48687C")
-     //    .attr("stop-opacity", 1);
-     //
-     //  gradient.append("stop")
-     //     .attr('class', 'end')
-     //     .attr("offset", "1")
-     //     .attr("stop-color", "#48687C")
-     //     .attr("stop-opacity", 1);
-
       maplayer.selectAll('path')
         .data(features)
         .enter()
@@ -411,8 +374,6 @@ d3.csv("Data.csv", function(error, datum) {
         //.attr('vector-effect', 'non-scaling-stroke')
         .attr("class","feature")
         .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg))
-        //.style("fill", "url(#svgGradient)")
-        //.style('stroke', '#212020')
         .style('stroke', '#141414')
         .style('stroke-width', 1)
         .on('mouseover', mouseover)
