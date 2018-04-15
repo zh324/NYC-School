@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//d3js.org/topojson.v2.min.js"></script>
@@ -81,9 +81,9 @@ polyline{
 </div>
 
 <!-- new added -->
-
+<div id="distInfo"></div>
+<div id="schoolInfo"></div>
 <div id="chart"></div>
-
 <div id="pie"></div>
 <!-- <button class="randomize">randomize</button> -->
 
@@ -108,11 +108,10 @@ d3.csv("Data.csv", function(error, datum) {
   d3.json('school_districts.geo.json', function(error, mapData) {
       if (error) throw error;
       var data = mapData;
-
       var features = data.features;
 
-      var width = 1000,
-      height = 1000,
+      var width = 700,
+      height = 700,
       centered,
       active = d3.select(null);
       var margin = { top: 30, right: 30, bottom: 40, left: 50}
@@ -142,8 +141,6 @@ d3.csv("Data.csv", function(error, datum) {
       .on("click", stopped, true);;
 
      
-
-
       var g = svg.append("rect")
       .attr("class", "background")
       .attr("width", width)
@@ -165,41 +162,50 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // PIE CHART
+        //
+        //yScale = d3.scaleLinear()
+        //            .domain([0, d3.max(bardata)])
+        //            .range([0, height_2])
+        //
+        //xScale = d3.scaleBand()
+        //            .domain(d3.range(0,bardata.length*.8))
+        //            .rangeRound([0,width_2])
+        //            .padding(0.3)
 
-
-        var width_3 = 450,
-        height_3 = 350,
+        var width_3 = 400,
+        height_3 = 200,
         radius = Math.min(width_3, height_3) / 2;
 
         var piechart = d3.select("#pie")
         .append("svg")
+		.attr("id","pies")
         .attr('width', width_3 + margin.left + margin.left + margin.right + margin.right)
         .attr('height', height_3 + margin.top + margin.top + margin.bottom + margin.bottom + margin.bottom)
-        .append("g")
-
+        .append("g");
+		
+		
         piechart.append("g")
-            .attr("class", "slices");
+            .attr("class", "slices")
+			.attr("transform", "translate(0,30)");
         piechart.append("g")
-            .attr("class", "labels");
+            .attr("class", "labels")
+			.attr("transform", "translate(0,30)");
         piechart.append("g")
-            .attr("class", "lines");
-
+            .attr("class", "lines")
+			.attr("transform", "translate(0,30)");
+			
+		var pieText = d3.select("#pies")
+		
+		pieText.append("text")
+        .attr("x",margin.left)
+        .attr("y",15)
+        .attr("font-size", "20px")
+        .attr("font-weight", "400")
+        .style("fill", "#000000")
+        .text("Demographics")
+		.style("opacity","1");
+		
        
         var pie = d3.pie()
             .sort(null)
@@ -215,24 +221,22 @@ d3.csv("Data.csv", function(error, datum) {
             .innerRadius(radius * 0.9)
             .outerRadius(radius * 0.9);
 
+		
+		
         piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
 
         var key = function(d){ return d.data.label; };
 
-
         var color_pie = d3.scaleOrdinal()
         .domain(["White", "Hispanic", "Black", "Asian", "Other"])
-        .range(["#7FDBFF", "#FF4136", "#001f3f", "#3D9970", "#B10DC9"]);
-
-
+        .range(["#386035", "#54AA4C", "#80CC78", "#BCFCB5", "#EAFFE8"]);
 
         
         console.log('run');
 
         function generatePie(){
             console.log('ok');
-            change(randomData());
-            
+            change(randomData());   
         }
 
         generatePie();
@@ -243,7 +247,6 @@ d3.csv("Data.csv", function(error, datum) {
         //     .on("click", function(){
         //         generatePie();
         // });
-
 
         function randomData (){
             var labels = color_pie.domain();
@@ -288,6 +291,8 @@ d3.csv("Data.csv", function(error, datum) {
         text.enter()
             .append("text")
             .attr("dy", ".35em")
+			.attr("font-size","12px")
+			.attr("font-weight","300")
             .text(function(d) {
                 return d.data.label;
             });
@@ -349,20 +354,8 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
       function zoomed() {
-      maplayer.style("stroke-width", 0.8 / d3.event.transform.k + "px");
+      maplayer.style("stroke-width", 0.75 / d3.event.transform.k + "px");
       // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
       maplayer.attr("transform", d3.event.transform); // updated for d3 v4
       }
@@ -378,36 +371,36 @@ d3.csv("Data.csv", function(error, datum) {
       }
 
       var defs = maplayer.append("defs");
-      var gradient = defs.append("linearGradient")
-         .attr("id", "svgGradient")
-         .attr("x1", "0%")
-         .attr("x2", "0%")
-         .attr("y1", "0%")
-         .attr("y2", "100%");
-
-      gradient.append("stop")
-         .attr('class', 'start')
-         .attr("offset", "0")
-         .attr("stop-color", "white")
-         .attr("stop-opacity", 1);
-
-     gradient.append("stop")
-        .attr('class', 'end')
-        .attr("offset", ".5")
-        .attr("stop-color", "white")
-        .attr("stop-opacity", 1);
-
-      gradient.append("stop")
-         .attr('class', 'start')
-         .attr("offset", ".5")
-         .attr("stop-color", "#48687C")
-         .attr("stop-opacity", 1);
-
-       gradient.append("stop")
-          .attr('class', 'end')
-          .attr("offset", "1")
-          .attr("stop-color", "#48687C")
-          .attr("stop-opacity", 1);
+     // var gradient = defs.append("linearGradient")
+     //    .attr("id", "svgGradient")
+     //    .attr("x1", "0%")
+     //    .attr("x2", "0%")
+     //    .attr("y1", "0%")
+     //    .attr("y2", "100%");
+     //
+     // gradient.append("stop")
+     //    .attr('class', 'start')
+     //    .attr("offset", "0")
+     //    .attr("stop-color", "white")
+     //    .attr("stop-opacity", 1);
+     //
+     //gradient.append("stop")
+     //   .attr('class', 'end')
+     //   .attr("offset", ".5")
+     //   .attr("stop-color", "white")
+     //   .attr("stop-opacity", 1);
+     //
+     // gradient.append("stop")
+     //    .attr('class', 'start')
+     //    .attr("offset", ".5")
+     //    .attr("stop-color", "#48687C")
+     //    .attr("stop-opacity", 1);
+     //
+     //  gradient.append("stop")
+     //     .attr('class', 'end')
+     //     .attr("offset", "1")
+     //     .attr("stop-color", "#48687C")
+     //     .attr("stop-opacity", 1);
 
       maplayer.selectAll('path')
         .data(features)
@@ -417,12 +410,12 @@ d3.csv("Data.csv", function(error, datum) {
         //.attr('vector-effect', 'non-scaling-stroke')
         .attr("class","feature")
         //.style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
-        .style("fill", "url(#svgGradient)")
+        //.style("fill", "url(#svgGradient)")
         //.style('stroke', '#212020')
-        .style('stroke', '#85144b')
+        .style('stroke', '#141414')
         .style('stroke-width', 1)
-        //.on('mouseover', mouseover)
-        //.on('mouseout',mouseout)
+        .on('mouseover', mouseover)
+        .on('mouseout',mouseout)
         .on('click', clicked)
 
 
@@ -430,32 +423,30 @@ d3.csv("Data.csv", function(error, datum) {
         .data(stats)
         .enter()
         .append("circle")
-        .attr('fill', 'orange')
+        .attr('fill', '#FFFFFF')
         .attr("cx", d => projection([d.Longitude, d.Latitude])[0])
         .attr("cy", d => projection([d.Longitude, d.Latitude])[1])
         .attr("r", 2.5)
-        .attr("stroke", "url(#svgGradient)")
-        .attr("stroke", "gray")
-        .attr("stroke-width", "0.5px")
+        //.attr("stroke", "url(#svgGradient)")
+        //.attr("stroke", "gray")
+        //.attr("stroke-width", "0.5px")
         .on('click', function (d){
             clicked_circle(d);
             generatePie(d);})
-
-
-
-      
+		.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
+		.on('mouseout', function(d){
+			d3.select(this).style('fill',"white")
+			})
 
       function mouseover(d){
       // Highlight hovered province
-      d3.select(this).style('fill', 'orange');
-
+      d3.select(this).style('fill', '#494949');
       }
 
       function mouseout(d){
       // Reset province color
-      
       maplayer.selectAll('path')
-          .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math));
+        .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math));
 
       }
 
@@ -465,8 +456,9 @@ d3.csv("Data.csv", function(error, datum) {
       active.classed("active", false);
       active = d3.select(this).classed("active", true);
       
-
+	
       console.log(d.properties.SchoolDist);
+	
 
       var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
@@ -481,20 +473,35 @@ d3.csv("Data.csv", function(error, datum) {
           //.call(zoom.translate(translate).scale(scale).event); // not in d3 v4
           .call(zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) ); // updated for d3 v4
           //.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scale + ')translate(' + -dx + ',' + -dy + ')');
+		
+		//set remove text here
+		d3.selectAll("#Title")
+		.style("opacity","0");
+		
+		svg.append("text")
+		.attr("id","district")
+        .attr("x", 50)
+        .attr("y", 150)
+        .attr("font-size", "20px")
+        .attr("font-weight", "900")
+        .style("fill", "#000000")
+        .text("District #")
+		.style("opacity","1");
+
       }
 
 
       function stopped() {
       if (d3.event.defaultPrevented) d3.event.stopPropagation();
+	  console.log("stopped");
+	
+	d3.selectAll("#district")
+	.style("opacity","0");
+	
+	d3.selectAll("#Title")
+	.style("opacity","1.0");
+	  
       }
-
-
-
-
-
-
-
-
 
 
 
@@ -502,34 +509,29 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       svg.append("text")
+		.attr("id","Title")
         .attr("x", 50)
-        .attr("y", 150)
-        .attr("font-size", "55px")
+        .attr("y", 100)
+        .attr("font-size", "37px")
         .attr("font-weight", "900")
         .style("fill", "#000000")
         .text("NYC Public Schools");
 
         svg.append("text")
-        .attr("x", 50)
-        .attr("y", 150+40)
-        .attr("font-size", "30px")
+        .attr("id","Title")
+		.attr("x", 50)
+        .attr("y", 100+25)
+        .attr("font-size", "20px")
         .style("fill", "#000000")
         .text("Average SAT Scores & Poverty Rates");
 
         svg.append("text")
+		.attr("id","Title")
         .attr("x", 50)
-        .attr("y", 150+80)
-        .attr("font-size", "30px")
+        .attr("y", 100+50)
+        .attr("font-size", "20px")
         .style("fill", "#000000")
         .text("by School District");
-
-
-
-
-
-
-    
-
 
             // for (var i=0; i<50; i++){
             //     bardata.push(Math.round(Math.random()*30))
@@ -539,22 +541,67 @@ d3.csv("Data.csv", function(error, datum) {
             //     return a-b;
             // })
 
-        
-       
-        
+	var distInfo = d3.select('#distInfo').append('svg')
+        .style('background', 'white')
+        .attr("id", "bar")
+        .attr('width', "600")
+        .attr('height', "190")
 
+	
+	distInfo.append("text")
+	    .attr("x", margin.left)
+        .attr("y", 100)
+        .attr("font-size", "30px")
+		.attr("font-weight", "900")
+        .style("fill", "#000000")
+        .text("School District #");
+		
+	distInfo.append("text")
+	    .attr("x", margin.left)
+        .attr("y", 130)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text("Avg SAT Score");
 
+	distInfo.append("text")
+	    .attr("x", margin.left)
+        .attr("y", 160)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text("Number of Schools");
+		
+	
+	var schoolInfo = d3.select('#schoolInfo').append('svg')
+        .style('background', 'white')
+        .attr("id", "bar")
+        .attr('width', "600")
+        .attr('height', "100")
+		
+		schoolInfo.append("line")
+		.attr("stroke","#2d2d2d")
+		.attr("stroke-width", 2)
+		.style("stroke-dasharray", "4,4")
+		.attr("x1", margin.left)
+		.attr("y1", 0)
+		.attr("x2", 600)
+		.attr("y2", 0);
 
-
-
+		
+		schoolInfo.append("text")
+	    .attr("x", margin.left)
+        .attr("y", 30)
+        .attr("font-size", "20px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text("Name of school");
 
 
         // BAR CHART
 
-        
-
-        var height_2 = 350 - margin.top - margin.bottom,
-            width_2 = 500 - margin.right - margin.left,
+        var height_2 = 200 - margin.top - margin.bottom,
+            width_2 = 250 - margin.right - margin.left,
             barWidth = 50,
             barOffset = 5;
 
@@ -573,20 +620,19 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('width', width_2 + margin.left + margin.right)
         .attr('height', height_2 + margin.top + margin.bottom)
 
+
         //console.log(xScale);
 
         var allbars = myChart.append('g')
                     .attr('transform','translate(' + margin.left+','+ margin.top + ')')
                     .attr('id', 'gbars')
 
-        var bardata = [410, 406, 381, 505, 474, 469];
-
+        var bardata = [410, 406, 381];
 
         var xScale;
         var yScale;
 
-        
-
+    
         updateBar(bardata);
 
 
@@ -632,14 +678,15 @@ d3.csv("Data.csv", function(error, datum) {
                     .range([0, height_2])
 
         xScale = d3.scaleBand()
-                    .domain(d3.range(0,bardata.length))
+                    .domain(d3.range(0,bardata.length*.8))
                     .rangeRound([0,width_2])
                     .padding(0.3)
 
-        var color = d3.scaleLinear()
-                    .domain([0, bardata.length*.63, bardata.length])
-                    .range(['#ffb832','#c61c6f','#d33682'])
-        
+//        var color =
+//		d3.scaleLinear()
+//                    .domain([0, bardata.length*.63, bardata.length])
+//                    .range(['#ffb832','#c61c6f','#d33682'])
+
                     
         var rectan = allbars.selectAll('rect')
                     .data(bardata);
@@ -647,35 +694,37 @@ d3.csv("Data.csv", function(error, datum) {
         var allrec = rectan.enter()
                     .append('rect')
                     .merge(rectan)
-                    .style('fill', function(d,i){
-                            return color(i);
-                        })
+                    .style('fill', "#409A99"
+						   //function(d,i){
+                            //return color(i);}
+							)
                     .attr('width', xScale.bandwidth())
                     .attr('x', function(d,i){
                             return xScale(i);
                         })
                     .attr('height', 0)
                     .attr('y', height_2)
+					
+					console.log(xScale.bandwidth())
 
-                    .on('mouseover', function(d){
-
-                        tooltip.transition()
-                            .style('opacity', 0.9)
-                        tooltip.html(d)
-                                .style('left', (d3.event.pageX - 35)+'px')
-                                .style('top', (d3.event.pageY - 40)+'px')
-
-
-                    tempColor = this.style.fill;
-                    d3.select(this)
-                        .style('opacity', .5)
-                        .style('fill', 'yellow')
-                    })
-                    .on('mouseout', function(d){
-                    d3.select(this)
-                            .style('opacity', 1)
-                            .style('fill', tempColor)
-                    })
+                    //.on('mouseover', function(d){
+                    //    tooltip.transition()
+                    //        .style('opacity', 0.9)
+                    //    tooltip.html(d)
+                    //            .style('left', (d3.event.pageX - 35)+'px')
+                    //            .style('top', (d3.event.pageY - 40)+'px')
+                    //
+                    //
+                    //tempColor = this.style.fill;
+                    //d3.select(this)
+                    //    .style('opacity', .5)
+                    //    .style('fill', 'yellow')
+                    //})
+                    //.on('mouseout', function(d){
+                    //d3.select(this)
+                    //        .style('opacity', 1)
+                    //        .style('fill', tempColor)
+                    //})
 
                     allrec.transition()
                             .attr('height', function(d){
@@ -699,7 +748,7 @@ d3.csv("Data.csv", function(error, datum) {
         
         function clicked_circle(d) {
             console.log(d.SAT_Math)
-            bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing, d.avgSAT_Math, d.avgSAT_Reading, d.avgSAT_Writing];
+            bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
             updateBar(bardata);
         }
 
@@ -873,6 +922,38 @@ d3.csv("Data.csv", function(error, datum) {
         //     .remove();
         // };
 
+
+		myChart.append("text")
+        .attr("x", margin.left)
+        .attr("y", 15)
+        .attr("font-size", "20px")
+		.attr("font-weight", "400")
+        .style("fill", "#000000")
+        .text("SAT Scores");
+		
+		myChart.append("text")
+		.attr("x", margin.left+25)
+		.attr("y", 180)
+        .attr("font-size", "12px")
+		.attr("font-weight", "300")
+        .style("fill", "#000000")
+        .text("(M)");
+		
+		myChart.append("text")
+		.attr("x", margin.left+36*2+4)
+		.attr("y", 180)
+        .attr("font-size", "12px")
+		.attr("font-weight", "300")
+        .style("fill", "#000000")
+        .text("(R)");
+		
+		myChart.append("text")
+		.attr("x", margin.left+36*3+18)
+		.attr("y", 180)
+        .attr("font-size", "12px")
+		.attr("font-weight", "300")
+        .style("fill", "#000000")
+        .text("(W)");
 
 
   });
