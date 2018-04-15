@@ -93,6 +93,7 @@ polyline{
 
 var stats;
 var districts;
+var features;
 
 d3.csv("Data.csv", function(error, datum) {
   stats = datum;
@@ -102,13 +103,13 @@ d3.csv("Data.csv", function(error, datum) {
   .entries(datum);
 
   var colorScale = d3.scaleLinear()
-  .domain([200,800])
+  .domain([350,550])
   .range(['#fff', "#409A99"])
 
   d3.json('school_districts.geo.json', function(error, mapData) {
       if (error) throw error;
       var data = mapData;
-      var features = data.features;
+      features = data.features;
 
       var width = 700,
       height = 700,
@@ -123,10 +124,10 @@ d3.csv("Data.csv", function(error, datum) {
       .fitExtent([[200, 50], [width, height-50]],data)
       // Center the Map in Colombia
 
-      var color = d3.scaleLinear()
-      .domain([1, 20])
-      .clamp(true)
-      .range(['#fff', '#409A99']);
+      // var color = d3.scaleLinear()
+      // .domain([1, 20])
+      // .clamp(true)
+      // .range(['#fff', '#409A99']);
 
       var povertyScale = d3.scaleLinear()
       .domain([0, 100])
@@ -140,7 +141,7 @@ d3.csv("Data.csv", function(error, datum) {
       .attr('height', height)
       .on("click", stopped, true);;
 
-     
+
       var g = svg.append("rect")
       .attr("class", "background")
       .attr("width", width)
@@ -183,8 +184,8 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('width', width_3 + margin.left + margin.left + margin.right + margin.right)
         .attr('height', height_3 + margin.top + margin.top + margin.bottom + margin.bottom + margin.bottom)
         .append("g");
-		
-		
+
+
         piechart.append("g")
             .attr("class", "slices")
 			.attr("transform", "translate(0,30)");
@@ -194,9 +195,9 @@ d3.csv("Data.csv", function(error, datum) {
         piechart.append("g")
             .attr("class", "lines")
 			.attr("transform", "translate(0,30)");
-			
+
 		var pieText = d3.select("#pies")
-		
+
 		pieText.append("text")
         .attr("x",margin.left)
         .attr("y",15)
@@ -205,8 +206,8 @@ d3.csv("Data.csv", function(error, datum) {
         .style("fill", "#000000")
         .text("Demographics")
 		.style("opacity","1");
-		
-       
+
+
         var pie = d3.pie()
             .sort(null)
             .value(function(d) {
@@ -221,8 +222,8 @@ d3.csv("Data.csv", function(error, datum) {
             .innerRadius(radius * 0.9)
             .outerRadius(radius * 0.9);
 
-		
-		
+
+
         piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
 
         var key = function(d){ return d.data.label; };
@@ -231,17 +232,17 @@ d3.csv("Data.csv", function(error, datum) {
         .domain(["White", "Hispanic", "Black", "Asian", "Other"])
         .range(["#386035", "#54AA4C", "#80CC78", "#BCFCB5", "#EAFFE8"]);
 
-        
+
         console.log('run');
 
         function generatePie(){
             console.log('ok');
-            change(randomData());   
+            change(randomData());
         }
 
         generatePie();
         generatePie();
-       
+
 
         // d3.select(".randomize")
         //     .on("click", function(){
@@ -269,7 +270,7 @@ d3.csv("Data.csv", function(error, datum) {
             .style("fill", function(d) { return color_pie(d.data.label); })
             .attr("class", "slice");
 
-        slice		
+        slice
             .transition().duration(1000)
             .attrTween("d", function(d) {
                 this._current = this._current || d;
@@ -344,7 +345,7 @@ d3.csv("Data.csv", function(error, datum) {
                     var pos = outerArc.centroid(d2);
                     pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
                     return [arc.centroid(d2), outerArc.centroid(d2), pos];
-                };			
+                };
             });
 
         polyline.exit()
@@ -370,7 +371,7 @@ d3.csv("Data.csv", function(error, datum) {
           .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
       }
 
-      var defs = maplayer.append("defs");
+     // var defs = maplayer.append("defs");
      // var gradient = defs.append("linearGradient")
      //    .attr("id", "svgGradient")
      //    .attr("x1", "0%")
@@ -409,7 +410,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('d', path)
         //.attr('vector-effect', 'non-scaling-stroke')
         .attr("class","feature")
-        //.style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math))
+        .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg))
         //.style("fill", "url(#svgGradient)")
         //.style('stroke', '#212020')
         .style('stroke', '#141414')
@@ -444,10 +445,8 @@ d3.csv("Data.csv", function(error, datum) {
       }
 
       function mouseout(d){
-      // Reset province color
-      maplayer.selectAll('path')
-        .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].avgSAT_Math));
-
+      // Reset school district color
+      d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
       }
 
       function clicked(d) {
@@ -455,10 +454,10 @@ d3.csv("Data.csv", function(error, datum) {
       if (active.node() === this) return reset();
       active.classed("active", false);
       active = d3.select(this).classed("active", true);
-      
-	
+
+
       console.log(d.properties.SchoolDist);
-	
+
 
       var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
@@ -473,11 +472,11 @@ d3.csv("Data.csv", function(error, datum) {
           //.call(zoom.translate(translate).scale(scale).event); // not in d3 v4
           .call(zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) ); // updated for d3 v4
           //.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scale + ')translate(' + -dx + ',' + -dy + ')');
-		
+
 		//set remove text here
 		d3.selectAll("#Title")
 		.style("opacity","0");
-		
+
 		svg.append("text")
 		.attr("id","district")
         .attr("x", 50)
@@ -494,13 +493,13 @@ d3.csv("Data.csv", function(error, datum) {
       function stopped() {
       if (d3.event.defaultPrevented) d3.event.stopPropagation();
 	  console.log("stopped");
-	
+
 	d3.selectAll("#district")
 	.style("opacity","0");
-	
+
 	d3.selectAll("#Title")
 	.style("opacity","1.0");
-	  
+
       }
 
 
@@ -547,7 +546,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('width', "600")
         .attr('height', "190")
 
-	
+
 	distInfo.append("text")
 	    .attr("x", margin.left)
         .attr("y", 100)
@@ -555,7 +554,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "900")
         .style("fill", "#000000")
         .text("School District #");
-		
+
 	distInfo.append("text")
 	    .attr("x", margin.left)
         .attr("y", 130)
@@ -571,14 +570,14 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "700")
         .style("fill", "#000000")
         .text("Number of Schools");
-		
-	
+
+
 	var schoolInfo = d3.select('#schoolInfo').append('svg')
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
         .attr('height', "100")
-		
+
 		schoolInfo.append("line")
 		.attr("stroke","#2d2d2d")
 		.attr("stroke-width", 2)
@@ -588,7 +587,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("x2", 600)
 		.attr("y2", 0);
 
-		
+
 		schoolInfo.append("text")
 	    .attr("x", margin.left)
         .attr("y", 30)
@@ -613,7 +612,7 @@ d3.csv("Data.csv", function(error, datum) {
                     .style('background', 'white')
                     .style('opacity', 0)
 
-        
+
         var myChart = d3.select('#chart').append('svg')
         .style('background', 'white')
         .attr("id", "bar")
@@ -632,7 +631,7 @@ d3.csv("Data.csv", function(error, datum) {
         var xScale;
         var yScale;
 
-    
+
         updateBar(bardata);
 
 
@@ -666,13 +665,13 @@ d3.csv("Data.csv", function(error, datum) {
         //         .style({fill: 'none', stroke: '#000'})
         //     hGuide.selectAll('line')
         //         .style({stroke: '#000'})
-        
+
 
 
 
         function updateBar(bardata){
 
-        
+
         yScale = d3.scaleLinear()
                     .domain([0, d3.max(bardata)])
                     .range([0, height_2])
@@ -687,7 +686,7 @@ d3.csv("Data.csv", function(error, datum) {
 //                    .domain([0, bardata.length*.63, bardata.length])
 //                    .range(['#ffb832','#c61c6f','#d33682'])
 
-                    
+
         var rectan = allbars.selectAll('rect')
                     .data(bardata);
 
@@ -704,7 +703,7 @@ d3.csv("Data.csv", function(error, datum) {
                         })
                     .attr('height', 0)
                     .attr('y', height_2)
-					
+
 					console.log(xScale.bandwidth())
 
                     //.on('mouseover', function(d){
@@ -738,14 +737,14 @@ d3.csv("Data.csv", function(error, datum) {
                     })
                     .duration(5000)
                     .ease(d3.easeElastic)
-                    
+
         // remove old data
         rectan.exit().remove();
-  
+
         }
 
-       
-        
+
+
         function clicked_circle(d) {
             console.log(d.SAT_Math)
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
@@ -780,7 +779,7 @@ d3.csv("Data.csv", function(error, datum) {
         // piechart.append("g")
         //     .attr("class", "lines");
 
-       
+
         // var pie = d3.pie()
         //     .sort(null)
         //     .value(function(d) {
@@ -813,7 +812,7 @@ d3.csv("Data.csv", function(error, datum) {
         // function generatePie(){
         //     change(randomData());
         // }
-       
+
 
         // d3.select(".randomize")
         //     .on("click", function(){
@@ -842,7 +841,7 @@ d3.csv("Data.csv", function(error, datum) {
         //     .style("fill", function(d) { return color_pie(d.data.label); })
         //     .attr("class", "slice");
 
-        // slice		
+        // slice
         //     .transition().duration(1000)
         //     .attrTween("d", function(d) {
         //         this._current = this._current || d;
@@ -915,7 +914,7 @@ d3.csv("Data.csv", function(error, datum) {
         //             var pos = outerArc.centroid(d2);
         //             pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
         //             return [arc.centroid(d2), outerArc.centroid(d2), pos];
-        //         };			
+        //         };
         //     });
 
         // polyline.exit()
@@ -930,7 +929,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "400")
         .style("fill", "#000000")
         .text("SAT Scores");
-		
+
 		myChart.append("text")
 		.attr("x", margin.left+25)
 		.attr("y", 180)
@@ -938,7 +937,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "300")
         .style("fill", "#000000")
         .text("(M)");
-		
+
 		myChart.append("text")
 		.attr("x", margin.left+36*2+4)
 		.attr("y", 180)
@@ -946,7 +945,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "300")
         .style("fill", "#000000")
         .text("(R)");
-		
+
 		myChart.append("text")
 		.attr("x", margin.left+36*3+18)
 		.attr("y", 180)
