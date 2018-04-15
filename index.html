@@ -214,7 +214,7 @@ d3.csv("Data.csv", function(error, datum) {
     
         var gauge1 = d3.select("#fillgauge1");
         gauge1.call(d3.liquidfillgauge, 455,{
-            minValue: 0,
+            minValue: 200,
             maxValue: 800,
             displayPercent: false
         });
@@ -222,7 +222,7 @@ d3.csv("Data.csv", function(error, datum) {
 
         var gauge2 = d3.select("#fillgauge2");
         gauge2.call(d3.liquidfillgauge, 440,{
-            minValue: 0,
+            minValue: 200,
             maxValue: 800,
             displayPercent: false
         });
@@ -230,7 +230,7 @@ d3.csv("Data.csv", function(error, datum) {
 
         var gauge3 = d3.select("#fillgauge3");
         gauge3.call(d3.liquidfillgauge, 425,{
-            minValue: 0,
+            minValue: 200,
             maxValue: 800,
             displayPercent: false
         });
@@ -351,7 +351,7 @@ d3.csv("Data.csv", function(error, datum) {
             .attr("class", "slice");
 
         slice
-            .transition().duration(1000)
+            .transition().duration(750)
             .attrTween("d", function(d) {
                 this._current = this._current || d;
                 var interpolate = d3.interpolate(this._current, d);
@@ -382,7 +382,7 @@ d3.csv("Data.csv", function(error, datum) {
             return d.startAngle + (d.endAngle - d.startAngle)/2;
         }
 
-        text.transition().duration(1000)
+        text.transition().duration(750)
             .attrTween("transform", function(d) {
                 this._current = this._current || d;
                 var interpolate = d3.interpolate(this._current, d);
@@ -436,7 +436,7 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       function zoomed() {
-      maplayer.style("stroke-width", 0.75 / d3.event.transform.k + "px");
+      maplayer.style("stroke-width", 0.5 / d3.event.transform.k + "px");
       // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
       maplayer.attr("transform", d3.event.transform); // updated for d3 v4
       }
@@ -446,7 +446,7 @@ d3.csv("Data.csv", function(error, datum) {
       active = d3.select(null);
 
       svg.transition()
-          .duration(750)
+          .duration(300)
           // .call( zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1) ); // not in d3 v4
           .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
       }
@@ -460,7 +460,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("class","feature")
         .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg))
         .style('stroke', '#141414')
-        .style('stroke-width', 1)
+        .style('stroke-width', 0.5)
         .on('mouseover', mouseover)
         .on('mouseout',mouseout)
         .on('click', clicked)
