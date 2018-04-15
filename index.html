@@ -8,6 +8,12 @@
 <script src="https://d3js.org/d3-array.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="tip.js"></script>
+<link rel="shortcut icon" href="">
+
+<script src="liquidFillGauge.js" type="text/javascript"></script>
+
+
 
  <!-- <script src="liquidFillGauge.js"></script> -->
 
@@ -72,6 +78,43 @@ polyline{
     float: left;
 }
 
+
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+.liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+
+
+
 </style>
 </head>
 <body>
@@ -83,8 +126,16 @@ polyline{
 <!-- new added -->
 <div id="distInfo"></div>
 <div id="schoolInfo"></div>
+<div id="liquid">
+
+        <svg id="fillgauge1" width="200" height="200"></svg>
+        <svg id="fillgauge2" width="200" height="200"></svg>
+        <svg id="fillgauge3" width="200" height="200"></svg>
+
+</div>
 <div id="chart"></div>
 <div id="pie"></div>
+
 <!-- <button class="randomize">randomize</button> -->
 
 
@@ -156,6 +207,37 @@ d3.csv("Data.csv", function(error, datum) {
       .on("zoom", zoomed);
 
 
+
+
+       // Liquid Guage
+
+    
+        var gauge1 = d3.select("#fillgauge1");
+        gauge1.call(d3.liquidfillgauge, 455,{
+            minValue: 0,
+            maxValue: 800,
+            displayPercent: false
+        });
+    
+
+        var gauge2 = d3.select("#fillgauge2");
+        gauge2.call(d3.liquidfillgauge, 440,{
+            minValue: 0,
+            maxValue: 800,
+            displayPercent: false
+        });
+       
+
+        var gauge3 = d3.select("#fillgauge3");
+        gauge3.call(d3.liquidfillgauge, 425,{
+            minValue: 0,
+            maxValue: 800,
+            displayPercent: false
+        });
+        
+
+
+        
 
 
         // PIE CHART
@@ -255,10 +337,13 @@ d3.csv("Data.csv", function(error, datum) {
 
 
         function change(data) {
-
+     
         /* ------- PIE SLICES -------*/
         var slice = piechart.select(".slices").selectAll("path.slice")
             .data(pie(data), key);
+        console.log(data);
+        console.log(pie(data));
+        
 
         slice.enter()
             .insert("path")
@@ -394,7 +479,8 @@ d3.csv("Data.csv", function(error, datum) {
         //.attr("stroke-width", "0.5px")
         .on('click', function (d){
             clicked_circle(d);
-            generatePie(d);})
+            generatePie(d)
+            generateGauge(d);})
 		.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
 		.on('mouseout', function(d){
 			d3.select(this).style('fill',"white")
@@ -573,6 +659,14 @@ d3.csv("Data.csv", function(error, datum) {
                     .style('background', 'white')
                     .style('opacity', 0)
 
+        var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                //.offset([-10,0])
+                .html(function(d){
+                    //return "<strong>Frequency:</strong> <span style='color:red'>" + d.SAT_Math + "</span> <br />";
+                    return d;
+                })
+
 
         var myChart = d3.select('#chart').append('svg')
         .style('background', 'white')
@@ -580,7 +674,8 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('width', width_2 + margin.left + margin.right)
         .attr('height', height_2 + margin.top + margin.bottom)
 
-
+        
+        myChart.call(tip);
         //console.log(xScale);
 
         var allbars = myChart.append('g')
@@ -665,8 +760,10 @@ d3.csv("Data.csv", function(error, datum) {
                     .attr('height', 0)
                     .attr('y', height_2)
 
-					console.log(xScale.bandwidth())
-
+					//console.log(xScale.bandwidth())
+                    
+                    .on ('mouseover', tip.show)
+                    .on ('mouseout', tip.hide)
                     //.on('mouseover', function(d){
                     //    tooltip.transition()
                     //        .style('opacity', 0.9)
@@ -706,181 +803,29 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 
+
+
+       
+
+
+
+
+
         function clicked_circle(d) {
-            console.log(d.SAT_Math)
+            
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
+            //console.log(bardata);
             updateBar(bardata);
+        }
+
+        function generateGauge(d){
+            gauge1.on("valueChanged")(d.SAT_Math);
+            gauge2.on("valueChanged")(d.SAT_Reading);
+            gauge3.on("valueChanged")(d.SAT_Writing);
         }
 
 
 
-
-
-
-
-
-
-        // PIE CHART
-
-
-        // var width_3 = 960,
-        // height_3 = 450,
-        // radius = Math.min(width_3, height_3) / 2;
-
-        // var piechart = d3.select("#pie")
-        // .append("svg")
-        // .attr('width', width_3 + margin.left + margin.right)
-        // .attr('height', height_3 + margin.top + margin.bottom)
-        // .append("g")
-
-        // piechart.append("g")
-        //     .attr("class", "slices");
-        // piechart.append("g")
-        //     .attr("class", "labels");
-        // piechart.append("g")
-        //     .attr("class", "lines");
-
-
-        // var pie = d3.pie()
-        //     .sort(null)
-        //     .value(function(d) {
-        //         return d.value;
-        // });
-
-        // var arc = d3.arc()
-        //     .outerRadius(radius * 0.8)
-        //     .innerRadius(radius * 0.4);
-
-        // var outerArc = d3.arc()
-        //     .innerRadius(radius * 0.9)
-        //     .outerRadius(radius * 0.9);
-
-        // piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
-
-        // var key = function(d){ return d.data.label; };
-
-
-        // var color_pie = d3.scaleOrdinal()
-        // .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
-        // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-
-
-
-
-        // generatePie();
-
-        // function generatePie(){
-        //     change(randomData());
-        // }
-
-
-        // d3.select(".randomize")
-        //     .on("click", function(){
-        //         generatePie();
-        // });
-
-
-        // function randomData (){
-        //     var labels = color_pie.domain();
-        //     return labels.map(function(label){
-        //         return { label: label, value: Math.random() }
-        //     });
-        // }
-
-
-
-
-        // function change(data) {
-
-        // /* ------- PIE SLICES -------*/
-        // var slice = piechart.select(".slices").selectAll("path.slice")
-        //     .data(pie(data), key);
-
-        // slice.enter()
-        //     .insert("path")
-        //     .style("fill", function(d) { return color_pie(d.data.label); })
-        //     .attr("class", "slice");
-
-        // slice
-        //     .transition().duration(1000)
-        //     .attrTween("d", function(d) {
-        //         this._current = this._current || d;
-        //         var interpolate = d3.interpolate(this._current, d);
-        //         this._current = interpolate(0);
-        //         return function(t) {
-        //             return arc(interpolate(t));
-        //         };
-        //     })
-
-        // slice.exit()
-        //     .remove();
-
-        // /* ------- TEXT LABELS -------*/
-
-        // var text = piechart.select(".labels").selectAll("text")
-        //     .data(pie(data), key);
-
-        // text.enter()
-        //     .append("text")
-        //     .attr("dy", ".35em")
-        //     .text(function(d) {
-        //         return d.data.label;
-        //     });
-
-        // function midAngle(d){
-        //     return d.startAngle + (d.endAngle - d.startAngle)/2;
-        // }
-
-        // text.transition().duration(1000)
-        //     .attrTween("transform", function(d) {
-        //         this._current = this._current || d;
-        //         var interpolate = d3.interpolate(this._current, d);
-        //         this._current = interpolate(0);
-        //         return function(t) {
-        //             var d2 = interpolate(t);
-        //             var pos = outerArc.centroid(d2);
-        //             pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-        //             return "translate("+ pos +")";
-        //         };
-        //     })
-        //     .styleTween("text-anchor", function(d){
-        //         this._current = this._current || d;
-        //         var interpolate = d3.interpolate(this._current, d);
-        //         this._current = interpolate(0);
-        //         return function(t) {
-        //             var d2 = interpolate(t);
-        //             return midAngle(d2) < Math.PI ? "start":"end";
-        //         };
-        //     });
-
-        // text.exit()
-        //     .remove();
-
-        // /* ------- SLICE TO TEXT POLYLINES -------*/
-
-        // var polyline = piechart.select(".lines").selectAll("polyline")
-        //     .data(pie(data), key);
-
-        // polyline.enter()
-        //     .append("polyline");
-
-        // polyline.transition().duration(1000)
-        //     .attrTween("points", function(d){
-        //         this._current = this._current || d;
-        //         var interpolate = d3.interpolate(this._current, d);
-        //         this._current = interpolate(0);
-        //         return function(t) {
-        //             var d2 = interpolate(t);
-        //             var pos = outerArc.centroid(d2);
-        //             pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-        //             return [arc.centroid(d2), outerArc.centroid(d2), pos];
-        //         };
-        //     });
-
-        // polyline.exit()
-        //     .remove();
-        // };
 
 
 		myChart.append("text")
