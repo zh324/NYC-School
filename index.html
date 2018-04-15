@@ -13,8 +13,6 @@
 
 <script src="liquidFillGauge.js" type="text/javascript"></script>
 
-
-
  <!-- <script src="liquidFillGauge.js"></script> -->
 
 <script>
@@ -128,9 +126,9 @@ polyline{
 <div id="schoolInfo"></div>
 <div id="liquid">
 
-        <svg id="fillgauge1" width="200" height="200"></svg>
-        <svg id="fillgauge2" width="200" height="200"></svg>
-        <svg id="fillgauge3" width="200" height="200"></svg>
+		<svg id="fillgauge1" width="150" height="150"></svg>
+        <svg id="fillgauge2" width="150" height="150"></svg>
+        <svg id="fillgauge3" width="150" height="150"></svg>
 
 </div>
 <div id="chart"></div>
@@ -213,11 +211,16 @@ d3.csv("Data.csv", function(error, datum) {
 
     
         var gauge1 = d3.select("#fillgauge1");
-        gauge1.call(d3.liquidfillgauge, 455,{
+		
+        gauge1
+		.call(d3.liquidfillgauge, 455,{
             minValue: 200,
             maxValue: 800,
             displayPercent: false
-        });
+        })
+		.style("padding-left",margin.left);
+		
+		
     
 
         var gauge2 = d3.select("#fillgauge2");
@@ -225,7 +228,8 @@ d3.csv("Data.csv", function(error, datum) {
             minValue: 200,
             maxValue: 800,
             displayPercent: false
-        });
+        })
+		.style("padding-left","25");
        
 
         var gauge3 = d3.select("#fillgauge3");
@@ -233,7 +237,8 @@ d3.csv("Data.csv", function(error, datum) {
             minValue: 200,
             maxValue: 800,
             displayPercent: false
-        });
+        })
+		.style("padding-left","25");
         
 
 
@@ -479,8 +484,11 @@ d3.csv("Data.csv", function(error, datum) {
         //.attr("stroke-width", "0.5px")
         .on('click', function (d){
             clicked_circle(d);
-            generatePie(d)
-            generateGauge(d);})
+            generatePie(d);
+            generateGauge(d)
+			d3.selectAll("#Title")
+			.style("opacity","0");
+			})
 		.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
 		.on('mouseout', function(d){
 			d3.select(this).style('fill',"white")
@@ -495,6 +503,12 @@ d3.csv("Data.csv", function(error, datum) {
       // Reset school district color
       d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
       }
+	  
+	var distInfo = d3.select('#distInfo').append('svg')
+        .style('background', 'white')
+        .attr("id", "bar")
+        .attr('width', "600")
+        .attr('height', "190")
 
       function clicked(d) {
 
@@ -524,15 +538,32 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#Title")
 		.style("opacity","0");
 
-		svg.append("text")
-		.attr("id","district")
-        .attr("x", 50)
-        .attr("y", 150)
-        .attr("font-size", "20px")
-        .attr("font-weight", "900")
+	distInfo.append("text")
+		.attr("id","distInfo1")
+	    .attr("x", margin.left)
+        .attr("y", 100)
+        .attr("font-size", "30px")
+		.attr("font-weight", "900")
         .style("fill", "#000000")
-        .text("District #")
-		.style("opacity","1");
+        .text("School District #");
+
+	distInfo.append("text")
+		.attr("id","distInfo1")
+	    .attr("x", margin.left)
+        .attr("y", 130)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text("Avg SAT Score");
+
+	distInfo.append("text")
+		.attr("id","distInfo1")
+		.attr("x", margin.left)
+        .attr("y", 160)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text("Number of Schools");
 
       }
 
@@ -541,8 +572,9 @@ d3.csv("Data.csv", function(error, datum) {
       if (d3.event.defaultPrevented) d3.event.stopPropagation();
 	  console.log("stopped");
 
-	d3.selectAll("#district")
-	.style("opacity","0");
+	d3.selectAll("#distInfo1")
+	.style("opacity","0.0");
+
 
 	d3.selectAll("#Title")
 	.style("opacity","1.0");
@@ -556,28 +588,38 @@ d3.csv("Data.csv", function(error, datum) {
 
       svg.append("text")
 		.attr("id","Title")
-        .attr("x", 50)
-        .attr("y", 100)
-        .attr("font-size", "37px")
+        .attr("x", 45)
+        .attr("y", 100+20)
+        .attr("font-size", "150px")
         .attr("font-weight", "900")
         .style("fill", "#000000")
-        .text("NYC Public Schools");
+		.style("letter-spacing", "10")
+        .text("NYC");
 
-        svg.append("text")
-        .attr("id","Title")
-		.attr("x", 50)
-        .attr("y", 100+25)
-        .attr("font-size", "20px")
-        .style("fill", "#000000")
-        .text("Average SAT Scores & Poverty Rates");
-
-        svg.append("text")
+      svg.append("text")
 		.attr("id","Title")
         .attr("x", 50)
-        .attr("y", 100+50)
+        .attr("y", 100+50+20)
+        .attr("font-size", "50px")
+        .attr("font-weight", "900")
+        .style("fill", "#000000")
+        .text("Public Schools");
+	
+	svg.append("text")
+        .attr("id","Title")
+		.attr("x", 50)
+        .attr("y", 100+25+50+25)
         .attr("font-size", "20px")
         .style("fill", "#000000")
-        .text("by School District");
+        .text("SAT Scores | Poverty Rates | Demographics");
+//
+//        svg.append("text")
+//		.attr("id","Title")
+//        .attr("x", 50)
+//        .attr("y", 100+50+50)
+//        .attr("font-size", "20px")
+//        .style("fill", "#000000")
+//        .text("Poverty Rates & Demographics");
 
             // for (var i=0; i<50; i++){
             //     bardata.push(Math.round(Math.random()*30))
@@ -586,37 +628,6 @@ d3.csv("Data.csv", function(error, datum) {
             // bardata.sort(function compareNumbers(a,b){
             //     return a-b;
             // })
-
-	var distInfo = d3.select('#distInfo').append('svg')
-        .style('background', 'white')
-        .attr("id", "bar")
-        .attr('width', "600")
-        .attr('height', "190")
-
-
-	distInfo.append("text")
-	    .attr("x", margin.left)
-        .attr("y", 100)
-        .attr("font-size", "30px")
-		.attr("font-weight", "900")
-        .style("fill", "#000000")
-        .text("School District #");
-
-	distInfo.append("text")
-	    .attr("x", margin.left)
-        .attr("y", 130)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#000000")
-        .text("Avg SAT Score");
-
-	distInfo.append("text")
-	    .attr("x", margin.left)
-        .attr("y", 160)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#000000")
-        .text("Number of Schools");
 
 
 	var schoolInfo = d3.select('#schoolInfo').append('svg')
@@ -743,61 +754,61 @@ d3.csv("Data.csv", function(error, datum) {
 //                    .range(['#ffb832','#c61c6f','#d33682'])
 
 
-        var rectan = allbars.selectAll('rect')
-                    .data(bardata);
-
-        var allrec = rectan.enter()
-                    .append('rect')
-                    .merge(rectan)
-                    .style('fill', "#409A99"
-						   //function(d,i){
-                            //return color(i);}
-							)
-                    .attr('width', xScale.bandwidth())
-                    .attr('x', function(d,i){
-                            return xScale(i);
-                        })
-                    .attr('height', 0)
-                    .attr('y', height_2)
-
-					//console.log(xScale.bandwidth())
-                    
-                    .on ('mouseover', tip.show)
-                    .on ('mouseout', tip.hide)
-                    //.on('mouseover', function(d){
-                    //    tooltip.transition()
-                    //        .style('opacity', 0.9)
-                    //    tooltip.html(d)
-                    //            .style('left', (d3.event.pageX - 35)+'px')
-                    //            .style('top', (d3.event.pageY - 40)+'px')
-                    //
-                    //
-                    //tempColor = this.style.fill;
-                    //d3.select(this)
-                    //    .style('opacity', .5)
-                    //    .style('fill', 'yellow')
-                    //})
-                    //.on('mouseout', function(d){
-                    //d3.select(this)
-                    //        .style('opacity', 1)
-                    //        .style('fill', tempColor)
-                    //})
-
-                    allrec.transition()
-                            .attr('height', function(d){
-                                    return yScale(d);
-                    })
-                            .attr('y', function(d){
-                                    return height_2 - yScale(d);
-                    })
-                    .delay(function(d,i){
-                            return i*20;
-                    })
-                    .duration(5000)
-                    .ease(d3.easeElastic)
-
-        // remove old data
-        rectan.exit().remove();
+//        var rectan = allbars.selectAll('rect')
+//                    .data(bardata);
+//
+//        var allrec = rectan.enter()
+//                    .append('rect')
+//                    .merge(rectan)
+//                    .style('fill', "#409A99"
+//						   //function(d,i){
+//                            //return color(i);}
+//							)
+//                    .attr('width', xScale.bandwidth())
+//                    .attr('x', function(d,i){
+//                            return xScale(i);
+//                        })
+//                    .attr('height', 0)
+//                    .attr('y', height_2)
+//
+//					//console.log(xScale.bandwidth())
+//                    
+//                    .on ('mouseover', tip.show)
+//                    .on ('mouseout', tip.hide)
+//                    //.on('mouseover', function(d){
+//                    //    tooltip.transition()
+//                    //        .style('opacity', 0.9)
+//                    //    tooltip.html(d)
+//                    //            .style('left', (d3.event.pageX - 35)+'px')
+//                    //            .style('top', (d3.event.pageY - 40)+'px')
+//                    //
+//                    //
+//                    //tempColor = this.style.fill;
+//                    //d3.select(this)
+//                    //    .style('opacity', .5)
+//                    //    .style('fill', 'yellow')
+//                    //})
+//                    //.on('mouseout', function(d){
+//                    //d3.select(this)
+//                    //        .style('opacity', 1)
+//                    //        .style('fill', tempColor)
+//                    //})
+//
+//                    allrec.transition()
+//                            .attr('height', function(d){
+//                                    return yScale(d);
+//                    })
+//                            .attr('y', function(d){
+//                                    return height_2 - yScale(d);
+//                    })
+//                    .delay(function(d,i){
+//                            return i*20;
+//                    })
+//                    .duration(5000)
+//                    .ease(d3.easeElastic)
+//
+//        // remove old data
+//        rectan.exit().remove();
 
         }
 
