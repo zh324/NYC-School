@@ -8,6 +8,7 @@
 <script src="https://d3js.org/d3-array.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script src="tip.js"></script>
 <link rel="shortcut icon" href="">
 
@@ -187,7 +188,7 @@ d3.csv("Data.csv", function(error, datum) {
       features = data.features;
 
       var width = 700,
-      height = 800,
+      height = 700,
       centered,
       active = d3.select(null);
       var margin = { top: 30, right: 30, bottom: 40, left: 50}
@@ -195,9 +196,9 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       var projection = d3.geoMercator()
-      .fitSize([width ,height], data)
-      .fitExtent([[50, 50], [width, height-10]],data)
-    
+      .fitSize([width * 0.9 ,height], data)
+      .fitExtent([[200, 50], [width, height-50]],data)
+      // Center the Map in Colombia
 
       var povertyScale = d3.scaleLinear()
       .domain([0, 100])
@@ -244,11 +245,6 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
-
             displayPercent: false
         })
 		.style("padding-left", margin.left)
@@ -258,7 +254,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#178BCA")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 		
@@ -271,10 +267,6 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
             displayPercent: false
         })
 		.style("padding-left","25")
@@ -284,7 +276,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#178BCA")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 
@@ -294,11 +286,6 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
-
             displayPercent: false
         })
 		.style("padding-left","25")
@@ -308,7 +295,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#178BCA")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
         
@@ -352,7 +339,14 @@ d3.csv("Data.csv", function(error, datum) {
         var width_aster = 300 
             height_aster = 300 ;
 
-            var svg_aster = d3.select('#aster').append('svg')
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([0, 0])
+            .html(function(d) {
+                return "District:  " + d.data.id + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
+            });
+
+        var svg_aster = d3.select('#aster').append('svg')
             .attr('class', 'aster_svg')
             .attr("width", width_aster )
             .attr("height", height_aster)
@@ -360,7 +354,8 @@ d3.csv("Data.csv", function(error, datum) {
 			.style("padding-top", margin.top)
             .append("g")
             .attr("transform", "translate(" + width_aster / 2 + "," + height_aster / 2  + ")");
-
+        
+        //svg_aster.call(tip);
         var radius = Math.min(width_aster, height_aster) / 2
         console.log(radius);
         var innerRadius = 0.3 * radius;
@@ -381,6 +376,9 @@ d3.csv("Data.csv", function(error, datum) {
             //console.log(data);
         aster_length = data.length;
         console.log(aster_length);
+
+        d3.selectAll(".solidArc").remove().exit();
+       d3.selectAll(".outlineArc").remove().exit();
         
         // var radius = Math.min(width_aster, height_aster) / 2 ,
         //     innerRadius = 0.3 * radius;
@@ -414,6 +412,11 @@ d3.csv("Data.csv", function(error, datum) {
             .style('opacity', function(d, i) { return data_aster[i].Poverty / 100; })
             .attr("class", "solidArc")
             .attr("d", arc_aster)
+        path_aster.call(tip);
+        path_aster.on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+
+
         //console.log(path_aster._groups);
         
         // path_aster.exit()
@@ -439,7 +442,8 @@ d3.csv("Data.csv", function(error, datum) {
             .enter().append("path")
             .attr("fill", "none")
             .attr("class", "outlineArc")
-            .attr("stroke", "gray")
+            .attr("stroke", "black")
+            .attr('stroke-width', 1.5)
             .attr("d", outlineArc);
 
             // var Poverty =
@@ -493,12 +497,16 @@ d3.csv("Data.csv", function(error, datum) {
            .innerRadius(innerRadius)
            .outerRadius(radius);
 
-        
+        console.log(data_redraw);
+        var tip_school = d3.tip()
+           .attr('class', 'd3-tip')
+           .offset([0, 0])
+           .html(function(d) {
+               return "School:  " + d.data["School Name"] + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
+           });
        path_aster = svg_aster.selectAll(".solidArc")
            .data(pie_aster(data_redraw))
            .enter().append("path")
-           .transition()
-           .duration(200)
            .attr("class", "solidArc")
            .style('fill', '#e8441e')
            .style('opacity', function(d, i) { return data_redraw[i].Poverty / 100; })
@@ -506,7 +514,14 @@ d3.csv("Data.csv", function(error, datum) {
            .attr("d", arc_aster.innerRadius(innerRadius)
                                .outerRadius(function (d) {
                                    return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
-                               }));
+                               }))
+            .on('mouseover', tip_school.show)
+            .on('mouseout', tip_school.hide);
+        path_aster.call(tip_school);
+
+
+        path_aster.transition()
+           .duration(200);
                                //console.log(path_aster);
        var outlineArc = d3.arc()
            .innerRadius(innerRadius)
@@ -518,7 +533,7 @@ d3.csv("Data.csv", function(error, datum) {
            .duration(200)
            .attr("fill", "none")
            .attr("class", "outlineArc")
-           .attr("stroke", "gray")
+           .attr("stroke", "black")
            .attr("d", outlineArc);
 
       
@@ -747,9 +762,11 @@ d3.csv("Data.csv", function(error, datum) {
 		
 		
       active.classed("active", false);
-	d3.selectAll("#nSchool").remove();
+	  d3.selectAll("#nSchool").remove();
 	  
       active = d3.select(null);
+    
+      
 
       svg.transition()
           .duration(300)
@@ -766,6 +783,13 @@ d3.csv("Data.csv", function(error, datum) {
         }
 		
 		generateGauge_d();
+
+
+        console.log(data_aster)
+        generate(data_aster);
+        
+
+
       }
 
       maplayer.selectAll('path')
@@ -807,7 +831,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 110)
         .attr("font-size", "25px")
 		.attr("font-weight", "900")
-        .style("fill", "#65adad")
+        .style("fill", "#178BCA")
         .text("SAT Scores");
 
       var mapCircles = maplayer.selectAll("circle")
@@ -902,7 +926,7 @@ d3.csv("Data.csv", function(error, datum) {
 	  var distNum = d.properties.SchoolDist;
 	
 	
-		
+	  // REDRAW ASTER IN SCHOOL	
       redraw_aster(d);
 
 		
@@ -1101,17 +1125,17 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("id","Title")
         .attr("x", 45)
         .attr("y", 100+20)
-        .attr("font-size", "120px")
+        .attr("font-size", "150px")
         .attr("font-weight", "900")
         .style("fill", "#2D2C2C")
-		.style("letter-spacing", "3")
+		.style("letter-spacing", "10")
         .text("NYC");
 
       svg.append("text")
 		.attr("id","Title")
         .attr("x", 50)
-        .attr("y", 100+50+10)
-        .attr("font-size", "36px")
+        .attr("y", 100+50+20)
+        .attr("font-size", "50px")
         .attr("font-weight", "900")
         .style("fill", "#2D2C2C")
         .text("Public Schools");
@@ -1119,48 +1143,10 @@ d3.csv("Data.csv", function(error, datum) {
 	svg.append("text")
         .attr("id","Title")
 		.attr("x", 50)
-        .attr("y", 100+25+50+15)
-        .attr("font-size", "16px")
+        .attr("y", 100+25+50+25)
+        .attr("font-size", "18px")
         .style("fill", "#2D2C2C")
         .text("SAT Scores | Poverty Rates | Demographics");
-		
-		
-	svg.append("rect")
-		.attr("id", "Title")
-		.attr("x", 50)
-        .attr("y", 100+25+50+35)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#65adad")
-		.style("stroke", "#2D2C2C");
-	
-	svg.append("text")
-	.attr("id","Title")
-	.attr("x", 50+35)
-	.attr("y", 100+25+50+35+18)
-	.attr("font-size", "16px")
-	.style("fill", "#2D2C2C")
-	.text("Max Avg SAT Score");
-
-		
-	svg.append("rect")
-		.attr("id", "Title")
-		.attr("x", 50)
-        .attr("y", 100+25+50+35*2.1)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#e6f2f2")
-		.style("stroke", "#2D2C2C");
-
-	svg.append("text")
-	.attr("id","Title")
-	.attr("x", 50+35)
-	.attr("y", 100+25+50+35*2.1+18)
-	.attr("font-size", "16px")
-	.style("fill", "#2D2C2C")
-	.text("Min Avg SAT Score");
-
-
 //
 //        svg.append("text")
 //		.attr("id","Title")
@@ -1203,13 +1189,6 @@ d3.csv("Data.csv", function(error, datum) {
                     .style('background', 'white')
                     .style('opacity', 0)
 
-        var tip = d3.tip()
-                .attr('class', 'd3-tip')
-                //.offset([-10,0])
-                .html(function(d){
-                    //return "<strong>Frequency:</strong> <span style='color:red'>" + d.SAT_Math + "</span> <br />";
-                    return d;
-                })
 
 
         var myChart = d3.select('#chart').append('svg')
@@ -1351,9 +1330,7 @@ d3.csv("Data.csv", function(error, datum) {
 
         function clicked_circle(d) {
 			d3.selectAll("#nSchool").remove();
-			
-
-
+ 
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
 			updateBar(bardata);
 			
