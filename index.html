@@ -342,6 +342,8 @@ d3.csv("Data.csv", function(error, datum) {
             .attr('class', 'aster_svg')
             .attr("width", width_aster )
             .attr("height", height_aster)
+			.style("padding-left", margin.left)
+			.style("padding-top", margin.top)
             .append("g")
             .attr("transform", "translate(" + width_aster / 2 + "," + height_aster / 2  + ")");
 
@@ -731,7 +733,7 @@ d3.csv("Data.csv", function(error, datum) {
 		
 		
       active.classed("active", false);
-	  
+	d3.selectAll("#nSchool").remove();
 	  
       active = d3.select(null);
 
