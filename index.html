@@ -1,30 +1,27 @@
 <html>
 <head>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="//d3js.org/topojson.v2.min.js"></script>
-<script src="https://d3js.org/d3-array.v1.min.js"></script>
-<script src="https://d3js.org/d3-geo.v1.min.js"></script>
-<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-<script src="tip.js"></script>
-<link rel="shortcut icon" href="">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="//d3js.org/topojson.v2.min.js"></script>
+  <script src="https://d3js.org/d3-array.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="tip.js"></script>
+  <link rel="shortcut icon" href="">
 
-<script src="liquidFillGauge.js" type="text/javascript"></script>
+  <script src="liquidFillGauge.js" type="text/javascript"></script>
+  <script>
 
- <!-- <script src="liquidFillGauge.js"></script> -->
-
-<script>
-
-var aitoff = d3.geoAitoff();
+  var aitoff = d3.geoAitoff();
 
 </script>
 
 <style>
 body {
-    font-family: 'Roboto', Calibri, sans-serif;
+  font-family: 'Roboto', Calibri, sans-serif;
 }
 
 .background {
@@ -39,7 +36,6 @@ body {
   stroke-opacity: 0.8;
 }
 .feature {
-  /* fill: #ccc; */
   cursor: pointer;
 }
 
@@ -47,43 +43,36 @@ body {
   fill: orange;
 }
 
-/* svg { border: solid #ccc 1px; } */
-
 #states {
   fill: #aaa;
 }
 
 circle{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 path.slice{
-	stroke-width:2px;
+  stroke-width:2px;
 }
 
 polyline{
-	opacity: .3;
-	stroke: black;
-	stroke-width: 2px;
-	fill: none;
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
 }
 
 #mainMap{
-    float: left;
+  float: left;
 }
 
-
-
 #aster{
-    float: left;
+  float: left;
 }
 
 #pie{
-    float: left;
+  float: left;
 }
-
-
-
 
 .d3-tip {
   line-height: 1;
@@ -114,14 +103,13 @@ polyline{
   left: 0;
 }
 
-
 .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
 
 .solidArc {
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .solidArc:hover {
   fill: orangered ;
@@ -131,58 +119,51 @@ polyline{
   display: none;
 }
 
-.aster-Poverty { 
+.aster-Poverty {
   line-height: 1;
   font-width: bold;
   font-size: 500%;
 }
 
-
-
 </style>
 </head>
 <body>
 
-<div id="mainMap">
-<svg id="p1"></svg>
-</div>
+  <div id="mainMap">
+    <svg id="p1"></svg>
+  </div>
 
-<!-- new added -->
-<div id="distInfo"></div>
-<div id="schoolInfo"></div>
-<div id="liquid">
+  <!-- new added -->
+  <div id="distInfo"></div>
+  <div id="schoolInfo"></div>
+  <div id="liquid">
 
-		<svg id="fillgauge1" width="150" height="150"></svg>
-        <svg id="fillgauge2" width="150" height="150"></svg>
-        <svg id="fillgauge3" width="150" height="150"></svg>
+    <svg id="fillgauge1" width="150" height="150"></svg>
+    <svg id="fillgauge2" width="150" height="150"></svg>
+    <svg id="fillgauge3" width="150" height="150"></svg>
 
-</div>
+  </div>
 
-<div id="aster"></div>
-<!--<div id="pie"></div>-->
+  <div id="aster"></div>
 
-<!-- <button class="randomize">randomize</button> -->
+  <script>
 
+  var stats;
+  var districts;
+  var features;
 
+  d3.csv("Data.csv", function(error, datum) {
+    stats = datum;
 
-<script>
+    districts = d3.nest()
+    .key(function(d) { return d.district; })
+    .entries(datum);
 
-var stats;
-var districts;
-var features;
+    var colorScale = d3.scaleLinear()
+    .domain([350,550])
+    .range(['#fff', "#409A99"])
 
-d3.csv("Data.csv", function(error, datum) {
-  stats = datum;
-
-  districts = d3.nest()
-  .key(function(d) { return d.district; })
-  .entries(datum);
-
-  var colorScale = d3.scaleLinear()
-  .domain([350,550])
-  .range(['#fff', "#409A99"])
-
-  d3.json('school_districts.geo.json', function(error, mapData) {
+    d3.json('school_districts.geo.json', function(error, mapData) {
       if (error) throw error;
       var data = mapData;
       features = data.features;
@@ -193,12 +174,9 @@ d3.csv("Data.csv", function(error, datum) {
       active = d3.select(null);
       var margin = { top: 30, right: 30, bottom: 40, left: 50}
 
-
-
       var projection = d3.geoMercator()
       .fitSize([width ,height], data)
       .fitExtent([[10, 10], [width, height]],data)
-      
 
       var povertyScale = d3.scaleLinear()
       .domain([0, 100])
@@ -212,955 +190,752 @@ d3.csv("Data.csv", function(error, datum) {
       .attr('height', height*1.5)
       .on("click", stopped, true);
 
-
       var g = svg.append("rect")
       .attr("class", "background")
       .attr("width", width)
       .attr("height", height)
       .on("click", reset);
-        //.attr("id", "states")
 
       var maplayer = svg.append('g')
       .classed('map-layer', true);
 
 
       var zoom = d3.zoom()
-      // no longer in d3 v4 - zoom initialises with zoomIdentity, so it's already at origin
-      // .translate([0, 0])
-      // .scale(1)
       .scaleExtent([1, 8])
       .on("zoom", zoomed);
 
+      // Liquid Guage
+      var gauge1 = d3.select("#fillgauge1");
 
+      gauge1
+      .call(d3.liquidfillgauge, 433,{
+        minValue: 200,
+        maxValue: 800,
+        width: 125,
+        height: 125,
+        waveColor: "#6A4B7D",
+        textColor: "#6A4B7D",
+        waveTextColor: "#d5b1e3", // The color of the outer circle.
+        circleColor: "#6A4B7D",
+        displayPercent: false
+      })
+      .style("padding-left", margin.left)
+      .append("text")
+      .text("Math")
+      .attr("x","62.5")
+      .attr("text-anchor","middle")
+      .attr("y","145")
+      .style("padding-botton","40")
+      .style("fill", "#6A4B7D")
+      .style("font-family","helvetica")
+      .style("font-weight","300");
 
+      var gauge2 = d3.select("#fillgauge2");
+      gauge2.call(d3.liquidfillgauge, 425,{
+        minValue: 200,
+        maxValue: 800,
+        width: 125,
+        height: 125,
+        waveColor: "#6A4B7D",
+        textColor: "#6A4B7D",
+        waveTextColor: "#d5b1e3", // The color of the outer circle.
+        circleColor: "#6A4B7D",
+        displayPercent: false
+      })
+      .style("padding-left","25")
+      .append("text")
+      .text("Reading")
+      .attr("x","62.5")
+      .attr("text-anchor","middle")
+      .attr("y","145")
+      .style("padding-botton","40")
+      .style("fill", "#6A4B7D")
+      .style("font-family","helvetica")
+      .style("font-weight","300");
 
-       // Liquid Guage
-    var gauge1 = d3.select("#fillgauge1");
+      var gauge3 = d3.select("#fillgauge3");
+      gauge3.call(d3.liquidfillgauge, 418,{
+        minValue: 200,
+        maxValue: 800,
+        width: 125,
+        height: 125,
+        waveColor: "#6A4B7D",
+        textColor: "#6A4B7D",
+        waveTextColor: "#d5b1e3", // The color of the outer circle.
+        circleColor: "#6A4B7D",
+        displayPercent: false
+      })
+      .style("padding-left","25")
+      .append("text")
+      .text("Writing")
+      .attr("x","62.5")
+      .attr("text-anchor","middle")
+      .attr("y","145")
+      .style("padding-botton","40")
+      .style("fill", "#6A4B7D")
+      .style("font-family","helvetica")
+      .style("font-weight","300");
 
-    gauge1
-		.call(d3.liquidfillgauge, 433,{
-            minValue: 200,
-            maxValue: 800,
-			width: 125,
-			height: 125,
-			waveColor: "#6A4B7D",
-			textColor: "#6A4B7D",
-			waveTextColor: "#d5b1e3",// The color of the outer circle.
-			circleColor: "#6A4B7D",
-            displayPercent: false
-        })
-		.style("padding-left", margin.left)
-		.append("text")
-		.text("Math")
-		.attr("x","62.5")
-		.attr("text-anchor","middle")
-		.attr("y","145")
-		.style("padding-botton","40")
-		.style("fill", "#6A4B7D")
-		.style("font-family","helvetica")
-		.style("font-weight","300");
-		
-		
-    
+      // ASTER PLOT
+      var data_aster = [{"id":"1","Poverty":"67"},
+      {"id":"2","Poverty":"75"},
+      {"id":"3","Poverty":"72"},
+      {"id":"4","Poverty":"88"},
+      {"id":"5","Poverty":"71"},
+      {"id":"6","Poverty":"90"},
+      {"id":"7","Poverty":"91"},
+      {"id":"8","Poverty":"88"},
+      {"id":"9","Poverty":"92"},
+      {"id":"10","Poverty":"84"},
+      {"id":"11","Poverty":"87"},
+      {"id":"12","Poverty":"92"},
+      {"id":"13","Poverty":"78"},
+      {"id":"14","Poverty":"83"},
+      {"id":"15","Poverty":"76"},
+      {"id":"16","Poverty":"90"},
+      {"id":"17","Poverty":"83"},
+      {"id":"18","Poverty":"79"},
+      {"id":"19","Poverty":"85"},
+      {"id":"20","Poverty":"80"},
+      {"id":"21","Poverty":"81"},
+      {"id":"22","Poverty":"55"},
+      {"id":"23","Poverty":"83"},
+      {"id":"24","Poverty":"82"},
+      {"id":"25","Poverty":"72"},
+      {"id":"26","Poverty":"68"},
+      {"id":"27","Poverty":"82"},
+      {"id":"28","Poverty":"77"},
+      {"id":"29","Poverty":"77"},
+      {"id":"30","Poverty":"70"},
+      {"id":"31","Poverty":"55"},
+      {"id":"32","Poverty":"96"}]
 
-        var gauge2 = d3.select("#fillgauge2");
-        gauge2.call(d3.liquidfillgauge, 425,{
-            minValue: 200,
-            maxValue: 800,
-			width: 125,
-			height: 125,
-			waveColor: "#6A4B7D",
-			textColor: "#6A4B7D",
-			waveTextColor: "#d5b1e3",// The color of the outer circle.
-			circleColor: "#6A4B7D",
-            displayPercent: false
-        })
-		.style("padding-left","25")
-		.append("text")
-		.text("Reading")
-		.attr("x","62.5")
-		.attr("text-anchor","middle")
-		.attr("y","145")
-		.style("padding-botton","40")
-		.style("fill", "#6A4B7D")
-		.style("font-family","helvetica")
-		.style("font-weight","300");
+      var width_aster = 600
+      height_aster = 300 ;
 
-        var gauge3 = d3.select("#fillgauge3");
-        gauge3.call(d3.liquidfillgauge, 418,{
-            minValue: 200,
-            maxValue: 800,
-			width: 125,
-			height: 125,
-			waveColor: "#6A4B7D",
-			textColor: "#6A4B7D",
-			waveTextColor: "#d5b1e3",// The color of the outer circle.
-			circleColor: "#6A4B7D",
+      var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([0, 0])
+      .html(function(d) {
+        return "District:  " + d.data.id + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
+      });
 
-            displayPercent: false
-        })
-		.style("padding-left","25")
-		.append("text")
-		.text("Writing")
-		.attr("x","62.5")
-		.attr("text-anchor","middle")
-		.attr("y","145")
-		.style("padding-botton","40")
-		.style("fill", "#6A4B7D")
-		.style("font-family","helvetica")
-		.style("font-weight","300");
-        
+      var svg_aster = d3.select('#aster').append('svg')
+      .attr('class', 'aster_svg')
+      .attr("width", width_aster )
+      .attr("height", height_aster)
+      .style("padding-top", margin.top+60)
+      .append("g")
+      .attr("transform", "translate(" + width_aster / 3 + "," + height_aster / 2  + ")");
 
+      svg_aster.append("text")
+      .attr("x", "100")
+      .attr("text-anchor","middle")
+      .attr("y", "-180")
+      .attr("font-size", "25px")
+      .attr("font-weight", "300")
+      .style("fill", "#A8102E")
+      .text("Poverty Rate Distribution");
 
-          // ASTER PLOT
-        
-        var data_aster = [{"id":"1","Poverty":"67"},
-                          {"id":"2","Poverty":"75"},
-                          {"id":"3","Poverty":"72"},
-                          {"id":"4","Poverty":"88"},
-                          {"id":"5","Poverty":"71"},
-                          {"id":"6","Poverty":"90"},
-                          {"id":"7","Poverty":"91"},
-                          {"id":"8","Poverty":"88"},
-                          {"id":"9","Poverty":"92"},
-                          {"id":"10","Poverty":"84"},
-                          {"id":"11","Poverty":"87"},
-                          {"id":"12","Poverty":"92"},
-                          {"id":"13","Poverty":"78"},
-                          {"id":"14","Poverty":"83"},
-                          {"id":"15","Poverty":"76"},
-                          {"id":"16","Poverty":"90"},
-                          {"id":"17","Poverty":"83"},
-                          {"id":"18","Poverty":"79"},
-                          {"id":"19","Poverty":"85"},
-                          {"id":"20","Poverty":"80"},
-                          {"id":"21","Poverty":"81"},
-                          {"id":"22","Poverty":"55"},
-                          {"id":"23","Poverty":"83"},
-                          {"id":"24","Poverty":"82"},
-                          {"id":"25","Poverty":"72"},
-                          {"id":"26","Poverty":"68"},
-                          {"id":"27","Poverty":"82"},
-                          {"id":"28","Poverty":"77"},
-                          {"id":"29","Poverty":"77"},
-                          {"id":"30","Poverty":"70"},
-                          {"id":"31","Poverty":"55"},
-                          {"id":"32","Poverty":"96"}]
-                       
-        var width_aster = 600 
-            height_aster = 300 ;
+      svg_aster.append("rect")
+      .attr("x", 180)
+      .attr("y", -75)
+      .attr("width", 25)
+      .attr("height", 25)
+      .style("fill", "#da969e")
+      .style("stroke", "#2D2C2C")
+      .style("stroke-width", ".5")
+      ;
+      svg_aster.append("text")
+      .attr("x", 215)
+      .attr("y", -75+20)
+      .attr("font-weight", "300")
+      .attr("font-size", "18px")
+      .style("fill", "#2D2C2C")
+      .text("Min Poverty Rate");
 
-        var tip = d3.tip()
-            .attr('class', 'd3-tip')
-            .offset([0, 0])
-            .html(function(d) {
-                return "District:  " + d.data.id + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
-            });
+      svg_aster.append("rect")
+      .attr("x", 180)
+      .attr("y", -50+15)
+      .attr("width", 25)
+      .attr("height", 25)
+      .style("fill", "#950003")
+      .style("stroke", "#2D2C2C")
+      .style("stroke-width", ".5");
+      svg_aster.append("text")
+      .attr("x", 215)
+      .attr("y", -35+20)
+      .attr("font-weight", "300")
+      .attr("font-size", "18px")
+      .style("fill", "#2D2C2C")
+      .text("Max Poverty Rate");
 
-        var svg_aster = d3.select('#aster').append('svg')
-            .attr('class', 'aster_svg')
-            .attr("width", width_aster )
-            .attr("height", height_aster)
-			//.style("padding-left", margin.left)
-			.style("padding-top", margin.top+60)
-            .append("g")
-            .attr("transform", "translate(" + width_aster / 3 + "," + height_aster / 2  + ")");
-		
-		
-		svg_aster.append("text")
-	    .attr("x", "100")
-		.attr("text-anchor","middle")
-        .attr("y", "-180")
-        .attr("font-size", "25px")
-		.attr("font-weight", "300")
-        .style("fill", "#A8102E")
-        .text("Poverty Rate Distribution");
-		
-		
-		svg_aster.append("rect")
-		.attr("x", 180)
-        .attr("y", -75)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#da969e")
-		.style("stroke", "#2D2C2C")
-		.style("stroke-width", ".5")
-		;
-		svg_aster.append("text")
-		.attr("x", 215)
-		.attr("y", -75+20)
-		.attr("font-weight", "300")
-		.attr("font-size", "18px")
-		.style("fill", "#2D2C2C")
-		.text("Min Poverty Rate");
+      svg_aster.append("rect")
+      .attr("x", 180)
+      .attr("y", -10+15)
+      .attr("width", 25)
+      .attr("height", 25)
+      .style("fill", "#f8f5c7")
+      .style("stroke", "#2d2c2c")
+      .style("stroke-width", ".5");
+      svg_aster.append("text")
+      .attr("x", 215)
+      .attr("y", -10+15+20)
+      .attr("font-size", "18px")
+      .attr("font-weight", "300")
+      .style("fill", "#2D2C2C")
+      .text("Selected School");
 
-		
-	svg_aster.append("rect")
-		.attr("x", 180)
-        .attr("y", -50+15)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#950003")
-		.style("stroke", "#2D2C2C")
-		.style("stroke-width", ".5");
-	svg_aster.append("text")
-		.attr("x", 215)
-        .attr("y", -35+20)
-		.attr("font-weight", "300")
-		.attr("font-size", "18px")
-		.style("fill", "#2D2C2C")
-		.text("Max Poverty Rate");
+      svg_aster.append("text")
+      .attr("x", "100")
+      .attr("text-anchor","middle")
+      .attr("y", "-160")
+      .attr("font-size", "16px")
+      .attr("font-weight", "300")
+      .style("fill", "#A8102E")
+      .text("Hover for Details");
 
+      var radius = Math.min(width_aster, height_aster) / 2
+      var innerRadius = 0.3 * radius;
 
-	svg_aster.append("rect")
-		.attr("x", 180)
-        .attr("y", -10+15)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#f8f5c7")
-		.style("stroke", "#2d2c2c")
-		.style("stroke-width", ".5");
-	svg_aster.append("text")
-	.attr("x", 215)
-	.attr("y", -10+15+20)
-	.attr("font-size", "18px")
-	.attr("font-weight", "300")
-	.style("fill", "#2D2C2C")
-	.text("Selected School");
-		
-		
+      var svg_aster;
+      var path_aster;
+      var pie_aster;
+      var arc_aster;
+      var outlineArc;
+      var aster_length;
 
-		svg_aster.append("text")
-	    .attr("x", "100")
-		.attr("text-anchor","middle")
-        .attr("y", "-160")
-        .attr("font-size", "16px")
-		.attr("font-weight", "300")
-        .style("fill", "#A8102E")
-        .text("Hover for Details");
+      var sca = new generate(data_aster);
 
-
-        //svg_aster.call(tip);
-        var radius = Math.min(width_aster, height_aster) / 2
-        console.log(radius);
-        var innerRadius = 0.3 * radius;
-
-        var svg_aster;
-        var path_aster;
-        var pie_aster; 
-        var arc_aster;
-        var outlineArc;
-        var aster_length;
-
-        var sca = new generate(data_aster);
-
-        
-        
-        function generate(data) {
-            //console.log(data);
+      function generate(data) {
         aster_length = data.length;
-        console.log(aster_length);
 
         d3.selectAll(".solidArc").remove().exit();
-		d3.selectAll(".outlineArc").remove().exit();
-        
-        // var radius = Math.min(width_aster, height_aster) / 2 ,
-        //     innerRadius = 0.3 * radius;
+        d3.selectAll(".outlineArc").remove().exit();
 
-        // need to comeback
         pie_aster = d3.pie()
-            .sort(null)
-            .value(function (d) {
-              return 10 / aster_length;
-            });
-
-        arc_aster = d3.arc()
-            .innerRadius(innerRadius)
-            .outerRadius(function (d) {
-              return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
-            });
-
-        outlineArc = d3.arc()
-            .innerRadius(innerRadius)
-            .outerRadius(radius);
-
-       
-        //svg_aster.call(tip);
-
-
-
-        var path_aster = svg_aster.selectAll(".solidArc")
-            .data(pie_aster(data))
-            .enter().append("path")
-            .style('fill', '#A8102E')
-            .style('opacity', function(d, i) { return data_aster[i].Poverty / 100; })
-            .attr("class", "solidArc")
-            .attr("d", arc_aster)
-        path_aster.call(tip);
-        path_aster.on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
-
-
-        //console.log(path_aster._groups);
-        
-        // path_aster.exit()
-        //     .remove();
-
-        //console.log(path_aster);
-            // .on("mouseover", function (d) {
-            //   $(this).tooltip({
-            //     'container': 'body',
-            //     'placement': 'top',
-            //     'title': d.data.label + " | " + d.data.value,
-            //     'trigger': 'hover'
-            //   })
-            //       .tooltip('show');
-            // })
-            // .on("mouseout", function(d) {
-            //   $(this).tooltip('destroy');
-            // });
-        
-            //console.log(pie_aster(data))
-        var outerPath = svg_aster.selectAll(".outlineArc")
-            .data(pie_aster(data))
-            .enter().append("path")
-            .attr("fill", "none")
-            .attr("class", "outlineArc")
-            .attr("stroke", "black")
-            .attr('stroke-width', .5)
-            .attr("d", outlineArc);
-
-            // var Poverty =
-            // data.reduce(function(a, b) {
-            // //console.log('a:' + a + ', b.Poverty: ' + b.Poverty + ', b.width: ' + b.width);
-            // return a + (b.Poverty * b.width);
-            // }, 0) /
-            // data.reduce(function(a, b) {
-            // return a + b.width;
-            // }, 0);
-
-        // svg_aster.append("svg:text")
-        //     .attr("class", "asterCenterText")
-        //     .text('DEMO');
-
-        
-
-        }
-
-
-        function redraw(data_redraw) {
-       
-        
-       // // path_aster.exit()
-       // //     .remove();
-       // console.log(pie_aster(data_redraw));
-       // path_aster._groups = (pie_aster(data_redraw))
-       // console.log(path_aster)
-       d3.selectAll(".solidArc").remove().exit();
-       d3.selectAll(".outlineArc").remove().exit();
-       
-
-       radius = 150;
-       innerRadius = 45;
-
-       aster_length = data_redraw.length;
-
-       pie_aster = d3.pie()
-           .sort(null)
-           .value(function (d) {
-             return 10 / aster_length;
-           });
-
-       arc_aster = d3.arc()
-           .innerRadius(innerRadius)
-           .outerRadius(function (d) {
-             return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
-           });
-
-       outlineArc = d3.arc()
-           .innerRadius(innerRadius)
-           .outerRadius(radius);
-
-        console.log(data_redraw);
-        var tip_school = d3.tip()
-           .attr('class', 'd3-tip')
-           .offset([0, 0])
-           .html(function(d) {
-               return "School:  " + d.data["School Name"] + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
-           });
-        
-       path_aster = svg_aster.selectAll(".solidArc")
-           .data(pie_aster(data_redraw))
-           .enter().append("path")
-           .attr("class", "solidArc")
-           .style('fill', '#A8102E')
-           .style('opacity', function(d, i) { return data_redraw[i].Poverty / 100; })
-           .attr("id", function(d, i) { return data_redraw[i]["School Name"]; })
-           .attr("d", arc_aster.innerRadius(innerRadius)
-                               .outerRadius(function (d) {
-                                   return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
-                               }))
-            .on('mouseover', tip_school.show)
-            .on('mouseout', tip_school.hide);
-        path_aster.call(tip_school);
-        path_aster.transition()
-           .duration(800);
-                               //console.log(path_aster);
-       var outlineArc = d3.arc()
-           .innerRadius(innerRadius)
-           .outerRadius(radius);
-       svg_aster.selectAll(".outlineArc")
-           .data(pie_aster(data_redraw))
-           .enter().append("path")
-           .transition()
-           .duration(200)
-           .attr("fill", "none")
-           .attr("class", "outlineArc")
-           .attr("stroke", "black")
-           .attr('stroke-width', 0.5)
-           .attr("d", outlineArc);
-
-      
-       }
-
-
-
-     
-
-       function redraw_aster(data_change){
-           
-           //console.log(sca.getSvg()['path_aster']);
-           
-           var data_redraw = districts[data_change.properties.SchoolDist - 1].values
-           console.log(data_redraw);
-
-           redraw(data_redraw);
-           
-       }
-
-       function redraw_aster_circle(district_num){
-           var data_redraw = districts[district_num - 1].values;
-           redraw(data_redraw);
-       }
-
-
-        // PIE CHART
-        //
-        //yScale = d3.scaleLinear()
-        //            .domain([0, d3.max(bardata)])
-        //            .range([0, height_2])
-        //
-        //xScale = d3.scaleBand()
-        //            .domain(d3.range(0,bardata.length*.8))
-        //            .rangeRound([0,width_2])
-        //            .padding(0.3)
-
-        var width_3 = 400,
-        height_3 = 200,
-        radius = Math.min(width_3, height_3) / 1.2;
-
-        var piechart = d3.select("#pie")
-        .append("svg")
-		.attr("id","pies")
-        .attr('width', width_3 + margin.top + margin.top + margin.top)
-        .attr('height', height_3 +  margin.top+ margin.top + margin.top + margin.top)
-        .append("g");
-
-
-        piechart.append("g")
-            .attr("class", "slices")
-			.attr("transform", "translate(0,30)");
-        piechart.append("g")
-            .attr("class", "labels")
-			.attr("transform", "translate(0,30)");
-        piechart.append("g")
-            .attr("class", "lines")
-			.attr("transform", "translate(0,30)");
-
-		var pieText = d3.select("#pies");
-
-		pieText.append("text")
-        .attr("x",margin.left)
-        .attr("y",15)
-        .attr("font-size", "20px")
-        .attr("font-weight", "400")
-        .style("fill", "#1C1B1B")
-        .text("Demographics")
-		.style("opacity","1");
-
-
-        var pie = d3.pie()
-            .sort(null)
-            .value(function(d) {
-                return d.value;
+        .sort(null)
+        .value(function (d) {
+          return 10 / aster_length;
         });
 
-        var arc = d3.arc()
-            .outerRadius(radius * 0.5)
-            .innerRadius(radius * 0.5);
+        arc_aster = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(function (d) {
+          return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+        });
 
-        var outerArc = d3.arc()
-            .innerRadius(radius * 0.5)
-            .outerRadius(radius * 0.5);
+        outlineArc = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(radius);
+
+        var path_aster = svg_aster.selectAll(".solidArc")
+        .data(pie_aster(data))
+        .enter().append("path")
+        .style('fill', '#A8102E')
+        .style('opacity', function(d, i) { return data_aster[i].Poverty / 100; })
+        .attr("class", "solidArc")
+        .attr("d", arc_aster)
+        path_aster.call(tip);
+        path_aster.on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
+
+        var outerPath = svg_aster.selectAll(".outlineArc")
+        .data(pie_aster(data))
+        .enter().append("path")
+        .attr("fill", "none")
+        .attr("class", "outlineArc")
+        .attr("stroke", "black")
+        .attr('stroke-width', .5)
+        .attr("d", outlineArc);
+      }
+
+      function redraw(data_redraw) {
+        d3.selectAll(".solidArc").remove().exit();
+        d3.selectAll(".outlineArc").remove().exit();
+
+        radius = 150;
+        innerRadius = 45;
+
+        aster_length = data_redraw.length;
+
+        pie_aster = d3.pie()
+        .sort(null)
+        .value(function (d) {
+          return 10 / aster_length;
+        });
+
+        arc_aster = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(function (d) {
+          return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+        });
+
+        outlineArc = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(radius);
+
+        var tip_school = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([0, 0])
+        .html(function(d) {
+          return "School:  " + d.data["School Name"] + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
+        });
+
+        path_aster = svg_aster.selectAll(".solidArc")
+        .data(pie_aster(data_redraw))
+        .enter().append("path")
+        .attr("class", "solidArc")
+        .style('fill', '#A8102E')
+        .style('opacity', function(d, i) { return data_redraw[i].Poverty / 100; })
+        .attr("id", function(d, i) { return data_redraw[i]["School Name"]; })
+        .attr("d", arc_aster.innerRadius(innerRadius)
+        .outerRadius(function (d) {
+          return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+        }))
+        .on('mouseover', tip_school.show)
+        .on('mouseout', tip_school.hide);
+        path_aster.call(tip_school);
+        path_aster.transition()
+        .duration(800);
+        var outlineArc = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(radius);
+        svg_aster.selectAll(".outlineArc")
+        .data(pie_aster(data_redraw))
+        .enter().append("path")
+        .transition()
+        .duration(200)
+        .attr("fill", "none")
+        .attr("class", "outlineArc")
+        .attr("stroke", "black")
+        .attr('stroke-width', 0.5)
+        .attr("d", outlineArc);
+      }
+
+      function redraw_aster(data_change){
+        var data_redraw = districts[data_change.properties.SchoolDist - 1].values
+        redraw(data_redraw);
+      }
+
+      function redraw_aster_circle(district_num){
+        var data_redraw = districts[district_num - 1].values;
+        redraw(data_redraw);
+      }
+
+      // PIE CHART
+      var width_3 = 400,
+      height_3 = 200,
+      radius = Math.min(width_3, height_3) / 1.2;
+
+      var piechart = d3.select("#pie")
+      .append("svg")
+      .attr("id","pies")
+      .attr('width', width_3 + margin.top + margin.top + margin.top)
+      .attr('height', height_3 +  margin.top+ margin.top + margin.top + margin.top)
+      .append("g");
+
+      piechart.append("g")
+      .attr("class", "slices")
+      .attr("transform", "translate(0,30)");
+      piechart.append("g")
+      .attr("class", "labels")
+      .attr("transform", "translate(0,30)");
+      piechart.append("g")
+      .attr("class", "lines")
+      .attr("transform", "translate(0,30)");
+
+      var pieText = d3.select("#pies");
+
+      pieText.append("text")
+      .attr("x",margin.left)
+      .attr("y",15)
+      .attr("font-size", "20px")
+      .attr("font-weight", "400")
+      .style("fill", "#1C1B1B")
+      .text("Demographics")
+      .style("opacity","1");
 
 
+      var pie = d3.pie()
+      .sort(null)
+      .value(function(d) {
+        return d.value;
+      });
 
-        piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
+      var arc = d3.arc()
+      .outerRadius(radius * 0.5)
+      .innerRadius(radius * 0.5);
 
-        var key = function(d){ return d.data.label; };
+      var outerArc = d3.arc()
+      .innerRadius(radius * 0.5)
+      .outerRadius(radius * 0.5);
 
-        var color_pie = d3.scaleOrdinal()
-        .domain(["White", "Hispanic", "Black", "Asian", "Other"])
-        .range(["#386035", "#54AA4C", "#80CC78", "#BCFCB5", "#EAFFE8"]);
+      piechart.attr("transform", "translate(" + width_3 / 2 + "," + height_3 / 2 + ")");
 
+      var key = function(d){ return d.data.label; };
 
-        //console.log('run');
+      var color_pie = d3.scaleOrdinal()
+      .domain(["White", "Hispanic", "Black", "Asian", "Other"])
+      .range(["#386035", "#54AA4C", "#80CC78", "#BCFCB5", "#EAFFE8"]);
 
-        function generatePie(){
-            //console.log('ok');
-            change(randomData());
-        }
+      function generatePie(){
+        change(randomData());
+      }
 
-        generatePie();
-        generatePie();
+      generatePie();
+      generatePie();
 
+      function randomData (){
+        var labels = color_pie.domain();
+        return labels.map(function(label){
+          return { label: label, value: Math.random() }
+        });
+      }
 
-        // d3.select(".randomize")
-        //     .on("click", function(){
-        //         generatePie();
-        // });
+      function change(data) {
 
-        function randomData (){
-            var labels = color_pie.domain();
-            return labels.map(function(label){
-                return { label: label, value: Math.random() }
-            });
-        }
-
-
-
-
-        function change(data) {
-     
         /* ------- PIE SLICES -------*/
         var slice = piechart.select(".slices").selectAll("path.slice")
-            .data(pie(data), key);
-
-        
-
+        .data(pie(data), key);
         slice.enter()
-            .insert("path")
-            .style("fill", function(d) { return color_pie(d.data.label); })
-            .attr("class", "slice");
+        .insert("path")
+        .style("fill", function(d) { return color_pie(d.data.label); })
+        .attr("class", "slice");
 
         slice
-            .transition().duration(750)
-            .attrTween("d", function(d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function(t) {
-                    return arc(interpolate(t));
-                };
-            })
+        .transition().duration(750)
+        .attrTween("d", function(d) {
+          this._current = this._current || d;
+          var interpolate = d3.interpolate(this._current, d);
+          this._current = interpolate(0);
+          return function(t) {
+            return arc(interpolate(t));
+          };
+        })
 
         slice.exit()
-            .remove();
+        .remove();
 
         /* ------- TEXT LABELS -------*/
 
         var text = piechart.select(".labels").selectAll("text")
-            .data(pie(data), key);
+        .data(pie(data), key);
 
         text.enter()
-            .append("text")
-            .attr("dy", ".35em")
-			.attr("font-size","12px")
-			.attr("font-weight","300")
-            .text(function(d) {
-                return d.data.label;
-            });
+        .append("text")
+        .attr("dy", ".35em")
+        .attr("font-size","12px")
+        .attr("font-weight","300")
+        .text(function(d) {
+          return d.data.label;
+        });
 
         function midAngle(d){
-            return d.startAngle + (d.endAngle - d.startAngle)/2;
+          return d.startAngle + (d.endAngle - d.startAngle)/2;
         }
 
         text.transition().duration(750)
-            .attrTween("transform", function(d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function(t) {
-                    var d2 = interpolate(t);
-                    var pos = outerArc.centroid(d2);
-                    pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-                    return "translate("+ pos +")";
-                };
-            })
-            .styleTween("text-anchor", function(d){
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function(t) {
-                    var d2 = interpolate(t);
-                    return midAngle(d2) < Math.PI ? "start":"end";
-                };
-            });
+        .attrTween("transform", function(d) {
+          this._current = this._current || d;
+          var interpolate = d3.interpolate(this._current, d);
+          this._current = interpolate(0);
+          return function(t) {
+            var d2 = interpolate(t);
+            var pos = outerArc.centroid(d2);
+            pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+            return "translate("+ pos +")";
+          };
+        })
+        .styleTween("text-anchor", function(d){
+          this._current = this._current || d;
+          var interpolate = d3.interpolate(this._current, d);
+          this._current = interpolate(0);
+          return function(t) {
+            var d2 = interpolate(t);
+            return midAngle(d2) < Math.PI ? "start":"end";
+          };
+        });
 
         text.exit()
-            .remove();
+        .remove();
 
         /* ------- SLICE TO TEXT POLYLINES -------*/
 
         var polyline = piechart.select(".lines").selectAll("polyline")
-            .data(pie(data), key);
+        .data(pie(data), key);
 
         polyline.enter()
-            .append("polyline");
+        .append("polyline");
 
         polyline.transition().duration(1000)
-            .attrTween("points", function(d){
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function(t) {
-                    var d2 = interpolate(t);
-                    var pos = outerArc.centroid(d2);
-                    pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-                    return [arc.centroid(d2), outerArc.centroid(d2), pos];
-                };
-            });
+        .attrTween("points", function(d){
+          this._current = this._current || d;
+          var interpolate = d3.interpolate(this._current, d);
+          this._current = interpolate(0);
+          return function(t) {
+            var d2 = interpolate(t);
+            var pos = outerArc.centroid(d2);
+            pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+            return [arc.centroid(d2), outerArc.centroid(d2), pos];
+          };
+        });
 
         polyline.exit()
-            .remove();
-        };
-
-
-
+        .remove();
+      };
 
       function zoomed() {
-      maplayer.style("stroke-width", 0.5 / d3.event.transform.k + "px");
-      // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
-      maplayer.attr("transform", d3.event.transform); // updated for d3 v4
-      	  
-	  }
+        maplayer.style("stroke-width", 0.5 / d3.event.transform.k + "px");
+        maplayer.attr("transform", d3.event.transform); // updated for d3 v4
+      }
 
       function reset() {
-		
-		
-      active.classed("active", false);
-	  d3.selectAll("#nSchool").remove();
-	  
-      active = d3.select(null);
-    
-      
+        active.classed("active", false);
+        d3.selectAll("#nSchool").remove();
 
-      svg.transition()
-          .duration(300)
-          // .call( zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1) ); // not in d3 v4
-          .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
+        active = d3.select(null);
 
-		function generateGauge_d(){
-		//d3.selectAll("#nycInfo1").remove()
+        svg.transition()
+        .duration(300)
+        .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
 
-		
-		gauge1.on("valueChanged")(433);
-		gauge2.on("valueChanged")(425);
-		gauge3.on("valueChanged")(418);
+        function generateGauge_d() {
+          gauge1.on("valueChanged")(433);
+          gauge2.on("valueChanged")(425);
+          gauge3.on("valueChanged")(418);
         }
-		
-		generateGauge_d();
+
+        generateGauge_d();
         generate(data_aster);
-        
-
-
       }
 
       maplayer.selectAll('path')
-        .data(features)
-        .enter()
-        .append('path')
-        .attr('d', path)
-        //.attr('vector-effect', 'non-scaling-stroke')
-        .attr("class","feature")
-        .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg))
-        .style('stroke', '#141414')
-        .style('stroke-width', 0.5)
-        .on('mouseover', mouseover)
-        .on('mouseout',mouseout)
-        .on('click', clicked);
+      .data(features)
+      .enter()
+      .append('path')
+      .attr('d', path)
+      .attr("class","feature")
+      .style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg))
+      .style('stroke', '#141414')
+      .style('stroke-width', 0.5)
+      .on('mouseover', mouseover)
+      .on('mouseout',mouseout)
+      .on('click', clicked);
 
-	var schoolInfo = d3.select('#schoolInfo').append('svg')
-        .style('background', 'white')
-        .attr("id", "bar")
-        .attr('width', "600")
-        .attr('height', "140");
-		
-	var nycInfo =
-		d3.select('#bar');
-		
-		nycInfo.append("text")
-		.attr("id","nycInfo1")
-		.attr("x", "50")
-        .attr("y", "35")
-		.attr("font-size", "30px")
-		.attr("font-weight", "300")
-        .style("fill", "#1C1B1B")
-        .text("New York City Average");
+      var schoolInfo = d3.select('#schoolInfo').append('svg')
+      .style('background', 'white')
+      .attr("id", "bar")
+      .attr('width', "600")
+      .attr('height', "140");
 
+      var nycInfo =
+      d3.select('#bar');
 
-		schoolInfo.append("text")
-	    .attr("x", "50%")
-		.attr("text-anchor","middle")
-        .attr("y", 125)
-        .attr("font-size", "25px")
-		.attr("font-weight", "300")
-        .style("fill", "#6A4B7D")
-        .text("SAT Scores");
+      nycInfo.append("text")
+      .attr("id","nycInfo1")
+      .attr("x", "50")
+      .attr("y", "35")
+      .attr("font-size", "30px")
+      .attr("font-weight", "300")
+      .style("fill", "#1C1B1B")
+      .text("New York City Average");
+
+      schoolInfo.append("text")
+      .attr("x", "50%")
+      .attr("text-anchor","middle")
+      .attr("y", 125)
+      .attr("font-size", "25px")
+      .attr("font-weight", "300")
+      .style("fill", "#6A4B7D")
+      .text("SAT Scores");
 
       var mapCircles = maplayer.selectAll("circle")
-        .data(stats)
-        .enter()
-        .append("circle")
-        .attr('fill', "#ffffff")
-		.style("stroke","none")
-        .attr("cx", d => projection([d.Longitude, d.Latitude])[0])
-        .attr("cy", d => projection([d.Longitude, d.Latitude])[1])
-        .attr("r", 2.5)
-        //.attr("stroke", "url(#svgGradient)")
-        //.attr("stroke", "gray")
-        //.attr("stroke-width", "0.5px")
-//        .on('click', function (d){
-//			clicked_circle(d);
-//            generatePie(d);
-//            generateGauge(d);
-//			d3.selectAll("#Title")
-//			.style("display","none");
-//			
-//		schoolInfo.append("text")
-//	    .attr("x", margin.left)
-//		.attr("id","nSchool")
-//        .attr("y", 30)
-//        .attr("font-size", "20px")
-//		.attr("font-weight", "700")
-//        .style("fill", "#000000")
-//        .text(d["School Name"]);
-//
-//			})
-		//.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
-		//.on('mouseout', function(d){
-		//	d3.select(this).style('fill',"white")
-		//	})
+      .data(stats)
+      .enter()
+      .append("circle")
+      .attr('fill', "#ffffff")
+      .style("stroke","none")
+      .attr("cx", d => projection([d.Longitude, d.Latitude])[0])
+      .attr("cy", d => projection([d.Longitude, d.Latitude])[1])
+      .attr("r", 2.5)
 
       function mouseover(d){
-      // Highlight hovered province
-      d3.select(this).style('fill', '#494949');
+        // Highlight hovered province
+        d3.select(this).style('fill', '#494949');
       }
 
       function mouseout(d){
-      // Reset school district color
-      d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
+        // Reset school district color
+        d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
       }
-	  
 
-	var distInfo = d3.select('#distInfo').append('svg')
-        .style('background', 'white')
-        .attr("id", "bar")
-        .attr('width', "600")
-        .attr('height', "140");
-		
-		distInfo.append("text")
-		.attr("id","distInit")
-	    .attr("x", margin.left)
-        .attr("y", 100-60)
-        .attr("font-size", "30px")
-		.attr("font-weight", "900")
-        .style("fill", "#1C1B1B")
-        .text("All NYC Public Schools");
-		
-		distInfo.append("text")
-		.attr("id","distInit")
-	    .attr("x", margin.left)
-        .attr("y", 130-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Avg SAT Score: 1276");
+      var distInfo = d3.select('#distInfo').append('svg')
+      .style('background', 'white')
+      .attr("id", "bar")
+      .attr('width', "600")
+      .attr('height', "140");
 
+      distInfo.append("text")
+      .attr("id","distInit")
+      .attr("x", margin.left)
+      .attr("y", 100-60)
+      .attr("font-size", "30px")
+      .attr("font-weight", "900")
+      .style("fill", "#1C1B1B")
+      .text("All NYC Public Schools");
 
-	distInfo.append("text")
-		.attr("id","distInit")
-		.attr("x", margin.left)
-        .attr("y", 160-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Number of Schools: 374");
-		
-		
+      distInfo.append("text")
+      .attr("id","distInit")
+      .attr("x", margin.left)
+      .attr("y", 130-60)
+      .attr("font-size", "25px")
+      .attr("font-weight", "700")
+      .style("fill", "#1C1B1B")
+      .text("Avg SAT Score: 1276");
+
+      distInfo.append("text")
+      .attr("id","distInit")
+      .attr("x", margin.left)
+      .attr("y", 160-60)
+      .attr("font-size", "25px")
+      .attr("font-weight", "700")
+      .style("fill", "#1C1B1B")
+      .text("Number of Schools: 374");
+
       function clicked(d) {
 
-      if (active.node() === this) return reset();
-      active.classed("active", false);
-      active = d3.select(this).classed("active", true);
+        if (active.node() === this) return reset();
+        active.classed("active", false);
+        active = d3.select(this).classed("active", true);
 
+        var distNum = d.properties.SchoolDist;
 
-      //console.log(d.properties.SchoolDist);
-	  
-	  var distNum = d.properties.SchoolDist;
-	
-	
-	  // REDRAW ASTER IN SCHOOL	
-      redraw_aster(d);
+        // REDRAW ASTER IN SCHOOL
+        redraw_aster(d);
 
-		
+        distAvgMap = d3.nest()
+        .key(function (d) {
+          return d.district; })
+          .entries(stats);
+          currentDist = distAvgMap[distNum-1];
 
-	distAvgMap = d3.nest()
-	.key(function (d) {
-		return d.district; })
-	.entries(stats);
-	currentDist = distAvgMap[distNum-1];
-	
-	console.log("Dist Num");
-	console.log(distNum);
-	
-	totalAvg = Number(currentDist.values[0].district_SAT_Math_Avg)+Number(currentDist.values[0].district_SAT_Reading_Avg)+Number(currentDist.values[0].district_SAT_Writing_Avg);
-	numberOfSchools = distAvgMap[distNum-1].values.length
-	borough = distAvgMap[distNum-1].values[0].Borough
-	
-	console.log("borough")
-	console.log(borough)
+          totalAvg = Number(currentDist.values[0].district_SAT_Math_Avg)+Number(currentDist.values[0].district_SAT_Reading_Avg)+Number(currentDist.values[0].district_SAT_Writing_Avg);
+          numberOfSchools = distAvgMap[distNum-1].values.length
+          borough = distAvgMap[distNum-1].values[0].Borough
 
+          mapCircles
+          .attr("fill","#FFFFFF")
+          .on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
+          .on('mouseout', function(d){
+            d3.select(this).style('fill',"white")
+          })
 
-	mapCircles
-	.attr("fill","#FFFFFF")
-	.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
-	.on('mouseout', function(d){
-			d3.select(this).style('fill',"white")
-			})
+          .on('click', function (d){
 
-	.on('click', function (d){
-			
-		d3.select(this).style('fill', '#A132BC');
+            d3.select(this).style('fill', '#A132BC');
 
-        console.log(d.district);
-	
-		var schoolName = d["School Name"];
-		totalAvg2 = Number(d.district_SAT_Math_Avg)+Number(d.district_SAT_Reading_Avg)+Number(d.district_SAT_Writing_Avg);
-		numberOfSchools2 = distAvgMap[Number(d.district)-1].values.length
+            var schoolName = d["School Name"];
+            totalAvg2 = Number(d.district_SAT_Math_Avg)+Number(d.district_SAT_Reading_Avg)+Number(d.district_SAT_Writing_Avg);
+            numberOfSchools2 = distAvgMap[Number(d.district)-1].values.length
 
-        
-		clicked_circle(d);
-		generatePie(d);
-		generateGauge(d);
-        redraw_aster_circle(d.district);
-        
-        //console.log('hey')
-    //     setTimeout(function(){
-    // //do what you need here
-    //      var path_select = d3.select(schoolName)
-    //     console.log(path_select);
-    //     path_select.style('fill','black')
-    //     }, 2000);
+            clicked_circle(d);
+            generatePie(d);
+            generateGauge(d);
+            redraw_aster_circle(d.district);
 
-        var path_select = document.getElementById(schoolName)
-        console.log(path_select);
-        path_select.style.fill = '#F4F0A5';
-        console.log('okkk');
-		
-		d3.selectAll("#Title")
-		.style("display","none");
+            var path_select = document.getElementById(schoolName)
+            path_select.style.fill = '#F4F0A5';
 
-		d3.selectAll("#distInit")
-		.style("display","none");
-		
-		d3.select("#nycInfo1").remove()
+            d3.selectAll("#Title")
+            .style("display","none");
 
-		//found on stack overflow https://stackoverflow.com/questions/24784302/wrapping-text-in-d3
-        function wrap(text, width) {
-        text.each(function () {
-            var text = d3.select(this),
+            d3.selectAll("#distInit")
+            .style("display","none");
+
+            d3.select("#nycInfo1").remove()
+
+            //found on stack overflow https://stackoverflow.com/questions/24784302/wrapping-text-in-d3
+            function wrap(text, width) {
+              text.each(function () {
+                var text = d3.select(this),
                 words = text.text().split(/\s+/).reverse(),
                 word,
                 line = [],
                 lineNumber = 0,
-                lineHeight = 1.1, 
+                lineHeight = 1.1,
                 x = text.attr("x"),
                 y = text.attr("y"),
                 dy = 0,
                 tspan = text.text(null)
-                            .append("tspan")
-                            .attr("x", x)
-                            .attr("y", y)
-                            .attr("dy", dy + "em");
-            while (word = words.pop()) {
-                line.push(word);
-                tspan.text(line.join(" "));
-                if (tspan.node().getComputedTextLength() > width) {
+                .append("tspan")
+                .attr("x", x)
+                .attr("y", y)
+                .attr("dy", dy + "em");
+                while (word = words.pop()) {
+                  line.push(word);
+                  tspan.text(line.join(" "));
+                  if (tspan.node().getComputedTextLength() > width) {
                     line.pop();
                     tspan.text(line.join(" "));
                     line = [word];
                     tspan = text.append("tspan")
-                                .attr("x", x)
-                                .attr("y", y)
-                                .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                                .text(word);
+                    .attr("x", x)
+                    .attr("y", y)
+                    .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                    .text(word);
+                  }
                 }
+              });
             }
-        });
-}
-		schoolInfo.append("text")
-		.attr("id","nSchool")
-	    .attr("x", margin.left)
-        .attr("y", 35)
-        .attr("font-size", "27px")
-		.attr("font-weight", "300")
-        .style("fill", "#1C1B1B")
-        .text("School: "+schoolName)
-        .call(wrap, 400);
-		
-		
-	distInfo.append("text")
-		.attr("id","distInfo1")
-	    .attr("x", margin.left)
-        .attr("y", 100-60)
-        .attr("font-size", "30px")
-		.attr("font-weight", "900")
-        .style("fill", "#1C1B1B")
-        .text("School District: #"+d.district);
+            schoolInfo.append("text")
+            .attr("id","nSchool")
+            .attr("x", margin.left)
+            .attr("y", 35)
+            .attr("font-size", "27px")
+            .attr("font-weight", "300")
+            .style("fill", "#1C1B1B")
+            .text("School: "+schoolName)
+            .call(wrap, 400);
 
-	distInfo.append("text")
-		.attr("id","distInfo1")
-	    .attr("x", margin.left)
-        .attr("y", 130-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Avg SAT Score: "+totalAvg2);
+            distInfo.append("text")
+            .attr("id","distInfo1")
+            .attr("x", margin.left)
+            .attr("y", 100-60)
+            .attr("font-size", "30px")
+            .attr("font-weight", "900")
+            .style("fill", "#1C1B1B")
+            .text("School District: #"+d.district);
 
+            distInfo.append("text")
+            .attr("id","distInfo1")
+            .attr("x", margin.left)
+            .attr("y", 130-60)
+            .attr("font-size", "25px")
+            .attr("font-weight", "700")
+            .style("fill", "#1C1B1B")
+            .text("Avg SAT Score: "+totalAvg2);
 
-	distInfo.append("text")
-		.attr("id","distInfo1")
-		.attr("x", margin.left)
-        .attr("y", 160-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Number of Schools: "+numberOfSchools2);
-		
-	distInfo.append("text")
-		.attr("id","distInfo1")
-		.attr("x", margin.left)
-        .attr("y", 160-30)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Borough: "+d.Borough);
+            distInfo.append("text")
+            .attr("id","distInfo1")
+            .attr("x", margin.left)
+            .attr("y", 160-60)
+            .attr("font-size", "25px")
+            .attr("font-weight", "700")
+            .style("fill", "#1C1B1B")
+            .text("Number of Schools: "+numberOfSchools2);
 
-			})
+            distInfo.append("text")
+            .attr("id","distInfo1")
+            .attr("x", margin.left)
+            .attr("y", 160-30)
+            .attr("font-size", "25px")
+            .attr("font-weight", "700")
+            .style("fill", "#1C1B1B")
+            .text("Borough: "+d.Borough);
+          })
 
-
-      var bounds = path.bounds(d),
+          var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
           dy = bounds[1][1] - bounds[0][1],
           x = (bounds[0][0] + bounds[1][0]) / 2,
@@ -1168,400 +943,252 @@ d3.csv("Data.csv", function(error, datum) {
           scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / width, dy / height))),
           translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-      svg.transition()
+          svg.transition()
           .duration(750)
-          //.call(zoom.translate(translate).scale(scale).event); // not in d3 v4
           .call(zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) ); // updated for d3 v4
-          //.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scale + ')translate(' + -dx + ',' + -dy + ')');
 
-		//set remove text here
-		d3.selectAll("#Title")
-		.style("display","none")
-		
-		d3.selectAll("#distInit")
-		.style("display","none")
+          //set remove text here
+          d3.selectAll("#Title")
+          .style("display","none")
 
-	distInfo.append("text")
-		.attr("id","distInfo1")
-	    .attr("x", margin.left)
-        .attr("y", 100-60)
-        .attr("font-size", "30px")
-		.attr("font-weight", "900")
-        .style("fill", "#1C1B1B")
-        .text("School District: #"+distNum);
+          d3.selectAll("#distInit")
+          .style("display","none")
 
-	distInfo.append("text")
-		.attr("id","distInfo1")
-	    .attr("x", margin.left)
-        .attr("y", 130-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Avg SAT Score: "+totalAvg);
+          distInfo.append("text")
+          .attr("id","distInfo1")
+          .attr("x", margin.left)
+          .attr("y", 100-60)
+          .attr("font-size", "30px")
+          .attr("font-weight", "900")
+          .style("fill", "#1C1B1B")
+          .text("School District: #"+distNum);
 
+          distInfo.append("text")
+          .attr("id","distInfo1")
+          .attr("x", margin.left)
+          .attr("y", 130-60)
+          .attr("font-size", "25px")
+          .attr("font-weight", "700")
+          .style("fill", "#1C1B1B")
+          .text("Avg SAT Score: "+totalAvg);
 
-	distInfo.append("text")
-		.attr("id","distInfo1")
-		.attr("x", margin.left)
-        .attr("y", 160-60)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Number of Schools: "+numberOfSchools);
-		
-	distInfo.append("text")
-		.attr("id","distInfo1")
-		.attr("x", margin.left)
-        .attr("y", 160-30)
-        .attr("font-size", "25px")
-		.attr("font-weight", "700")
-        .style("fill", "#1C1B1B")
-        .text("Borough: "+borough);
+          distInfo.append("text")
+          .attr("id","distInfo1")
+          .attr("x", margin.left)
+          .attr("y", 160-60)
+          .attr("font-size", "25px")
+          .attr("font-weight", "700")
+          .style("fill", "#1C1B1B")
+          .text("Number of Schools: "+numberOfSchools);
 
-	    function generateGauge_d(d){
-		d3.selectAll("#nycInfo1").remove()
+          distInfo.append("text")
+          .attr("id","distInfo1")
+          .attr("x", margin.left)
+          .attr("y", 160-30)
+          .attr("font-size", "25px")
+          .attr("font-weight", "700")
+          .style("fill", "#1C1B1B")
+          .text("Borough: "+borough);
 
-		
-		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Math_Avg)));
-		console.log("help")
-		console.log(distAvgMap[currentDist.key])
-		console.log((distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg))
-		
-		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Reading_Avg)));
-		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Writing_Avg)));
-        }
-		
-		generateGauge_d(d);
-		
-		d3.selectAll("#nSchool").remove();
-	  }
+          function generateGauge_d(d){
+            d3.selectAll("#nycInfo1").remove()
 
-      function stopped() {
-      if (d3.event.defaultPrevented) {
-		d3.event.stopPropagation();
-		}
-	  
-		console.log("stopped");
+            gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Math_Avg)));
+            gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Reading_Avg)));
+            gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Writing_Avg)));
+          }
 
-		//d3.selectAll("#distInfo1").remove();
+          generateGauge_d(d);
 
-		d3.selectAll("#distInit")
-		.style("display","block");
-		
-
-		d3.selectAll("#Title")
-	//.style("opacity","1.0")
-		.style("display","block")
-	;
-	  	
-	  
-	  
-	  
-     d3.selectAll("#distInfo1").remove(); }
-
-
-
-      // ADD TEXT
-       svg.append("text")
-		.attr("id","Title")
-        .attr("x", 45)
-        .attr("y", 783)
-        .attr("font-size", "16px")
-        .attr("font-weight", "300")
-        .style("fill", "#2D2C2C")
-		.style("letter-spacing", "1")
-        .text("A comparison of SAT scores and poverty rates across NYC public ");
-
-		      svg.append("text")
-		.attr("id","Title")
-        .attr("x", 45)
-        .attr("y", 800)
-        .attr("font-size", "16px")
-        .attr("font-weight", "300")
-        .style("fill", "#2D2C2C")
-		.style("letter-spacing", "1")
-        .text("high schools from 2014-2015.");
-
-       svg.append("text")
-		.attr("id","Title")
-        .attr("x", 45)
-        .attr("y", 100+20)
-        .attr("font-size", "120px")
-        .attr("font-weight", "900")
-        .style("fill", "#2D2C2C")
-		.style("letter-spacing", "3")
-        .text("NYC");
-
-      svg.append("text")
-		.attr("id","Title")
-        .attr("x", 50)
-        .attr("y", 100+50+10)
-        .attr("font-size", "36px")
-        .attr("font-weight", "900")
-        .style("fill", "#2D2C2C")
-        .text("Public Schools");
-	
-	svg.append("text")
-        .attr("id","Title")
-		.attr("x", 50)
-        .attr("y", 100+25+50+15)
-        .attr("font-size", "18px")
-        .style("fill", "#2D2C2C")
-        .text("SAT Scores | Poverty Rates");
-		
-		
-	svg.append("rect")
-		.attr("id", "Title")
-		.attr("x", 50)
-        .attr("y", 100+25+50+35)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#65adad")
-		.style("stroke", "#2D2C2C");
-	
-	svg.append("text")
-	.attr("id","Title")
-	.attr("x", 50+35)
-	.attr("y", 100+25+50+35+18)
-	.attr("font-size", "16px")
-	.style("fill", "#2D2C2C")
-	.text("Max Avg SAT Score");
-
-		
-	svg.append("rect")
-		.attr("id", "Title")
-		.attr("x", 50)
-        .attr("y", 100+25+50+35*2.1)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#e6f2f2")
-		.style("stroke", "#2D2C2C");
-
-	svg.append("text")
-	.attr("id","Title")
-	.attr("x", 50+35)
-	.attr("y", 100+25+50+35*2.1+18)
-	.attr("font-size", "16px")
-	.style("fill", "#2D2C2C")
-	.text("Min Avg SAT Score");
-		schoolInfo.append("line")
-		.attr("stroke","#2d2d2d")
-		.attr("stroke-width", 2)
-		.style("stroke-dasharray", "4,4")
-		.attr("x1", margin.left)
-		.attr("y1", 0)
-		.attr("x2", 600)
-		.attr("y2", 0);
-
-	svg.append("circle")
-		.attr("id", "Title")
-		.attr("cx", 62)
-        .attr("cy", 100+25+50+35*2.1+45)
-		.attr("r", 10)
-		.attr("width", 25)
-        .attr("height", 25)
-        .style("fill", "#FFFFFF")
-		.style("stroke", "#2d2c2c");
-	svg.append("text")
-	.attr("id","Title")
-	.attr("x", 50+35)
-	.attr("y", 100+25+50+35*2.1+50)
-	.attr("font-size", "14px")
-	.style("fill", "#2D2C2C")
-	.text("Location of School");
-		schoolInfo.append("line")
-		.attr("stroke","#2d2d2d")
-		.attr("stroke-width", 2)
-		.style("stroke-dasharray", "4,4")
-		.attr("x1", margin.left)
-		.attr("y1", 0)
-		.attr("x2", 600)
-		.attr("y2", 0);
-
-        var height_2 = 200 - margin.top - margin.bottom,
-            width_2 = 250 - margin.right - margin.left,
-            barWidth = 50,
-            barOffset = 5;
-
-        var tempColor;
-
-        var tooltip = d3.select('#chart').append('div')
-                    .style('position', 'absolute')
-                    .style('padding', '0 10px')
-                    .style('background', 'white')
-                    .style('opacity', 0)
-
-
-
-        var myChart = d3.select('#chart').append('svg')
-        .style('background', 'white')
-        .attr("id", "bar")
-        .attr('width', width_2 + margin.left + margin.right)
-        .attr('height', height_2 + margin.top + margin.bottom)
-
-        
-        myChart.call(tip);
-
-        var allbars = myChart.append('g')
-                    .attr('transform','translate(' + margin.left+','+ margin.top + ')')
-                    .attr('id', 'gbars')
-
-        var bardata = [410, 406, 381];
-
-        var xScale;
-        var yScale;
-
-
-        updateBar(bardata);
-
-
-        // var vGuideScale = d3.scaleLinear()
-        //                 .domain([0, d3.max(bardata)])
-        //                 .range([height_2, 0])
-
-        // var vAxis = d3.axisLeft(vGuideScale)
-        //             //.scale(vGuideScale)
-        //             .ticks(10)
-
-        // var vGuide = d3.select('#bar').append('g')
-        //     vAxis(vGuide)
-
-        //     vGuide.attr('transform','translate('+margin.left+',' + margin.top + ')')
-        //     vGuide.selectAll('path')
-        //         .style({fill: 'none', stroke: '#000'})
-        //     vGuide.selectAll('line')
-        //         .style({stroke: '#000'})
-
-        // var hAxis = d3.axisBottom(xScale)
-        //         //.scale(xScale)
-        //         .tickValues(xScale.domain().filter(function(d,i){
-        //                 return !(i % (bardata.length/5));
-        //             }))
-
-        // var hGuide = d3.select('#bar').append('g')
-        //             hAxis(hGuide)
-        //     hGuide.attr('transform', 'translate('+margin.left+',' + (height_2 + margin.top)                            + ')')
-        //     hGuide.selectAll('path')
-        //         .style({fill: 'none', stroke: '#000'})
-        //     hGuide.selectAll('line')
-        //         .style({stroke: '#000'})
-
-
-
-
-        function updateBar(bardata){
-
-
-        yScale = d3.scaleLinear()
-                    .domain([0, d3.max(bardata)])
-                    .range([0, height_2])
-
-        xScale = d3.scaleBand()
-                    .domain(d3.range(0,bardata.length*.8))
-                    .rangeRound([0,width_2])
-                    .padding(0.3)
-
-//        var color =
-//		d3.scaleLinear()
-//                    .domain([0, bardata.length*.63, bardata.length])
-//                    .range(['#ffb832','#c61c6f','#d33682'])
-
-
-//        var rectan = allbars.selectAll('rect')
-//                    .data(bardata);
-//
-//        var allrec = rectan.enter()
-//                    .append('rect')
-//                    .merge(rectan)
-//                    .style('fill', "#409A99"
-//						   //function(d,i){
-//                            //return color(i);}
-//							)
-//                    .attr('width', xScale.bandwidth())
-//                    .attr('x', function(d,i){
-//                            return xScale(i);
-//                        })
-//                    .attr('height', 0)
-//                    .attr('y', height_2)
-//
-//					//console.log(xScale.bandwidth())
-//                    
-//                    .on ('mouseover', tip.show)
-//                    .on ('mouseout', tip.hide)
-//                    //.on('mouseover', function(d){
-//                    //    tooltip.transition()
-//                    //        .style('opacity', 0.9)
-//                    //    tooltip.html(d)
-//                    //            .style('left', (d3.event.pageX - 35)+'px')
-//                    //            .style('top', (d3.event.pageY - 40)+'px')
-//                    //
-//                    //
-//                    //tempColor = this.style.fill;
-//                    //d3.select(this)
-//                    //    .style('opacity', .5)
-//                    //    .style('fill', 'yellow')
-//                    //})
-//                    //.on('mouseout', function(d){
-//                    //d3.select(this)
-//                    //        .style('opacity', 1)
-//                    //        .style('fill', tempColor)
-//                    //})
-//
-//                    allrec.transition()
-//                            .attr('height', function(d){
-//                                    return yScale(d);
-//                    })
-//                            .attr('y', function(d){
-//                                    return height_2 - yScale(d);
-//                    })
-//                    .delay(function(d,i){
-//                            return i*20;
-//                    })
-//                    .duration(5000)
-//                    .ease(d3.easeElastic)
-//
-//        // remove old data
-//        rectan.exit().remove();
-
+          d3.selectAll("#nSchool").remove();
         }
 
+        function stopped() {
+          if (d3.event.defaultPrevented) {
+            d3.event.stopPropagation();
+          }
 
+          d3.selectAll("#distInit")
+          .style("display","block");
 
+          d3.selectAll("#Title")
+          //.style("opacity","1.0")
+          .style("display","block");
 
+          d3.selectAll("#distInfo1").remove(); }
 
+          // ADD TEXT
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 45)
+          .attr("y", 783)
+          .attr("font-size", "16px")
+          .attr("font-weight", "300")
+          .style("fill", "#2D2C2C")
+          .style("letter-spacing", "1")
+          .text("A comparison of SAT scores and poverty rates across NYC public ");
 
-        function clicked_circle(d) {
-			d3.selectAll("#nSchool").remove();
- 
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 45)
+          .attr("y", 800)
+          .attr("font-size", "16px")
+          .attr("font-weight", "300")
+          .style("fill", "#2D2C2C")
+          .style("letter-spacing", "1")
+          .text("high schools from 2014-2015.");
+
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 45)
+          .attr("y", 100+20)
+          .attr("font-size", "120px")
+          .attr("font-weight", "900")
+          .style("fill", "#2D2C2C")
+          .style("letter-spacing", "3")
+          .text("NYC");
+
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 50)
+          .attr("y", 100+50+10)
+          .attr("font-size", "36px")
+          .attr("font-weight", "900")
+          .style("fill", "#2D2C2C")
+          .text("Public Schools");
+
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 50)
+          .attr("y", 100+25+50+15)
+          .attr("font-size", "18px")
+          .style("fill", "#2D2C2C")
+          .text("SAT Scores | Poverty Rates");
+
+          svg.append("rect")
+          .attr("id", "Title")
+          .attr("x", 50)
+          .attr("y", 100+25+50+35)
+          .attr("width", 25)
+          .attr("height", 25)
+          .style("fill", "#65adad")
+          .style("stroke", "#2D2C2C");
+
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 50+35)
+          .attr("y", 100+25+50+35+18)
+          .attr("font-size", "16px")
+          .style("fill", "#2D2C2C")
+          .text("Max Avg SAT Score");
+
+          svg.append("rect")
+          .attr("id", "Title")
+          .attr("x", 50)
+          .attr("y", 100+25+50+35*2.1)
+          .attr("width", 25)
+          .attr("height", 25)
+          .style("fill", "#e6f2f2")
+          .style("stroke", "#2D2C2C");
+
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 50+35)
+          .attr("y", 100+25+50+35*2.1+18)
+          .attr("font-size", "16px")
+          .style("fill", "#2D2C2C")
+          .text("Min Avg SAT Score");
+          schoolInfo.append("line")
+          .attr("stroke","#2d2d2d")
+          .attr("stroke-width", 2)
+          .style("stroke-dasharray", "4,4")
+          .attr("x1", margin.left)
+          .attr("y1", 0)
+          .attr("x2", 600)
+          .attr("y2", 0);
+
+          svg.append("circle")
+          .attr("id", "Title")
+          .attr("cx", 62)
+          .attr("cy", 100+25+50+35*2.1+45)
+          .attr("r", 10)
+          .attr("width", 25)
+          .attr("height", 25)
+          .style("fill", "#FFFFFF")
+          .style("stroke", "#2d2c2c");
+          svg.append("text")
+          .attr("id","Title")
+          .attr("x", 50+35)
+          .attr("y", 100+25+50+35*2.1+50)
+          .attr("font-size", "14px")
+          .style("fill", "#2D2C2C")
+          .text("Location of School");
+          schoolInfo.append("line")
+          .attr("stroke","#2d2d2d")
+          .attr("stroke-width", 2)
+          .style("stroke-dasharray", "4,4")
+          .attr("x1", margin.left)
+          .attr("y1", 0)
+          .attr("x2", 600)
+          .attr("y2", 0);
+
+          var height_2 = 200 - margin.top - margin.bottom,
+          width_2 = 250 - margin.right - margin.left,
+          barWidth = 50,
+          barOffset = 5;
+
+          var tempColor;
+
+          var tooltip = d3.select('#chart').append('div')
+          .style('position', 'absolute')
+          .style('padding', '0 10px')
+          .style('background', 'white')
+          .style('opacity', 0)
+
+          var myChart = d3.select('#chart').append('svg')
+          .style('background', 'white')
+          .attr("id", "bar")
+          .attr('width', width_2 + margin.left + margin.right)
+          .attr('height', height_2 + margin.top + margin.bottom)
+
+          myChart.call(tip);
+
+          var allbars = myChart.append('g')
+          .attr('transform','translate(' + margin.left+','+ margin.top + ')')
+          .attr('id', 'gbars')
+
+          var bardata = [410, 406, 381];
+
+          var xScale;
+          var yScale;
+
+          updateBar(bardata);
+
+          function updateBar(bardata){
+            yScale = d3.scaleLinear()
+            .domain([0, d3.max(bardata)])
+            .range([0, height_2])
+
+            xScale = d3.scaleBand()
+            .domain(d3.range(0,bardata.length*.8))
+            .rangeRound([0,width_2])
+            .padding(0.3)
+          }
+
+          function clicked_circle(d) {
+            d3.selectAll("#nSchool").remove();
+
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
-			updateBar(bardata);
-			
-        }
+            updateBar(bardata);
+          }
 
-        function generateGauge(d){
+          function generateGauge(d){
             gauge1.on("valueChanged")(d.SAT_Math);
             gauge2.on("valueChanged")(d.SAT_Reading);
             gauge3.on("valueChanged")(d.SAT_Writing);
-
-        }
-
-
-
-
-
-
-  });
-
-});
-
-
-
-
-
-
-
-
-</script>
-
-</body>
-</html>
+          }
+        });
+      });
+    </script>
+  </body>
+  </html>
