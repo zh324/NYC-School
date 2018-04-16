@@ -183,7 +183,7 @@ d3.csv("Data.csv", function(error, datum) {
       var svg = d3.select('#p1')
       .attr('width', width)
       .attr('height', height)
-      .on("click", stopped, true);;
+      .on("click", stopped, true);
 
 
       var g = svg.append("rect")
@@ -444,7 +444,8 @@ d3.csv("Data.csv", function(error, datum) {
       maplayer.style("stroke-width", 0.5 / d3.event.transform.k + "px");
       // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
       maplayer.attr("transform", d3.event.transform); // updated for d3 v4
-      }
+      	  
+	  }
 
       function reset() {
       active.classed("active", false);
@@ -468,10 +469,15 @@ d3.csv("Data.csv", function(error, datum) {
         .style('stroke-width', 0.5)
         .on('mouseover', mouseover)
         .on('mouseout',mouseout)
-        .on('click', clicked)
+        .on('click', clicked);
 
+	var schoolInfo = d3.select('#schoolInfo').append('svg')
+        .style('background', 'white')
+        .attr("id", "bar")
+        .attr('width', "600")
+        .attr('height', "100");
 
-      maplayer.selectAll("circle")
+      var mapCircles = maplayer.selectAll("circle")
         .data(stats)
         .enter()
         .append("circle")
@@ -482,13 +488,22 @@ d3.csv("Data.csv", function(error, datum) {
         //.attr("stroke", "url(#svgGradient)")
         //.attr("stroke", "gray")
         //.attr("stroke-width", "0.5px")
-        .on('click', function (d){
-            clicked_circle(d);
-            generatePie(d);
-            generateGauge(d)
-			d3.selectAll("#Title")
-			.style("opacity","0");
-			})
+//        .on('click', function (d){
+//			clicked_circle(d);
+//            generatePie(d);
+//            generateGauge(d);
+//			d3.selectAll("#Title")
+//			.style("display","none");
+//			
+//		schoolInfo.append("text")
+//	    .attr("x", margin.left)
+//        .attr("y", 30)
+//        .attr("font-size", "20px")
+//		.attr("font-weight", "700")
+//        .style("fill", "#000000")
+//        .text("Name of school");
+//
+//			})
 		.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
 		.on('mouseout', function(d){
 			d3.select(this).style('fill',"white")
@@ -510,6 +525,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr('width', "600")
         .attr('height', "190")
 
+		
       function clicked(d) {
 
       if (active.node() === this) return reset();
@@ -518,8 +534,53 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       console.log(d.properties.SchoolDist);
+	  
+	  var distNum = d.properties.SchoolDist;
+	
+	distAvgMap = d3.nest()
+	.key(function (d) { return d.district; })
+	.entries(stats);
+	console.log("features")
+	console.log(features)
+	console.log("distAvgMap");
+	console.log(distAvgMap);
+	currentDist = distAvgMap[distNum-1];
+	console.log("current dist");
+	console.log(currentDist);
+	console.log(currentDist.values[0].district_SAT_Math_Avg);
+	console.log(currentDist.values[0].district_SAT_Reading_Avg);
+	console.log(currentDist.values[0].district_SAT_Writing_Avg);
+	
+	totalAvg = Number(currentDist.values[0].district_SAT_Math_Avg)+Number(currentDist.values[0].district_SAT_Reading_Avg)+Number(currentDist.values[0].district_SAT_Writing_Avg);
+	numberOfSchools = distAvgMap[distNum-1].values.length
+	
+	console.log(distAvgMap)
 
 
+	mapCircles
+        .on('click', function (d){
+		var schoolName = d["School Name"];
+			
+			console.log(d);
+			console.log("circled");
+			clicked_circle(d);
+			
+            generatePie(d);
+            generateGauge(d);
+			d3.selectAll("#Title")
+			.style("display","none");
+
+		schoolInfo.append("text")
+		.attr("id","nSchool")
+	    .attr("x", margin.left)
+        .attr("y", 30)
+        .attr("font-size", "20px")
+		.attr("font-weight", "700")
+        .style("fill", "#000000")
+        .text(schoolName);
+
+			})
+		
       var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
           dy = bounds[1][1] - bounds[0][1],
@@ -536,7 +597,8 @@ d3.csv("Data.csv", function(error, datum) {
 
 		//set remove text here
 		d3.selectAll("#Title")
-		.style("opacity","0");
+		//.style("opacity","0")
+		.style("display","none");
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
@@ -545,7 +607,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "30px")
 		.attr("font-weight", "900")
         .style("fill", "#000000")
-        .text("School District #");
+        .text("School District: #"+distNum);
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
@@ -554,7 +616,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#000000")
-        .text("Avg SAT Score");
+        .text("Avg SAT Score: "+totalAvg);
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
@@ -563,22 +625,30 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#000000")
-        .text("Number of Schools");
+        .text("Number of Schools: "+numberOfSchools);
 
       }
 
 
       function stopped() {
-      if (d3.event.defaultPrevented) d3.event.stopPropagation();
-	  console.log("stopped");
+      if (d3.event.defaultPrevented) {
+		d3.event.stopPropagation();
+		}
+	  
+		console.log("stopped");
 
-	d3.selectAll("#distInfo1")
-	.style("opacity","0.0");
+		d3.selectAll("#distInfo1")
+		.style("opacity","0.0");
 
 
-	d3.selectAll("#Title")
-	.style("opacity","1.0");
-
+		d3.selectAll("#Title")
+	//.style("opacity","1.0")
+		.style("display","block")
+	;
+	  	
+	  
+	  
+	  
       }
 
 
@@ -609,7 +679,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("id","Title")
 		.attr("x", 50)
         .attr("y", 100+25+50+25)
-        .attr("font-size", "20px")
+        .attr("font-size", "18px")
         .style("fill", "#000000")
         .text("SAT Scores | Poverty Rates | Demographics");
 //
@@ -629,13 +699,6 @@ d3.csv("Data.csv", function(error, datum) {
             //     return a-b;
             // })
 
-
-	var schoolInfo = d3.select('#schoolInfo').append('svg')
-        .style('background', 'white')
-        .attr("id", "bar")
-        .attr('width', "600")
-        .attr('height', "100")
-
 		schoolInfo.append("line")
 		.attr("stroke","#2d2d2d")
 		.attr("stroke-width", 2)
@@ -644,15 +707,6 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("y1", 0)
 		.attr("x2", 600)
 		.attr("y2", 0);
-
-
-		schoolInfo.append("text")
-	    .attr("x", margin.left)
-        .attr("y", 30)
-        .attr("font-size", "20px")
-		.attr("font-weight", "700")
-        .style("fill", "#000000")
-        .text("Name of school");
 
 
         // BAR CHART
@@ -816,17 +870,15 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 
-       
-
-
-
-
 
         function clicked_circle(d) {
-            
+			d3.selectAll("#nSchool")
+			.style("display","none");
+
+
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
-            //console.log(bardata);
-            updateBar(bardata);
+			updateBar(bardata);
+			
         }
 
         function generateGauge(d){
