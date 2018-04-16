@@ -374,7 +374,17 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("font-weight", "900")
         .style("fill", "#A8102E")
         .text("Poverty Rates");
-        
+
+		svg_aster.append("text")
+	    .attr("x", "0")
+		.attr("text-anchor","middle")
+        .attr("y", "-160")
+        .attr("font-size", "15px")
+		.attr("font-weight", "400")
+        .style("fill", "#A8102E")
+        .text("*Hover for Details*");
+
+
         //svg_aster.call(tip);
         var radius = Math.min(width_aster, height_aster) / 2
         console.log(radius);
@@ -617,7 +627,7 @@ d3.csv("Data.csv", function(error, datum) {
             .attr("class", "lines")
 			.attr("transform", "translate(0,30)");
 
-		var pieText = d3.select("#pies")
+		var pieText = d3.select("#pies");
 
 		pieText.append("text")
         .attr("x",margin.left)
@@ -836,7 +846,7 @@ d3.csv("Data.csv", function(error, datum) {
 	var schoolInfo = d3.select('#schoolInfo').append('svg')
         .style('background', 'white')
         .attr("id", "bar")
-        .attr('width', "400")
+        .attr('width', "600")
         .attr('height', "125");
 		
 	var nycInfo =
@@ -928,7 +938,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#1C1B1B")
-        .text("Avg SAT Score: 1283");
+        .text("Avg SAT Score: 1276");
 
 
 	distInfo.append("text")
@@ -1017,10 +1027,9 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#distInit")
 		.style("display","none");
 		
-        //console.log(d3.select('#nycInfo1'))
 		d3.select("#nycInfo1").remove()
 
-
+		//found on stack overflow https://stackoverflow.com/questions/24784302/wrapping-text-in-d3
         function wrap(text, width) {
         text.each(function () {
             var text = d3.select(this),
@@ -1028,10 +1037,10 @@ d3.csv("Data.csv", function(error, datum) {
                 word,
                 line = [],
                 lineNumber = 0,
-                lineHeight = 1.1, // ems
+                lineHeight = 1.1, 
                 x = text.attr("x"),
                 y = text.attr("y"),
-                dy = 0, //parseFloat(text.attr("dy")),
+                dy = 0,
                 tspan = text.text(null)
                             .append("tspan")
                             .attr("x", x)
@@ -1058,10 +1067,10 @@ d3.csv("Data.csv", function(error, datum) {
 	    .attr("x", margin.left)
         .attr("y", 35)
         .attr("font-size", "18px")
-		.attr("font-weight", "400")
+		.attr("font-weight", "700")
         .style("fill", "#1C1B1B")
         .text("School: "+schoolName)
-        .call(wrap, 400);;
+        .call(wrap, 400);
 		
 		
 	distInfo.append("text")
@@ -1166,9 +1175,13 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#nycInfo1").remove()
 
 		
-		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg)));
-		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Reading_Avg)));
-		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Writing_Avg)));
+		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Math_Avg)));
+		console.log("help")
+		console.log(distAvgMap[currentDist.key])
+		console.log((distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg))
+		
+		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Reading_Avg)));
+		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Writing_Avg)));
         }
 		
 		generateGauge_d(d);
@@ -1225,9 +1238,9 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("id","Title")
 		.attr("x", 50)
         .attr("y", 100+25+50+15)
-        .attr("font-size", "16px")
+        .attr("font-size", "18px")
         .style("fill", "#2D2C2C")
-        .text("SAT Scores | Poverty Rates | Demographics");
+        .text("SAT Scores | Poverty Rates");
 		
 		
 	svg.append("rect")
