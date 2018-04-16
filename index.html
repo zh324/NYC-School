@@ -197,7 +197,7 @@ d3.csv("Data.csv", function(error, datum) {
 
       var projection = d3.geoMercator()
       .fitSize([width ,height], data)
-      .fitExtent([[50, 50], [width, height-10]],data)
+      .fitExtent([[10, 10], [width, height]],data)
       
 
       var povertyScale = d3.scaleLinear()
@@ -209,7 +209,7 @@ d3.csv("Data.csv", function(error, datum) {
 
       var svg = d3.select('#p1')
       .attr('width', width)
-      .attr('height', height)
+      .attr('height', height*1.5)
       .on("click", stopped, true);
 
 
@@ -362,25 +362,89 @@ d3.csv("Data.csv", function(error, datum) {
             .attr("width", width_aster )
             .attr("height", height_aster)
 			//.style("padding-left", margin.left)
-			.style("padding-top", margin.top+40)
+			.style("padding-top", margin.top+60)
             .append("g")
-            .attr("transform", "translate(" + width_aster / 2 + "," + height_aster / 2  + ")");
-			
+            .attr("transform", "translate(" + width_aster / 3 + "," + height_aster / 2  + ")");
+		
+		
 		svg_aster.append("text")
-	    .attr("x", "0")
+	    .attr("x", "100")
 		.attr("text-anchor","middle")
         .attr("y", "-180")
         .attr("font-size", "25px")
-		.attr("font-weight", "900")
+		.attr("font-weight", "300")
         .style("fill", "#A8102E")
-        .text("Poverty Rates");
-        
+        .text("Poverty Rate Distribution");
+		
+		
+		svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -75)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#da969e")
+		.style("stroke", "#2D2C2C")
+		.style("stroke-width", ".5")
+		;
+		svg_aster.append("text")
+		.attr("x", 215)
+		.attr("y", -75+20)
+		.attr("font-weight", "300")
+		.attr("font-size", "18px")
+		.style("fill", "#2D2C2C")
+		.text("Min Poverty Rate");
+
+		
+	svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -50+15)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#950003")
+		.style("stroke", "#2D2C2C")
+		.style("stroke-width", ".5");
+	svg_aster.append("text")
+		.attr("x", 215)
+        .attr("y", -35+20)
+		.attr("font-weight", "300")
+		.attr("font-size", "18px")
+		.style("fill", "#2D2C2C")
+		.text("Max Poverty Rate");
+
+
+	svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -10+15)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#f8f5c7")
+		.style("stroke", "#2d2c2c")
+		.style("stroke-width", ".5");
+	svg_aster.append("text")
+	.attr("x", 215)
+	.attr("y", -10+15+20)
+	.attr("font-size", "18px")
+	.attr("font-weight", "300")
+	.style("fill", "#2D2C2C")
+	.text("Selected School");
+		
+		
+
+		svg_aster.append("text")
+	    .attr("x", "100")
+		.attr("text-anchor","middle")
+        .attr("y", "-160")
+        .attr("font-size", "16px")
+		.attr("font-weight", "300")
+        .style("fill", "#A8102E")
+        .text("Hover for Details");
+
+
         //svg_aster.call(tip);
         var radius = Math.min(width_aster, height_aster) / 2
         console.log(radius);
         var innerRadius = 0.3 * radius;
 
-        console.log(radius, innerRadius);
         var svg_aster;
         var path_aster;
         var pie_aster; 
@@ -398,7 +462,7 @@ d3.csv("Data.csv", function(error, datum) {
         console.log(aster_length);
 
         d3.selectAll(".solidArc").remove().exit();
-       d3.selectAll(".outlineArc").remove().exit();
+		d3.selectAll(".outlineArc").remove().exit();
         
         // var radius = Math.min(width_aster, height_aster) / 2 ,
         //     innerRadius = 0.3 * radius;
@@ -539,8 +603,6 @@ d3.csv("Data.csv", function(error, datum) {
             .on('mouseover', tip_school.show)
             .on('mouseout', tip_school.hide);
         path_aster.call(tip_school);
-        
-
         path_aster.transition()
            .duration(800);
                                //console.log(path_aster);
@@ -555,7 +617,7 @@ d3.csv("Data.csv", function(error, datum) {
            .attr("fill", "none")
            .attr("class", "outlineArc")
            .attr("stroke", "black")
-           .attr('stroke-width', 0.8)
+           .attr('stroke-width', 0.5)
            .attr("d", outlineArc);
 
       
@@ -571,8 +633,6 @@ d3.csv("Data.csv", function(error, datum) {
            
            var data_redraw = districts[data_change.properties.SchoolDist - 1].values
            console.log(data_redraw);
-
-           //generate(data_redraw);
 
            redraw(data_redraw);
            
@@ -617,7 +677,7 @@ d3.csv("Data.csv", function(error, datum) {
             .attr("class", "lines")
 			.attr("transform", "translate(0,30)");
 
-		var pieText = d3.select("#pies")
+		var pieText = d3.select("#pies");
 
 		pieText.append("text")
         .attr("x",margin.left)
@@ -636,12 +696,12 @@ d3.csv("Data.csv", function(error, datum) {
         });
 
         var arc = d3.arc()
-            .outerRadius(radius * 0.8)
-            .innerRadius(radius * 0.4);
+            .outerRadius(radius * 0.5)
+            .innerRadius(radius * 0.5);
 
         var outerArc = d3.arc()
-            .innerRadius(radius * 0.9)
-            .outerRadius(radius * 0.9);
+            .innerRadius(radius * 0.5)
+            .outerRadius(radius * 0.5);
 
 
 
@@ -810,9 +870,6 @@ d3.csv("Data.csv", function(error, datum) {
         }
 		
 		generateGauge_d();
-
-
-        console.log(data_aster)
         generate(data_aster);
         
 
@@ -837,7 +894,7 @@ d3.csv("Data.csv", function(error, datum) {
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "125");
+        .attr('height', "140");
 		
 	var nycInfo =
 		d3.select('#bar');
@@ -846,8 +903,8 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("id","nycInfo1")
 		.attr("x", "50")
         .attr("y", "35")
-		.attr("font-size", "18px")
-		.attr("font-weight", "400")
+		.attr("font-size", "30px")
+		.attr("font-weight", "300")
         .style("fill", "#1C1B1B")
         .text("New York City Average");
 
@@ -855,9 +912,9 @@ d3.csv("Data.csv", function(error, datum) {
 		schoolInfo.append("text")
 	    .attr("x", "50%")
 		.attr("text-anchor","middle")
-        .attr("y", 110)
+        .attr("y", 125)
         .attr("font-size", "25px")
-		.attr("font-weight", "900")
+		.attr("font-weight", "300")
         .style("fill", "#6A4B7D")
         .text("SAT Scores");
 
@@ -910,7 +967,7 @@ d3.csv("Data.csv", function(error, datum) {
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "165");
+        .attr('height', "140");
 		
 		distInfo.append("text")
 		.attr("id","distInit")
@@ -928,7 +985,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#1C1B1B")
-        .text("Avg SAT Score: 1283");
+        .text("Avg SAT Score: 1276");
 
 
 	distInfo.append("text")
@@ -1017,17 +1074,50 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#distInit")
 		.style("display","none");
 		
-        //console.log(d3.select('#nycInfo1'))
 		d3.select("#nycInfo1").remove()
 
+		//found on stack overflow https://stackoverflow.com/questions/24784302/wrapping-text-in-d3
+        function wrap(text, width) {
+        text.each(function () {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, 
+                x = text.attr("x"),
+                y = text.attr("y"),
+                dy = 0,
+                tspan = text.text(null)
+                            .append("tspan")
+                            .attr("x", x)
+                            .attr("y", y)
+                            .attr("dy", dy + "em");
+            while (word = words.pop()) {
+                line.push(word);
+                tspan.text(line.join(" "));
+                if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    tspan = text.append("tspan")
+                                .attr("x", x)
+                                .attr("y", y)
+                                .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                                .text(word);
+                }
+            }
+        });
+}
 		schoolInfo.append("text")
 		.attr("id","nSchool")
 	    .attr("x", margin.left)
         .attr("y", 35)
-        .attr("font-size", "18px")
-		.attr("font-weight", "400")
+        .attr("font-size", "27px")
+		.attr("font-weight", "300")
         .style("fill", "#1C1B1B")
-        .text("School: "+schoolName);
+        .text("School: "+schoolName)
+        .call(wrap, 400);
 		
 		
 	distInfo.append("text")
@@ -1132,9 +1222,13 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#nycInfo1").remove()
 
 		
-		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg)));
-		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Reading_Avg)));
-		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Writing_Avg)));
+		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Math_Avg)));
+		console.log("help")
+		console.log(distAvgMap[currentDist.key])
+		console.log((distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg))
+		
+		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Reading_Avg)));
+		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key-1].values[0].district_SAT_Writing_Avg)));
         }
 		
 		generateGauge_d(d);
@@ -1191,9 +1285,9 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("id","Title")
 		.attr("x", 50)
         .attr("y", 100+25+50+15)
-        .attr("font-size", "16px")
+        .attr("font-size", "18px")
         .style("fill", "#2D2C2C")
-        .text("SAT Scores | Poverty Rates | Demographics");
+        .text("SAT Scores | Poverty Rates");
 		
 		
 	svg.append("rect")
@@ -1239,8 +1333,30 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("x2", 600)
 		.attr("y2", 0);
 
-
-        // BAR CHART
+	svg.append("circle")
+		.attr("id", "Title")
+		.attr("cx", 62)
+        .attr("cy", 100+25+50+35*2.1+45)
+		.attr("r", 10)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#FFFFFF")
+		.style("stroke", "#2d2c2c");
+	svg.append("text")
+	.attr("id","Title")
+	.attr("x", 50+35)
+	.attr("y", 100+25+50+35*2.1+50)
+	.attr("font-size", "14px")
+	.style("fill", "#2D2C2C")
+	.text("Location of School");
+		schoolInfo.append("line")
+		.attr("stroke","#2d2d2d")
+		.attr("stroke-width", 2)
+		.style("stroke-dasharray", "4,4")
+		.attr("x1", margin.left)
+		.attr("y1", 0)
+		.attr("x2", 600)
+		.attr("y2", 0);
 
         var height_2 = 200 - margin.top - margin.bottom,
             width_2 = 250 - margin.right - margin.left,
@@ -1406,6 +1522,7 @@ d3.csv("Data.csv", function(error, datum) {
             gauge1.on("valueChanged")(d.SAT_Math);
             gauge2.on("valueChanged")(d.SAT_Reading);
             gauge3.on("valueChanged")(d.SAT_Writing);
+
         }
 
 
