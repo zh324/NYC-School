@@ -187,7 +187,7 @@ d3.csv("Data.csv", function(error, datum) {
       features = data.features;
 
       var width = 700,
-      height = 700,
+      height = 800,
       centered,
       active = d3.select(null);
       var margin = { top: 30, right: 30, bottom: 40, left: 50}
@@ -195,9 +195,9 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       var projection = d3.geoMercator()
-      .fitSize([width * 0.9 ,height], data)
-      .fitExtent([[200, 50], [width, height-50]],data)
-      // Center the Map in Colombia
+      .fitSize([width ,height], data)
+      .fitExtent([[50, 50], [width, height-10]],data)
+    
 
       var povertyScale = d3.scaleLinear()
       .domain([0, 100])
@@ -244,6 +244,11 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
+			waveColor: "#65adad",
+			textColor: "#65adad",
+			waveTextColor: "#d9ebeb",// The color of the outer circle.
+			circleColor: "#65adad",
+
             displayPercent: false
         })
 		.style("padding-left", margin.left)
@@ -253,7 +258,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#178BCA")
+		.style("fill", "#65adad")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 		
@@ -266,6 +271,10 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
+			waveColor: "#65adad",
+			textColor: "#65adad",
+			waveTextColor: "#d9ebeb",// The color of the outer circle.
+			circleColor: "#65adad",
             displayPercent: false
         })
 		.style("padding-left","25")
@@ -275,7 +284,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#178BCA")
+		.style("fill", "#65adad")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 
@@ -285,6 +294,11 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
+			waveColor: "#65adad",
+			textColor: "#65adad",
+			waveTextColor: "#d9ebeb",// The color of the outer circle.
+			circleColor: "#65adad",
+
             displayPercent: false
         })
 		.style("padding-left","25")
@@ -294,7 +308,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#178BCA")
+		.style("fill", "#65adad")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
         
@@ -793,7 +807,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 110)
         .attr("font-size", "25px")
 		.attr("font-weight", "900")
-        .style("fill", "#178BCA")
+        .style("fill", "#65adad")
         .text("SAT Scores");
 
       var mapCircles = maplayer.selectAll("circle")
@@ -1087,17 +1101,17 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("id","Title")
         .attr("x", 45)
         .attr("y", 100+20)
-        .attr("font-size", "150px")
+        .attr("font-size", "120px")
         .attr("font-weight", "900")
         .style("fill", "#2D2C2C")
-		.style("letter-spacing", "10")
+		.style("letter-spacing", "3")
         .text("NYC");
 
       svg.append("text")
 		.attr("id","Title")
         .attr("x", 50)
-        .attr("y", 100+50+20)
-        .attr("font-size", "50px")
+        .attr("y", 100+50+10)
+        .attr("font-size", "36px")
         .attr("font-weight", "900")
         .style("fill", "#2D2C2C")
         .text("Public Schools");
@@ -1105,10 +1119,48 @@ d3.csv("Data.csv", function(error, datum) {
 	svg.append("text")
         .attr("id","Title")
 		.attr("x", 50)
-        .attr("y", 100+25+50+25)
-        .attr("font-size", "18px")
+        .attr("y", 100+25+50+15)
+        .attr("font-size", "16px")
         .style("fill", "#2D2C2C")
         .text("SAT Scores | Poverty Rates | Demographics");
+		
+		
+	svg.append("rect")
+		.attr("id", "Title")
+		.attr("x", 50)
+        .attr("y", 100+25+50+35)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#65adad")
+		.style("stroke", "#2D2C2C");
+	
+	svg.append("text")
+	.attr("id","Title")
+	.attr("x", 50+35)
+	.attr("y", 100+25+50+35+18)
+	.attr("font-size", "16px")
+	.style("fill", "#2D2C2C")
+	.text("Max Avg SAT Score");
+
+		
+	svg.append("rect")
+		.attr("id", "Title")
+		.attr("x", 50)
+        .attr("y", 100+25+50+35*2.1)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#e6f2f2")
+		.style("stroke", "#2D2C2C");
+
+	svg.append("text")
+	.attr("id","Title")
+	.attr("x", 50+35)
+	.attr("y", 100+25+50+35*2.1+18)
+	.attr("font-size", "16px")
+	.style("fill", "#2D2C2C")
+	.text("Min Avg SAT Score");
+
+
 //
 //        svg.append("text")
 //		.attr("id","Title")
