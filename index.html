@@ -24,7 +24,6 @@ var aitoff = d3.geoAitoff();
 <style>
 body {
     font-family: 'Roboto', Calibri, sans-serif;
-
 }
 
 .background {
@@ -216,9 +215,20 @@ d3.csv("Data.csv", function(error, datum) {
 		.call(d3.liquidfillgauge, 455,{
             minValue: 200,
             maxValue: 800,
+			width: 125,
+			height: 125,
             displayPercent: false
         })
-		.style("padding-left",margin.left);
+		.style("padding-left", margin.left)
+		.append("text")
+		.text("Math")
+		.attr("x","62.5")
+		.attr("text-anchor","middle")
+		.attr("y","145")
+		.style("padding-botton","40")
+		.style("fill", "#178BCA")
+		.style("font-family","helvetica")
+		.style("font-weight","bold");
 		
 		
     
@@ -227,18 +237,39 @@ d3.csv("Data.csv", function(error, datum) {
         gauge2.call(d3.liquidfillgauge, 440,{
             minValue: 200,
             maxValue: 800,
+			width: 125,
+			height: 125,
             displayPercent: false
         })
-		.style("padding-left","25");
-       
+		.style("padding-left","25")
+		.append("text")
+		.text("Reading")
+		.attr("x","62.5")
+		.attr("text-anchor","middle")
+		.attr("y","145")
+		.style("padding-botton","40")
+		.style("fill", "#178BCA")
+		.style("font-family","helvetica")
+		.style("font-weight","bold");
 
         var gauge3 = d3.select("#fillgauge3");
         gauge3.call(d3.liquidfillgauge, 425,{
             minValue: 200,
             maxValue: 800,
+			width: 125,
+			height: 125,
             displayPercent: false
         })
-		.style("padding-left","25");
+		.style("padding-left","25")
+		.append("text")
+		.text("Writing")
+		.attr("x","62.5")
+		.attr("text-anchor","middle")
+		.attr("y","145")
+		.style("padding-botton","40")
+		.style("fill", "#178BCA")
+		.style("font-family","helvetica")
+		.style("font-weight","bold");
         
 
 
@@ -285,7 +316,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y",15)
         .attr("font-size", "20px")
         .attr("font-weight", "400")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("Demographics")
 		.style("opacity","1");
 
@@ -475,7 +506,16 @@ d3.csv("Data.csv", function(error, datum) {
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "100");
+        .attr('height', "125");
+
+		schoolInfo.append("text")
+	    .attr("x", "50%")
+		.attr("text-anchor","middle")
+        .attr("y", 110)
+        .attr("font-size", "25px")
+		.attr("font-weight", "900")
+        .style("fill", "#178BCA")
+        .text("SAT Scores");
 
       var mapCircles = maplayer.selectAll("circle")
         .data(stats)
@@ -523,7 +563,7 @@ d3.csv("Data.csv", function(error, datum) {
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "190")
+        .attr('height', "165")
 
 		
       function clicked(d) {
@@ -538,15 +578,18 @@ d3.csv("Data.csv", function(error, datum) {
 	  var distNum = d.properties.SchoolDist;
 	
 	distAvgMap = d3.nest()
-	.key(function (d) { return d.district; })
+	.key(function (d) {
+		return d.district; })
 	.entries(stats);
-	console.log("features")
-	console.log(features)
+	
 	console.log("distAvgMap");
 	console.log(distAvgMap);
+
 	currentDist = distAvgMap[distNum-1];
+	
 	console.log("current dist");
 	console.log(currentDist);
+	
 	console.log(currentDist.values[0].district_SAT_Math_Avg);
 	console.log(currentDist.values[0].district_SAT_Reading_Avg);
 	console.log(currentDist.values[0].district_SAT_Writing_Avg);
@@ -558,25 +601,25 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 	mapCircles
-        .on('click', function (d){
-		var schoolName = d["School Name"];
-			
-			console.log(d);
-			console.log("circled");
-			clicked_circle(d);
-			
-            generatePie(d);
-            generateGauge(d);
-			d3.selectAll("#Title")
-			.style("display","none");
+	.on('click', function (d){
+	var schoolName = d["School Name"];
+		
+		console.log(d);
+		console.log("circled");
+		clicked_circle(d);
+		
+		generatePie(d);
+		generateGauge(d);
+		d3.selectAll("#Title")
+		.style("display","none");
 
 		schoolInfo.append("text")
 		.attr("id","nSchool")
 	    .attr("x", margin.left)
-        .attr("y", 30)
-        .attr("font-size", "20px")
-		.attr("font-weight", "700")
-        .style("fill", "#000000")
+        .attr("y", 35)
+        .attr("font-size", "18px")
+		.attr("font-weight", "400")
+        .style("fill", "#1C1B1B")
         .text(schoolName);
 
 			})
@@ -603,30 +646,29 @@ d3.csv("Data.csv", function(error, datum) {
 	distInfo.append("text")
 		.attr("id","distInfo1")
 	    .attr("x", margin.left)
-        .attr("y", 100)
+        .attr("y", 100-20)
         .attr("font-size", "30px")
 		.attr("font-weight", "900")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("School District: #"+distNum);
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
 	    .attr("x", margin.left)
-        .attr("y", 130)
+        .attr("y", 130-20)
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("Avg SAT Score: "+totalAvg);
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
 		.attr("x", margin.left)
-        .attr("y", 160)
+        .attr("y", 160-20)
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("Number of Schools: "+numberOfSchools);
-
       }
 
 
@@ -654,15 +696,13 @@ d3.csv("Data.csv", function(error, datum) {
 
 
       // ADD TEXT
-
-
       svg.append("text")
 		.attr("id","Title")
         .attr("x", 45)
         .attr("y", 100+20)
         .attr("font-size", "150px")
         .attr("font-weight", "900")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
 		.style("letter-spacing", "10")
         .text("NYC");
 
@@ -672,7 +712,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 100+50+20)
         .attr("font-size", "50px")
         .attr("font-weight", "900")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("Public Schools");
 	
 	svg.append("text")
@@ -680,7 +720,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("x", 50)
         .attr("y", 100+25+50+25)
         .attr("font-size", "18px")
-        .style("fill", "#000000")
+        .style("fill", "#1C1B1B")
         .text("SAT Scores | Poverty Rates | Demographics");
 //
 //        svg.append("text")
@@ -890,38 +930,6 @@ d3.csv("Data.csv", function(error, datum) {
 
 
 
-
-		myChart.append("text")
-        .attr("x", margin.left)
-        .attr("y", 15)
-        .attr("font-size", "20px")
-		.attr("font-weight", "400")
-        .style("fill", "#000000")
-        .text("SAT Scores");
-
-		myChart.append("text")
-		.attr("x", margin.left+25)
-		.attr("y", 180)
-        .attr("font-size", "12px")
-		.attr("font-weight", "300")
-        .style("fill", "#000000")
-        .text("(M)");
-
-		myChart.append("text")
-		.attr("x", margin.left+36*2+4)
-		.attr("y", 180)
-        .attr("font-size", "12px")
-		.attr("font-weight", "300")
-        .style("fill", "#000000")
-        .text("(R)");
-
-		myChart.append("text")
-		.attr("x", margin.left+36*3+18)
-		.attr("y", 180)
-        .attr("font-size", "12px")
-		.attr("font-weight", "300")
-        .style("fill", "#000000")
-        .text("(W)");
 
 
   });
