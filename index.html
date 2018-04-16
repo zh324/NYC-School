@@ -443,7 +443,7 @@ d3.csv("Data.csv", function(error, datum) {
             .attr("fill", "none")
             .attr("class", "outlineArc")
             .attr("stroke", "black")
-            .attr('stroke-width', 1.5)
+            .attr('stroke-width', 0.8)
             .attr("d", outlineArc);
 
             // var Poverty =
@@ -504,6 +504,7 @@ d3.csv("Data.csv", function(error, datum) {
            .html(function(d) {
                return "School:  " + d.data["School Name"] + " <span style='color:orangered'>" + "  Poverty Rate:" + d.data.Poverty + "</span>";
            });
+        
        path_aster = svg_aster.selectAll(".solidArc")
            .data(pie_aster(data_redraw))
            .enter().append("path")
@@ -518,7 +519,7 @@ d3.csv("Data.csv", function(error, datum) {
             .on('mouseover', tip_school.show)
             .on('mouseout', tip_school.hide);
         path_aster.call(tip_school);
-
+        
 
         path_aster.transition()
            .duration(200);
@@ -534,6 +535,7 @@ d3.csv("Data.csv", function(error, datum) {
            .attr("fill", "none")
            .attr("class", "outlineArc")
            .attr("stroke", "black")
+           .attr('stroke-width', 0.8)
            .attr("d", outlineArc);
 
       
@@ -964,9 +966,13 @@ d3.csv("Data.csv", function(error, datum) {
 		totalAvg2 = Number(d.district_SAT_Math_Avg)+Number(d.district_SAT_Reading_Avg)+Number(d.district_SAT_Writing_Avg);
 		numberOfSchools2 = distAvgMap[Number(d.district)-1].values.length
 
+        
 		clicked_circle(d);
 		generatePie(d);
 		generateGauge(d);
+        
+        console.log('hey')
+        var path_select = d3.select(schoolName)
 		
 		d3.selectAll("#Title")
 		.style("display","none");
@@ -974,6 +980,7 @@ d3.csv("Data.csv", function(error, datum) {
 		d3.selectAll("#distInit")
 		.style("display","none");
 		
+        //console.log(d3.select('#nycInfo1'))
 		d3.select("#nycInfo1").remove()
 
 		schoolInfo.append("text")
