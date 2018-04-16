@@ -1,375 +1,375 @@
-"DBN","Poverty","district","School Name","Borough","Building Code","Student Enrollment","SAT_Math","SAT_Reading","SAT_Writing","Percent Tested","Longitude","Latitude","district_SAT_Math_Avg","district_SAT_Reading_Avg","district_SAT_Writing_Avg","district_SAT_Avg"
-"01M292","89.0",1,"Henry Street School for International Studies","Manhattan","M056",255,410,406,381,"59.7%",-73.986336,40.713684,505,474,469,1448
-"01M448","89.5",1,"University Neighborhood High School","Manhattan","M446",304,437,355,352,"69.9%",-73.984497,40.712399,505,474,469,1448
-"01M450","74.2",1,"East Side Community School","Manhattan","M060",666,454,428,445,"85.2%",-73.982555,40.729589,505,474,469,1448
-"01M509","86.0",1,"Marta Valle High School","Manhattan","M025",363,438,413,394,"35.6%",-73.985645,40.720581,505,474,469,1448
-"01M539","28.2",1,"New Explorations into Science, Technology and Math High School","Manhattan","M022",1735,657,601,601,"91.0%",-73.979308,40.718895,505,474,469,1448
-"01M696","35.0",1,"Bard High School Early College","Manhattan","M097",545,634,641,639,"70.8%",-73.975891,40.719029,505,474,469,1448
-"02M288","79.4",2,"Food and Finance High School","Manhattan","M535",427,428,435,421,"52.0%",-73.992953,40.765184,459,447,440,1346
-"02M294","68.7",2,"Essex Street Academy","Manhattan","M445",358,395,411,387,"78.9%",-73.989337,40.716778,459,447,440,1346
-"02M296","90.1",2,"High School of Hospitality Management","Manhattan","M535",424,451,433,424,"56.2%",-73.992953,40.765184,459,447,440,1346
-"02M298","80.9",2,"Pace High School","Manhattan","M131",423,430,435,427,"87.8%",-73.993092,40.716553,459,447,440,1346
-"02M300","80.9",2,"Urban Assembly School of Design and Construction","Manhattan","M535",414,445,417,403,"60.6%",-73.992953,40.765184,459,447,440,1346
-"02M303","100.0",2,"Facing History School","Manhattan","M535",406,366,356,371,"57.3%",-73.992953,40.765184,459,447,440,1346
-"02M305","82.4",2,"Urban Assembly Academy of Government and Law","Manhattan","M445",329,389,395,381,"80.8%",-73.989337,40.716778,459,447,440,1346
-"02M308","100.0",2,"Lower Manhattan Arts Academy","Manhattan","M445",383,418,428,415,"65.1%",-73.989337,40.716778,459,447,440,1346
-"02M316","81.5",2,"Urban Assembly School of Business for Young Women","Manhattan","M282",405,418,420,417,"75.0%",-74.013302,40.70568,459,447,440,1346
-"02M374","72.6",2,"Gramercy Arts High School","Manhattan","M460",530,446,459,455,"79.6%",-73.987659,40.735494,459,447,440,1346
-"02M376","45.9",2,"NYC iSchool","Manhattan","M615",442,518,515,503,"96.0%",-74.004625,40.7244,459,447,440,1346
-"02M392","77.4",2,"Manhattan Business Academy","Manhattan","M440",438,410,407,399,"69.7%",-74.002136,40.742867,459,447,440,1346
-"02M393","100.0",2,"Business of Sports School","Manhattan","M625",449,395,386,371,"67.5%",-73.990593,40.76337,459,447,440,1346
-"02M399","85.8",2,"High School for Language and Diplomacy","Manhattan","M460",437,446,433,411,"70.2%",-73.987659,40.735494,459,447,440,1346
-"02M400","74.4",2,"High School for Environmental Studies","Manhattan","M834",1301,469,454,444,"74.0%",-73.987531,40.767791,459,447,440,1346
-"02M407","18.9",2,"Institute for Collaborative Education","Manhattan","M475",482,501,550,541,"78.6%",-73.983031,40.732447,459,447,440,1346
-"02M408","33.4",2,"Professional Performing Arts High School","Manhattan","M017",536,496,520,516,"72.2%",-73.988019,40.761448,459,447,440,1346
-"02M411","59.6",2,"Baruch College Campus High School","Manhattan","M874",451,592,526,531,"94.3%",-73.986521,40.74193,459,447,440,1346
-"02M412","35.8",2,"NYC Lab School for Collaborative Studies","Manhattan","M070",587,595,550,555,"79.8%",-74.002198,40.742129,459,447,440,1346
-"02M413","37.7",2,"School of the Future High School","Manhattan","M660",713,534,533,522,"89.9%",-73.985479,40.738952,459,447,440,1346
-"02M414","72.8",2,"NYC Museum School","Manhattan","M070",471,560,530,522,"90.0%",-74.002198,40.742129,459,447,440,1346
-"02M416","24.6",2,"Eleanor Roosevelt High School","Manhattan","M855",541,641,617,631,"86.0%",-73.953608,40.770187,459,447,440,1346
-"02M418","43.6",2,"Millennium High School","Manhattan","M824",659,577,560,567,"94.0%",-74.011556,40.704487,459,447,440,1346
-"02M419","88.5",2,"Landmark High School","Manhattan","M440",355,386,386,386,"30.6%",-74.002136,40.742867,459,447,440,1346
-"02M420","100.0",2,"High School for Health Professions and Human Services","Manhattan","M475",1664,452,445,430,"86.9%",-73.983031,40.732447,459,447,440,1346
-"02M425","75.8",2,"Leadership and Public Service High School","Manhattan","M894",699,390,396,392,"54.9%",-74.012332,40.70873,459,447,440,1346
-"02M427","85.3",2,"Manhattan Academy for Arts and Language","Manhattan","M620",334,350,334,321,"46.1%",-73.981241,40.746176,459,447,440,1346
-"02M437","81.2",2,"Hudson High School of Learning Technologies","Manhattan","M440",483,378,407,388,"71.8%",-74.002136,40.742867,459,447,440,1346
-"02M438","87.8",2,"International High School at Union Square","Manhattan","M460",353,403,330,316,"53.2%",-73.987659,40.735494,459,447,440,1346
-"02M439","75.9",2,"Manhattan Village Academy","Manhattan","M873",415,522,479,510,"98.8%",-73.991512,40.741497,459,447,440,1346
-"02M449","75.5",2,"Vanguard High School","Manhattan","M480",486,431,409,396,"63.8%",-73.960059,40.765359,459,447,440,1346
-"02M459","100.0",2,"Manhattan International High School","Manhattan","M480",343,438,358,382,"58.6%",-73.960059,40.765359,459,447,440,1346
-"02M475","45.5",2,"Stuyvesant High School","Manhattan","M477",3296,754,697,693,"97.4%",-74.013748,40.71759,459,447,440,1346
-"02M489","79.4",2,"High School of Economics and Finance","Manhattan","M833",796,469,442,447,"66.8%",-74.012022,40.709196,459,447,440,1346
-"02M500","89.4",2,"Unity Center for Urban Technologies","Manhattan","M620",284,375,385,387,"62.8%",-73.981241,40.746176,459,447,440,1346
-"02M507","100.0",2,"Urban Assembly Gateway School for Technology","Manhattan","M625",472,445,432,415,"78.4%",-73.990593,40.76337,459,447,440,1346
-"02M519","54.5",2,"Talent Unlimited High School","Manhattan","M480",506,485,498,496,"89.3%",-73.960059,40.765359,459,447,440,1346
-"02M520","72.9",2,"Murry Bergtraum High School for Business Careers","Manhattan","M520",971,418,415,398,"44.3%",-74.000851,40.711442,459,447,440,1346
-"02M529","78.3",2,"Jacqueline Kennedy Onassis High School","Manhattan","M486",676,418,422,415,"53.8%",-73.983078,40.757729,459,447,440,1346
-"02M531","79.7",2,"Repertory Company High School for Theatre Arts","Manhattan","M896",246,425,451,458,"89.5%",-73.984382,40.755843,459,447,440,1346
-"02M542","100.0",2,"Manhattan Bridges High School","Manhattan","M535",529,409,360,347,"84.4%",-73.992953,40.765184,459,447,440,1346
-"02M543","100.0",2,"New Design High School","Manhattan","M445",441,381,396,372,"73.7%",-73.989337,40.716778,459,447,440,1346
-"02M545","88.7",2,"High School for Dual Language and Asian Studies","Manhattan","M445",416,613,453,463,"95.9%",-73.989337,40.716778,459,447,440,1346
-"02M551","63.3",2,"Urban Assembly New York Harbor School","Manhattan","M877",447,446,453,428,"78.8%",-74.011631,40.701695,459,447,440,1346
-"02M580","85.3",2,"Richard R. Green High School of Teaching","Manhattan","M282",566,411,415,409,"60.0%",-74.013302,40.70568,459,447,440,1346
-"02M600","82.4",2,"High School of Fashion Industries","Manhattan","M600",1770,433,442,427,"80.6%",-73.996074,40.745156,459,447,440,1346
-"02M615","87.9",2,"Chelsea Career and Technical Education High School","Manhattan","M615",439,439,418,400,"80.4%",-74.004625,40.7244,459,447,440,1346
-"02M630","69.2",2,"Art and Design High School","Manhattan","M488",1476,455,475,458,"70.1%",-73.967203,40.75924,459,447,440,1346
-"02M655","75.0",2,"Life Sciences Secondary School","Manhattan","M645",697,435,440,425,"63.0%",-73.945637,40.783625,459,447,440,1346
-"03M299","81.4",3,"High School for Arts, Imagination, and Inquiry","Manhattan","M490",447,375,389,380,"58.8%",-73.984753,40.774351,452,451,447,1350
-"03M307","75.7",3,"Urban Assembly School for Media Studies","Manhattan","M490",412,392,419,396,"49.5%",-73.984753,40.774351,452,451,447,1350
-"03M402","91.2",3,"Urban Assembly School for Green Careers","Manhattan","M470",353,393,371,378,"60.0%",-73.974614,40.785803,452,451,447,1350
-"03M403","86.5",3,"Global Learning Collaborative","Manhattan","M470",496,406,407,413,"59.4%",-73.974614,40.785803,452,451,447,1350
-"03M415","100.0",3,"Wadleigh Secondary School for the Performing and Visual Arts","Manhattan","M088",445,381,401,392,"52.6%",-73.954142,40.802207,452,451,447,1350
-"03M417","50.6",3,"Frank McCourt High School","Manhattan","M470",387,489,491,500,"89.1%",-73.974614,40.785803,452,451,447,1350
-"03M479","28.2",3,"Beacon High School","Manhattan","M837",1285,583,586,595,"82.8%",-73.987479,40.772007,452,451,447,1350
-"03M485","30.8",3,"Fiorello H. LaGuardia High School of Music and Art and Performing Arts","Manhattan","M485",2635,592,592,597,"88.5%",-73.985273,40.773629,452,451,447,1350
-"03M492","90.4",3,"High School for Law, Advocacy, and Community Justice","Manhattan","M490",510,415,417,402,"60.5%",-73.984753,40.774351,452,451,447,1350
-"03M494","91.8",3,"High School of Arts and Technology","Manhattan","M490",594,421,428,406,"44.4%",-73.984753,40.774351,452,451,447,1350
-"03M541","62.3",3,"Manhattan / Hunter Science High School","Manhattan","M490",451,581,531,535,"97.2%",-73.984753,40.774351,452,451,447,1350
-"03M860","73.2",3,"Frederick Douglass Academy II Secondary School","Manhattan","M088",411,390,384,373,"63.8%",-73.954142,40.802207,452,451,447,1350
-"04M409","100.0",4,"Coalition School for Social Change","Manhattan","M045",283,344,368,367,"40.5%",-73.933319,40.798884,446,436,430,1312
-"04M435","81.0",4,"Manhattan Center for Science and Mathematics","Manhattan","M435",1603,556,505,495,"87.6%",-73.934028,40.793856,446,436,430,1312
-"04M495","87.9",4,"Park East High School","Manhattan","M495",413,429,433,435,"89.6%",-73.944356,40.790543,446,436,430,1312
-"04M555","89.7",4,"Central Park East High School","Manhattan","M013",466,483,468,439,"97.9%",-73.949381,40.793763,446,436,430,1312
-"04M610","81.0",4,"Young Women's Leadership School","Manhattan","M895",480,478,465,472,"100.0%",-73.947428,40.792741,446,436,430,1312
-"04M680","87.3",4,"Heritage School","Manhattan","M107",322,385,380,370,"56.8%",-73.946558,40.791881,446,436,430,1312
-"05M304","90.7",5,"Mott Hall High School","Manhattan","M136",428,416,445,440,"36.9%",-73.947712,40.817372,483,471,466,1420
-"05M362","55.8",5,"Columbia Secondary School","Manhattan","M125",659,583,561,546,"88.2%",-73.955809,40.810431,483,471,466,1420
-"05M362","55.8",5,"Columbia Secondary School","Manhattan","M125",659,583,561,546,"88.2%",-73.955997,40.810511,483,471,466,1420
-"05M367","79.5",5,"Academy for Social Action (College Board)","Manhattan","M043",234,357,349,365,"54.0%",-73.955325,40.815256,483,471,466,1420
-"05M369","85.2",5,"Urban Assembly School for the Performing Arts","Manhattan","M043",358,379,399,388,"76.7%",-73.955325,40.815256,483,471,466,1420
-"05M499","73.1",5,"Frederick Douglass Academy","Manhattan","M010",1428,463,452,450,"65.1%",-73.93712,40.824319,483,471,466,1420
-"05M670","77.4",5,"Thurgood Marshall Academy for Learning and Social Change","Manhattan","M970",561,402,394,400,"84.7%",-73.944202,40.815509,483,471,466,1420
-"05M692","51.1",5,"High School for Mathematics, Science, and Engineering at City College","Manhattan","M812",470,683,610,596,"92.6%",-73.949097,40.82074,483,471,466,1420
-"06M293","78.0",6,"City College Academy of the Arts","Manhattan","M218",587,495,445,450,"95.3%",-73.930672,40.86079,413,406,404,1223
-"06M346","90.1",6,"Community Health Academy of the Heights","Manhattan","M814",629,387,389,385,"55.3%",-73.942072,40.833687,413,406,404,1223
-"06M348","100.0",6,"Washington Heights Expeditionary Learning School","Manhattan","M143",705,443,423,434,"87.0%",-73.930948,40.848908,413,406,404,1223
-"06M462","97.8",6,"College Academy","Manhattan","M465",491,367,377,363,"41.9%",-73.927051,40.855954,413,406,404,1223
-"06M463","90.8",6,"High School for Media and Communications","Manhattan","M465",479,378,381,383,"33.0%",-73.927051,40.855954,413,406,404,1223
-"06M467","78.4",6,"High School for Law and Public Service","Manhattan","M465",671,401,394,381,"44.1%",-73.927051,40.855954,413,406,404,1223
-"06M468","98.3",6,"High School for Health Careers and Sciences","Manhattan","M465",605,374,385,389,"56.2%",-73.927051,40.855954,413,406,404,1223
-"06M540","86.9",6,"A. Philip Randolph Campus High School","Manhattan","M540",1354,459,453,447,"74.0%",-73.950356,40.818188,413,406,404,1223
-"07X221","96.8",7,"South Bronx Preparatory (College Board)","Bronx","X149",654,419,414,394,"76.9%",-73.920782,40.813983,395,393,382,1170
-"07X334","96.5",7,"International Community High School","Bronx","X139",463,345,338,312,"58.2%",-73.917792,40.81004,395,393,382,1170
-"07X427","90.7",7,"Community School for Social Justice","Bronx","X884",324,380,382,362,"38.4%",-73.930386,40.815938,395,393,382,1170
-"07X473","95.6",7,"Mott Haven Village Preparatory High School","Bronx","X470",364,377,373,369,"44.9%",-73.91103,40.81825,395,393,382,1170
-"07X495","90.1",7,"University Heights Secondary School","Bronx","X470",486,420,446,424,"87.8%",-73.91103,40.81825,395,393,382,1170
-"07X500","78.3",7,"Hostos-Lincoln Academy of Science","Bronx","X162",544,463,451,435,"80.0%",-73.91224,40.815498,395,393,382,1170
-"07X527","90.3",7,"Bronx Leadership Academy II High School","Bronx","X790",495,384,355,361,"61.3%",-73.923829,40.82231,395,393,382,1170
-"07X547","85.7",7,"New Explorers High School","Bronx","X790",475,390,398,376,"30.4%",-73.923829,40.82231,395,393,382,1170
-"07X548","89.3",7,"Urban Assembly School for Careers in Sports","Bronx","X790",587,402,405,395,"55.5%",-73.923829,40.82231,395,393,382,1170
-"07X551","93.6",7,"Urban Assembly Bronx Academy of Letters","Bronx","X183",591,398,400,405,"57.8%",-73.925313,40.813641,395,393,382,1170
-"07X600","90.7",7,"Alfred E. Smith Career and Technical Education High School","Bronx","X600",375,390,373,371,"29.8%",-73.919867,40.818232,395,393,382,1170
-"07X670","91.3",7,"Health Opportunities High School","Bronx","X884",554,374,386,382,"57.9%",-73.930386,40.815938,395,393,382,1170
-"08X269","77.0",8,"Bronx Studio School for Writers and Artists","Bronx","X392",565,417,412,403,"71.6%",-73.893128,40.820579,398,403,393,1194
-"08X282","89.9",8,"Women's Academy of Excellence","Bronx","X174",345,386,390,389,"45.2%",-73.85658,40.814833,398,403,393,1194
-"08X293","100.0",8,"Renaissance High School for Musical Theater and Technology","Bronx","X405",444,390,411,393,"52.3%",-73.838545,40.840702,398,403,393,1194
-"08X305","100.0",8,"Pablo Neruda Academy","Bronx","X450",315,394,384,383,"44.2%",-73.856167,40.82229,398,403,393,1194
-"08X312","100.0",8,"Millennium Art Academy","Bronx","X450",487,396,413,395,"39.2%",-73.856167,40.82229,398,403,393,1194
-"08X332","89.0",8,"Holcombe L. Rucker School of Community Research","Bronx","X039",236,376,372,369,"59.0%",-73.898212,40.817512,398,403,393,1194
-"08X367","84.8",8,"Archimedes Academy for Math, Science, and Technology Applications","Bronx","X174",637,418,430,403,"51.2%",-73.85658,40.814833,398,403,393,1194
-"08X376","67.1",8,"Antonia Pantoja Preparatory Academy (College Board)","Bronx","X450",450,435,415,423,"44.9%",-73.856167,40.82229,398,403,393,1194
-"08X405","72.6",8,"Herbert H. Lehman High School","Bronx","X405",1535,426,419,407,"28.9%",-73.838545,40.840702,398,403,393,1194
-"08X452","100.0",8,"Bronx Guild","Bronx","X450",326,365,393,357,"41.3%",-73.856167,40.82229,398,403,393,1194
-"08X519","85.3",8,"Felisa Rincon de Gautier Institute for Law and Public Policy","Bronx","X972",307,389,408,413,"31.3%",-73.881479,40.821146,398,403,393,1194
-"08X530","91.7",8,"Banana Kelly High School","Bronx","X039",325,378,391,378,"25.7%",-73.898212,40.817512,398,403,393,1194
-"09X227","100.0",9,"Bronx Collegiate Academy","Bronx","X410",382,395,401,382,"45.5%",-73.91091,40.840422,400,392,392,1184
-"09X231","81.4",9,"Eagle Academy for Young Men","Bronx","X465",608,398,410,397,"65.7%",-73.89705,40.844958,400,392,392,1184
-"09X241","93.4",9,"Urban Assembly School for Applied Math and Science","Bronx","X970",619,445,418,422,"87.8%",-73.901316,40.839244,400,392,392,1184
-"09X250","94.2",9,"Eximius College Preparatory Academy (College Board)","Bronx","X002",449,400,391,397,"78.2%",-73.902499,40.833665,400,392,392,1184
-"09X252","90.0",9,"Mott Hall Bronx High School","Bronx","X970",402,417,399,398,"46.2%",-73.901316,40.839244,400,392,392,1184
-"09X260","83.4",9,"Bronx Center for Science and Mathematics","Bronx","X002",457,513,468,485,"73.9%",-73.902499,40.833665,400,392,392,1184
-"09X263","88.0",9,"Validus Preparatory Academy: An Expeditionary Learning School","Bronx","X970",375,382,375,384,"59.2%",-73.901316,40.839244,400,392,392,1184
-"09X297","92.6",9,"Morris Academy for Collaborative Studies","Bronx","X400",471,407,389,386,"44.8%",-73.904473,40.827642,400,392,392,1184
-"09X324","93.6",9,"Bronx Early College Academy for Teaching and Learning","Bronx","X166",503,424,413,409,"93.3%",-73.917668,40.828696,400,392,392,1184
-"09X329","100.0",9,"DreamYard Preparatory School","Bronx","X410",336,385,385,388,"51.1%",-73.91091,40.840422,400,392,392,1184
-"09X365","97.8",9,"Academy for Language and Technology","Bronx","X082",322,371,334,348,"78.9%",-73.91607,40.849623,400,392,392,1184
-"09X403","90.0",9,"Bronx International High School","Bronx","X400",409,355,330,320,"59.1%",-73.904473,40.827642,400,392,392,1184
-"09X404","91.7",9,"School for Excellence","Bronx","X400",421,377,385,383,"38.4%",-73.904473,40.827642,400,392,392,1184
-"09X412","100.0",9,"Bronx High School of Business","Bronx","X410",339,365,360,346,"33.3%",-73.91091,40.840422,400,392,392,1184
-"09X413","100.0",9,"Bronx High School for Medical Science","Bronx","X410",472,431,421,426,"83.9%",-73.91091,40.840422,400,392,392,1184
-"09X505","92.8",9,"Bronx School for Law, Government, and Justice","Bronx","X460",778,403,409,415,"63.8%",-73.918681,40.827607,400,392,392,1184
-"09X517","86.4",9,"Frederick Douglass Academy III Secondary School","Bronx","X148",427,387,386,386,"50.5%",-73.90449,40.833511,400,392,392,1184
-"09X525","88.8",9,"Bronx Leadership Academy High School","Bronx","X876",686,375,372,374,"49.1%",-73.903236,40.843588,400,392,392,1184
-"09X543","91.9",9,"High School for Violin and Dance","Bronx","X400",384,363,401,396,"31.3%",-73.904473,40.827642,400,392,392,1184
-"10X141","54.7",10,"Riverdale/Kingsbridge Academy","Bronx","X141",1381,496,485,476,"69.4%",-73.913486,40.888338,434,427,422,1283
-"10X213","89.4",10,"Bronx Engineering and Technology Academy","Bronx","X475",417,394,406,391,"59.6%",-73.912256,40.877105,434,427,422,1283
-"10X225","100.0",10,"Theatre Arts Production Company School","Bronx","X137",632,402,421,410,"77.7%",-73.896717,40.854493,434,427,422,1283
-"10X237","100.0",10,"Marie Curie School for Medicine, Nursing, and Health Professions","Bronx","X143",583,423,420,425,"68.6%",-73.901099,40.875911,434,427,422,1283
-"10X243","96.5",10,"West Bronx Academy for the Future","Bronx","X435",599,404,383,378,"57.3%",-73.888267,40.860043,434,427,422,1283
-"10X268","96.1",10,"Kingsbridge International High School","Bronx","X430",461,366,311,310,"50.7%",-73.898309,40.870293,434,427,422,1283
-"10X284","85.2",10,"Bronx School of Law and Finance","Bronx","X475",426,384,394,366,"48.3%",-73.912256,40.877105,434,427,422,1283
-"10X342","98.8",10,"International School for Liberal Arts","Bronx","X430",561,390,387,379,"19.2%",-73.898309,40.870293,434,427,422,1283
-"10X368","90.8",10,"In-Tech Academy","Bronx","X368",1022,426,419,404,"85.9%",-73.909896,40.879368,434,427,422,1283
-"10X374","88.3",10,"Knowledge and Power Preparatory Academy International High School (KAPPA)","Bronx","X435",487,408,417,404,"66.7%",-73.888267,40.860043,434,427,422,1283
-"10X433","89.7",10,"High School for Teaching and the Professions","Bronx","X430",486,372,361,369,"46.5%",-73.898309,40.870293,434,427,422,1283
-"10X434","85.3",10,"Belmont Preparatory High School","Bronx","X435",416,413,408,402,"55.3%",-73.888267,40.860043,434,427,422,1283
-"10X437","88.3",10,"Fordham High School for the Arts","Bronx","X435",401,398,404,412,"56.2%",-73.888267,40.860043,434,427,422,1283
-"10X438","92.2",10,"Fordham Leadership Academy for Business and Technology","Bronx","X435",438,355,373,368,"44.3%",-73.888267,40.860043,434,427,422,1283
-"10X439","91.2",10,"Bronx High School for Law and Community Service","Bronx","X435",398,401,402,386,"64.8%",-73.888267,40.860043,434,427,422,1283
-"10X440","78.6",10,"DeWitt Clinton High School","Bronx","X440",2109,445,436,433,"31.8%",-73.88691,40.882178,434,427,422,1283
-"10X442","87.2",10,"Celia Cruz Bronx High School of Music","Bronx","X430",430,417,434,425,"75.6%",-73.898309,40.870293,434,427,422,1283
-"10X445","47.6",10,"Bronx High School of Science","Bronx","X445",3015,714,660,667,"97.0%",-73.89104,40.87759,434,427,422,1283
-"10X477","92.9",10,"Marble Hill High School for International Studies","Bronx","X475",449,451,417,423,"92.9%",-73.912256,40.877105,434,427,422,1283
-"10X546","85.5",10,"Bronx Theatre High School","Bronx","X475",428,382,384,390,"66.7%",-73.912256,40.877105,434,427,422,1283
-"10X549","83.8",10,"Discovery High School","Bronx","X430",530,432,396,395,"39.9%",-73.898309,40.870293,434,427,422,1283
-"10X696","28.2",10,"High School of American Studies at Lehman College","Bronx","X905",376,669,672,672,"91.8%",-73.895382,40.873938,434,427,422,1283
-"11X249","75.1",11,"Bronx Health Sciences High School","Bronx","X455",374,407,421,427,"87.1%",-73.833904,40.874091,403,408,398,1209
-"11X253","100.0",11,"Bronx High School for Writing and Communication Arts","Bronx","X425",389,380,437,425,"38.1%",-73.86197,40.875953,403,408,398,1209
-"11X265","100.0",11,"Bronx Lab School","Bronx","X425",471,407,416,401,"77.4%",-73.86197,40.875953,403,408,398,1209
-"11X270","72.8",11,"Academy for Scholarship and Entrepreneurship (College Board)","Bronx","X362",371,392,408,400,"63.4%",-73.852694,40.887831,403,408,398,1209
-"11X275","100.0",11,"High School of Computers and Technology","Bronx","X425",567,396,399,377,"65.6%",-73.86197,40.875953,403,408,398,1209
-"11X288","77.0",11,"Collegiate Institute for Math and Science","Bronx","X415",687,488,461,458,"79.8%",-73.861006,40.859665,403,408,398,1209
-"11X290","100.0",11,"Bronx Academy of Health Careers","Bronx","X425",465,386,380,391,"59.4%",-73.86197,40.875953,403,408,398,1209
-"11X299","86.6",11,"Astor Collegiate Academy","Bronx","X415",476,422,417,409,"57.9%",-73.861006,40.859665,403,408,398,1209
-"11X418","73.7",11,"Bronx High School for the Visual Arts","Bronx","X839",483,408,428,404,"32.5%",-73.865036,40.851405,403,408,398,1209
-"11X455","68.3",11,"Harry S. Truman High School","Bronx","X455",2058,400,401,391,"41.5%",-73.833904,40.874091,403,408,398,1209
-"11X508","82.7",11,"Bronxdale High School","Bronx","X415",427,418,432,436,"72.5%",-73.861006,40.859665,403,408,398,1209
-"11X509","98.0",11,"High School of Language and Innovation","Bronx","X415",354,356,340,320,"72.7%",-73.861006,40.859665,403,408,398,1209
-"11X513","97.5",11,"New World High School","Bronx","X362",408,407,363,358,"93.0%",-73.852694,40.887831,403,408,398,1209
-"11X514","78.7",11,"Bronxwood Preparatory Academy","Bronx","X362",423,392,408,392,"43.3%",-73.852694,40.887831,403,408,398,1209
-"11X542","75.1",11,"Pelham Preparatory Academy","Bronx","X415",489,420,433,425,"77.0%",-73.861006,40.859665,403,408,398,1209
-"11X544","100.0",11,"High School for Contemporary Arts","Bronx","X425",493,367,381,361,"41.0%",-73.86197,40.875953,403,408,398,1209
-"11X545","100.0",11,"Bronx Aerospace High School","Bronx","X425",431,403,410,393,"50.5%",-73.86197,40.875953,403,408,398,1209
-"12X242","87.4",12,"Mott Hall V","Bronx","X423",669,430,422,414,"77.5%",-73.877785,40.831416,383,382,375,1140
-"12X248","92.3",12,"Metropolitan High School","Bronx","X099",326,387,388,386,"65.9%",-73.897612,40.827315,383,382,375,1140
-"12X251","92.7",12,"Explorations Academy","Bronx","X098",358,377,372,365,"43.0%",-73.890458,40.8359,383,382,375,1140
-"12X267","94.1",12,"Bronx Latin","Bronx","X158",546,394,381,363,"81.0%",-73.900105,40.827743,383,382,375,1140
-"12X271","91.7",12,"East Bronx Academy for the Future","Bronx","X973",618,418,406,408,"41.1%",-73.888361,40.836356,383,382,375,1140
-"12X372","100.0",12,"Urban Assembly School for Wildlife Conservation","Bronx","X067",571,393,397,379,"71.1%",-73.884788,40.843945,383,382,375,1140
-"12X388","99.5",12,"Pan American International High School at Monroe","Bronx","X420",428,317,315,292,"65.6%",-73.878912,40.831601,383,382,375,1140
-"12X478","84.6",12,"Cinema School","Bronx","X423",338,430,449,448,"88.3%",-73.877785,40.831416,383,382,375,1140
-"12X479","87.1",12,"Bronx Career and College Preparatory High School","Bronx","X158",333,370,379,381,"40.7%",-73.900105,40.827743,383,382,375,1140
-"12X511","86.5",12,"Bronx Envision Academy","Bronx","X098",355,364,385,366,"76.5%",-73.890458,40.8359,383,382,375,1140
-"12X521","90.6",12,"Metropolitan Soundview High School","Bronx","X420",416,444,428,422,"52.0%",-73.878912,40.831601,383,382,375,1140
-"12X550","98.3",12,"High School of World Cultures","Bronx","X420",410,356,359,347,"38.2%",-73.878912,40.831601,383,382,375,1140
-"12X682","100.0",12,"Fannie Lou Hamer Freedom High School","Bronx","X878",470,345,347,339,"75.0%",-73.88626,40.83087,383,382,375,1140
-"12X684","86.4",12,"Wings Academy","Bronx","X879",501,379,372,373,"49.2%",-73.875366,40.841794,383,382,375,1140
-"12X692","92.6",12,"Monroe Academy for Visual Arts and Design","Bronx","X420",445,361,354,351,"46.8%",-73.878912,40.831601,383,382,375,1140
-"13K265","81.0",13,"Dr. Susan S. McKinney Secondary School of the Arts","Brooklyn","K265",421,332,346,350,"55.1%",-73.97578,40.696324,437,426,415,1278
-"13K350","78.3",13,"Urban Assembly High School of Music and Art","Brooklyn","K805",387,372,372,361,"55.1%",-73.985016,40.697339,437,426,415,1278
-"13K412","81.4",13,"Brooklyn Community High School of Communication, Arts, and Media","Brooklyn","K117",404,358,386,380,"51.7%",-73.958794,40.692642,437,426,415,1278
-"13K419","83.3",13,"Science Skills Center High School for Science, Technology, and the Creative Arts","Brooklyn","K805",528,399,397,386,"65.9%",-73.985016,40.697339,437,426,415,1278
-"13K430","65.9",13,"Brooklyn Technical High School","Brooklyn","K430",5447,682,608,606,"95.5%",-73.976905,40.688834,437,426,415,1278
-"13K439","100.0",13,"Brooklyn International High School","Brooklyn","K805",345,432,334,333,"92.7%",-73.985016,40.697339,437,426,415,1278
-"13K483","79.2",13,"Urban Assembly School for Law and Justice","Brooklyn","K313",448,446,443,430,"87.6%",-73.988853,40.694682,437,426,415,1278
-"13K499","85.7",13,"ACORN Community High School","Brooklyn","K909",504,379,395,385,"61.3%",-73.962105,40.678488,437,426,415,1278
-"13K527","84.3",13,"Urban Assembly Institute of Math and Science for Young Women","Brooklyn","K313",470,397,415,407,"82.4%",-73.988853,40.694682,437,426,415,1278
-"13K595","62.1",13,"Bedford Academy High School","Brooklyn","K994",364,505,464,456,"96.2%",-73.954302,40.68538,437,426,415,1278
-"13K605","83.3",13,"George Westinghouse Career and Technical Education High School","Brooklyn","K580",634,394,422,400,"45.3%",-73.986015,40.694926,437,426,415,1278
-"13K670","51.7",13,"Benjamin Banneker Academy","Brooklyn","K914",916,479,484,472,"85.5%",-73.969243,40.695332,437,426,415,1278
-"13K674","73.6",13,"City Polytechnic High School of Engineering, Architecture, and Technology","Brooklyn","K580",458,503,477,427,"18.5%",-73.986015,40.694926,437,426,415,1278
-"14K071","100.0",14,"Juan Morel Campos Secondary School","Brooklyn","K071",692,366,356,353,"56.3%",-73.953146,40.703624,411,413,403,1227
-"14K449","69.1",14,"Brooklyn Latin School","Brooklyn","K049",676,625,588,591,"97.5%",-73.943641,40.709941,411,413,403,1227
-"14K454","83.0",14,"Green School: An Academy for Environmental Careers","Brooklyn","K049",276,384,398,399,"41.1%",-73.943641,40.709941,411,413,403,1227
-"14K474","81.5",14,"PROGRESS High School for Professional Careers","Brooklyn","K450",1098,380,377,384,"44.9%",-73.939722,40.712184,411,413,403,1227
-"14K477","87.8",14,"School for Legal Studies","Brooklyn","K450",598,393,390,394,"34.8%",-73.939722,40.712184,411,413,403,1227
-"14K478","83.2",14,"High School for Enterprise, Business, and Technology","Brooklyn","K450",1001,463,446,425,"54.5%",-73.939722,40.712184,411,413,403,1227
-"14K488","79.6",14,"Brooklyn Preparatory High School","Brooklyn","K650",494,391,406,391,"74.5%",-73.954754,40.715073,411,413,403,1227
-"14K558","78.5",14,"Williamsburg High School for Architecture and Design","Brooklyn","K650",595,415,424,407,"60.1%",-73.954754,40.715073,411,413,403,1227
-"14K561","81.1",14,"Williamsburg Preparatory School","Brooklyn","K650",682,443,440,430,"87.8%",-73.954754,40.715073,411,413,403,1227
-"14K586","87.9",14,"Lyons Community School","Brooklyn","K049",520,374,376,357,"56.3%",-73.943641,40.709941,411,413,403,1227
-"14K610","74.2",14,"Automotive High School","Brooklyn","K610",383,367,381,328,"31.6%",-73.953281,40.721981,411,413,403,1227
-"14K632","89.4",14,"Frances Perkins Academy","Brooklyn","K610",142,399,413,400,"46.3%",-73.953281,40.721981,411,413,403,1227
-"14K685","82.9",14,"El Puente Academy for Peace and Justice","Brooklyn","K778",245,344,380,379,"62.5%",-73.955611,40.705898,411,413,403,1227
-"15K429","86.0",15,"Brooklyn School for Global Studies","Brooklyn","K293",250,393,381,402,"61.8%",-73.993351,40.685419,432,429,425,1286
-"15K448","74.7",15,"Brooklyn Secondary School for Collaborative Studies","Brooklyn","K142",685,401,411,404,"84.1%",-74.001377,40.68007,432,429,425,1286
-"15K462","81.5",15,"Secondary School for Law","Brooklyn","K460",351,420,424,414,"74.7%",-73.979287,40.669629,432,429,425,1286
-"15K463","80.4",15,"Secondary School for Journalism","Brooklyn","K460",285,408,435,415,"58.8%",-73.979287,40.669629,432,429,425,1286
-"15K464","78.5",15,"Park Slope Collegiate","Brooklyn","K460",423,405,377,395,"59.6%",-73.979287,40.669629,432,429,425,1286
-"15K497","74.0",15,"School for International Studies","Brooklyn","K293",466,417,406,394,"65.1%",-73.993351,40.685419,432,429,425,1286
-"15K519","88.6",15,"Cobble Hill School of American Studies","Brooklyn","K804",596,416,420,402,"55.3%",-73.990993,40.684524,432,429,425,1286
-"15K656","73.3",15,"Brooklyn High School of the Arts","Brooklyn","K655",870,439,441,436,"80.6%",-73.98027,40.683559,432,429,425,1286
-"15K667","79.7",15,"Sunset Park High School","Brooklyn","K564",1333,398,380,381,"61.6%",-74.005197,40.65571,432,429,425,1286
-"15K684","42.2",15,"Millennium Brooklyn High School","Brooklyn","K460",566,553,551,539,"79.6%",-73.979287,40.669629,432,429,425,1286
-"16K455","73.9",16,"Boys and Girls High School","Brooklyn","K455",648,399,392,394,"35.6%",-73.932407,40.67944,392,393,388,1173
-"16K498","84.2",16,"Brooklyn High School for Law and Technology","Brooklyn","K987",596,395,401,383,"62.7%",-73.920906,40.688831,392,393,388,1173
-"16K594","100.0",16,"Gotham Professional Arts Academy","Brooklyn","K040",226,377,396,386,"50.7%",-73.922264,40.680463,392,393,388,1173
-"16K688","100.0",16,"Brooklyn Academy of Global Finance","Brooklyn","K057",152,395,382,391,"45.9%",-73.933697,40.691274,392,393,388,1173
-"17K122","68.9",17,"Pathways in Technology Early College High School","Brooklyn","K625",438,446,442,410,"69.4%",-73.938843,40.675612,410,409,399,1218
-"17K382","81.8",17,"Academy for College Preparation and Career Exploration (College Board)","Brooklyn","K465",505,386,397,393,"57.3%",-73.95855,40.649787,410,409,399,1218
-"17K408","93.7",17,"Academy of Hospitality and Tourism","Brooklyn","K465",285,374,385,375,"62.0%",-73.95855,40.649787,410,409,399,1218
-"17K524","100.0",17,"International High School at Prospect Heights","Brooklyn","K440",414,344,302,300,"81.7%",-73.961695,40.670349,410,409,399,1218
-"17K528","86.6",17,"High School for Global Citizenship","Brooklyn","K440",246,377,386,375,"61.9%",-73.961695,40.670349,410,409,399,1218
-"17K531","86.3",17,"School for Human Rights","Brooklyn","K470",424,398,411,400,"60.8%",-73.942458,40.658893,410,409,399,1218
-"17K533","82.4",17,"School for Democracy and Leadership","Brooklyn","K470",319,386,385,390,"53.5%",-73.942458,40.658893,410,409,399,1218
-"17K537","84.6",17,"High School for Youth and Community Development at Erasmus","Brooklyn","K465",384,360,382,359,"63.2%",-73.95855,40.649787,410,409,399,1218
-"17K539","75.5",17,"High School for Service and Learning at Erasmus","Brooklyn","K465",445,377,382,356,"45.5%",-73.95855,40.649787,410,409,399,1218
-"17K543","79.8",17,"Science, Technology, and Research Early College High School at Erasmus","Brooklyn","K465",516,496,491,484,"91.5%",-73.95855,40.649787,410,409,399,1218
-"17K546","84.1",17,"High School for Public Service: Heroes of Tomorrow","Brooklyn","K470",454,468,454,464,"95.4%",-73.942458,40.658893,410,409,399,1218
-"17K547","83.2",17,"Brooklyn Academy of Science and the Environment","Brooklyn","K440",453,419,411,416,"58.5%",-73.961695,40.670349,410,409,399,1218
-"17K548","85.2",17,"Brooklyn School for Music and Theatre","Brooklyn","K440",386,382,393,377,"72.2%",-73.961695,40.670349,410,409,399,1218
-"17K590","72.8",17,"Medgar Evers College Preparatory School","Brooklyn","K590",1271,525,500,481,"89.0%",-73.951167,40.667195,410,409,399,1218
-"17K600","78.2",17,"Clara Barton High School","Brooklyn","K600",1499,408,424,407,"55.0%",-73.961962,40.669567,410,409,399,1218
-"17K751","89.3",17,"Academy for Health Careers","Brooklyn","K625",373,406,405,396,"48.1%",-73.938843,40.675612,410,409,399,1218
-"18K563","76.7",18,"It Takes a Village Academy","Brooklyn","K415",566,364,374,361,"62.2%",-73.922171,40.648657,381,398,390,1169
-"18K566","78.3",18,"Brooklyn Generation School","Brooklyn","K515",286,392,406,403,"50.0%",-73.916735,40.633285,381,398,390,1169
-"18K567","86.1",18,"Brooklyn Theatre Arts High School","Brooklyn","K515",395,379,393,373,"69.1%",-73.916735,40.633285,381,398,390,1169
-"18K569","75.1",18,"Kurt Hahn Expeditionary Learning School","Brooklyn","K415",341,378,394,388,"72.6%",-73.922171,40.648657,381,398,390,1169
-"18K576","70.4",18,"Victory Collegiate High School","Brooklyn","K515",331,386,408,402,"72.7%",-73.916735,40.633285,381,398,390,1169
-"18K589","83.2",18,"Arts and Media Preparatory Academy","Brooklyn","K232",279,370,383,374,"64.2%",-73.929076,40.65843,381,398,390,1169
-"18K617","76.6",18,"High School for Innovation in Advertising and Media","Brooklyn","K500",303,390,410,397,"59.1%",-73.898254,40.641474,381,398,390,1169
-"18K629","75.1",18,"Cultural Academy for the Arts and Sciences","Brooklyn","K415",353,382,395,384,"57.3%",-73.922171,40.648657,381,398,390,1169
-"18K633","92.6",18,"High School for Medical Professions","Brooklyn","K500",432,404,427,424,"60.2%",-73.898254,40.641474,381,398,390,1169
-"18K637","78.9",18,"Academy for Conservation and the Environment","Brooklyn","K515",308,381,397,390,"50.8%",-73.916735,40.633285,381,398,390,1169
-"18K642","74.8",18,"Urban Action Academy","Brooklyn","K500",309,362,396,393,"44.9%",-73.898254,40.641474,381,398,390,1169
-"19K404","77.0",19,"Academy for Young Writers","Brooklyn","K422",547,382,413,391,"81.2%",-73.874756,40.657459,378,380,370,1128
-"19K409","76.2",19,"East New York Family Academy","Brooklyn","K819",479,464,451,421,"66.7%",-73.886942,40.661072,378,380,370,1128
-"19K502","85.2",19,"FDNY High School for Fire and Life Safety","Brooklyn","K435",324,365,369,357,"47.7%",-73.894747,40.667456,378,380,370,1128
-"19K504","76.8",19,"High School for Civil Rights","Brooklyn","K435",319,391,373,376,"26.4%",-73.894747,40.667456,378,380,370,1128
-"19K507","92.4",19,"Performing Arts and Technology High School","Brooklyn","K435",406,375,393,394,"39.8%",-73.894747,40.667456,378,380,370,1128
-"19K510","83.1",19,"World Academy for Total Community Health High School","Brooklyn","K435",284,380,389,384,"40.9%",-73.894747,40.667456,378,380,370,1128
-"19K583","98.7",19,"Multicultural High School","Brooklyn","K420",229,319,323,284,"28.6%",-73.868328,40.691146,378,380,370,1128
-"19K615","76.0",19,"Transit Tech Career and Technical Education High School","Brooklyn","K615",1093,387,387,384,"37.2%",-73.87596,40.678276,378,380,370,1128
-"19K618","80.4",19,"Academy of Innovative Technology","Brooklyn","K420",413,395,376,359,"57.4%",-73.868328,40.691146,378,380,370,1128
-"19K639","86.8",19,"Brooklyn Lab School","Brooklyn","K420",334,383,376,370,"46.8%",-73.868328,40.691146,378,380,370,1128
-"19K659","89.4",19,"Cypress Hills Collegiate Preparatory School","Brooklyn","K420",330,365,370,362,"53.8%",-73.868328,40.691146,378,380,370,1128
-"19K660","87.4",19,"W. H. Maxwell Career and Technical Education High School","Brooklyn","K660",506,326,333,350,"38.5%",-73.89643,40.674135,378,380,370,1128
-"19K683","89.6",19,"School for Classics: An Academy of Thinkers, Writers, and Performers","Brooklyn","K218",308,387,391,383,"52.8%",-73.874208,40.670724,378,380,370,1128
-"20K445","76.8",20,"New Utrecht High School","Brooklyn","K445",3480,488,422,417,"63.2%",-74.003404,40.613262,482,428,427,1337
-"20K485","79.2",20,"High School of Telecommunication Arts and Technology","Brooklyn","K485",1329,475,440,445,"81.6%",-74.023849,40.637282,482,428,427,1337
-"20K490","70.2",20,"Fort Hamilton High School","Brooklyn","K490",4372,513,456,451,"68.7%",-74.040046,40.627835,482,428,427,1337
-"20K505","80.7",20,"Franklin Delano Roosevelt High School","Brooklyn","K505",3220,504,411,407,"54.0%",-73.981795,40.620446,482,428,427,1337
-"20K609","92.7",20,"Urban Assembly School for Criminal Justice","Brooklyn","K223",496,428,413,417,"83.6%",-73.981528,40.634875,482,428,427,1337
-"21K337","91.3",21,"International High School at Lafayette","Brooklyn","K400",358,424,343,337,"84.3%",-73.98577,40.594291,438,415,405,1258
-"21K344","100.0",21,"Rachel Carson High School for Coastal Studies","Brooklyn","K303",560,436,430,421,"68.4%",-73.973132,40.582533,438,415,405,1258
-"21K348","75.2",21,"High School of Sports Management","Brooklyn","K400",290,367,374,361,"56.2%",-73.98577,40.594291,438,415,405,1258
-"21K410","69.0",21,"Abraham Lincoln High School","Brooklyn","K410",2341,441,422,422,"54.9%",-73.967308,40.581681,438,415,405,1258
-"21K468","75.4",21,"Kingsborough Early College School","Brooklyn","K400",564,474,462,449,"65.8%",-73.98577,40.594291,438,415,405,1258
-"21K525","63.3",21,"Edward R. Murrow High School","Brooklyn","K525",3968,500,479,472,"75.2%",-73.959285,40.620525,438,415,405,1258
-"21K540","83.6",21,"John Dewey High School","Brooklyn","K540",2006,512,418,396,"62.7%",-73.981738,40.589268,438,415,405,1258
-"21K559","89.7",21,"Life Academy High School for Film and Music","Brooklyn","K400",271,369,379,378,"70.2%",-73.98577,40.594291,438,415,405,1258
-"21K572","77.1",21,"Expeditionary Learning School for Community Leaders","Brooklyn","K400",271,420,396,396,"75.0%",-73.98577,40.594291,438,415,405,1258
-"21K620","89.4",21,"William E. Grady Career and Technical Education High School","Brooklyn","K620",613,416,423,387,"31.4%",-73.963477,40.582585,438,415,405,1258
-"21K690","76.1",21,"Brooklyn Studio Secondary School","Brooklyn","K721",901,458,434,434,"67.8%",-73.994404,40.604879,438,415,405,1258
-"22K405","54.6",22,"Midwood High School","Brooklyn","K405",3787,550,514,516,"85.7%",-73.952929,40.633237,535,499,501,1535
-"22K425","63.1",22,"James Madison High School","Brooklyn","K425",3088,492,450,444,"69.0%",-73.948512,40.609912,535,499,501,1535
-"22K535","46.8",22,"Leon M. Goldstein High School for the Sciences","Brooklyn","K535",1081,563,534,543,"94.0%",-73.935952,40.580894,535,499,501,1535
-"22K555","73.4",15,"Brooklyn College Academy","Brooklyn","K917",605,502,495,493,"98.1%",-73.971736,40.649404,432,429,425,1286
-"23K493","85.0",23,"Brooklyn Collegiate (College Board)","Brooklyn","K055",353,394,395,399,"64.4%",-73.913273,40.674103,396,400,402,1198
-"23K514","82.8",23,"Frederick Douglass Academy VII High School","Brooklyn","K175",319,400,407,394,"65.4%",-73.911705,40.665878,396,400,402,1198
-"23K697","80.5",23,"Teachers Preparatory High School","Brooklyn","K175",390,394,399,412,"56.6%",-73.911705,40.665878,396,400,402,1198
-"24Q264","82.2",24,"Academy of Finance and Enterprise","Queens","Q735",478,489,456,459,"92.7%",-73.936635,40.745095,454,431,428,1313
-"24Q267","78.6",24,"High School of Applied Communication","Queens","Q735",421,435,437,441,"70.9%",-73.936635,40.745095,454,431,428,1313
-"24Q293","74.9",24,"Civic Leadership Academy","Queens","Q744",479,435,424,418,"68.9%",-73.870642,40.74373,454,431,428,1313
-"24Q296","90.5",24,"Pan American International High School","Queens","Q744",378,340,320,318,"31.9%",-73.870642,40.74373,454,431,428,1313
-"24Q299","44.6",24,"Bard High School Early College Queens","Queens","Q735",623,631,598,610,"94.1%",-73.936635,40.745095,454,431,428,1313
-"24Q455","73.0",24,"Newtown High School","Queens","Q455",1921,434,401,389,"39.1%",-73.874721,40.741122,454,431,428,1313
-"24Q485","71.5",24,"Grover Cleveland High School","Queens","Q485",1828,452,422,416,"38.9%",-73.908814,40.711033,454,431,428,1313
-"24Q520","100.0",24,"Middle College High School at LaGuardia Community College","Queens","Q520",514,377,389,377,"48.7%",-73.93364,40.744412,454,431,428,1313
-"24Q530","100.0",24,"International High School at LaGuardia Community College","Queens","Q520",509,425,367,365,"71.7%",-73.93364,40.744412,454,431,428,1313
-"24Q550","100.0",24,"High School for Arts and Business","Queens","Q456",870,413,405,393,"76.7%",-73.853178,40.737427,454,431,428,1313
-"24Q560","81.0",24,"Robert F. Wagner Jr. Secondary School for Arts and Technology","Queens","Q891",610,478,445,445,"71.1%",-73.936782,40.742839,454,431,428,1313
-"24Q585","69.5",24,"Maspeth High School","Queens","Q585",973,476,471,480,"90.0%",-73.887482,40.729939,454,431,428,1313
-"24Q600","83.9",24,"Queens Vocational and Technical High School","Queens","Q600",1553,467,436,432,"53.4%",-73.928219,40.742205,454,431,428,1313
-"24Q610","100.0",24,"Aviation Career and Technical Education High School","Queens","Q610",2168,511,464,456,"78.6%",-73.929076,40.743509,454,431,428,1313
-"25Q252","60.1",25,"Queens School of Inquiry","Queens","Q168",557,516,493,486,"88.2%",-73.810216,40.724458,507,457,458,1422
-"25Q263","94.5",25,"Flushing International High School","Queens","Q189",437,481,323,323,"67.7%",-73.820548,40.759844,507,457,458,1422
-"25Q281","84.8",25,"East-West School of International Studies","Queens","Q237",666,521,457,451,"89.4%",-73.822073,40.749545,507,457,458,1422
-"25Q285","50.0",25,"World Journalism Preparatory (College Board)","Queens","Q025",610,484,491,487,"89.2%",-73.790083,40.765133,507,457,458,1422
-"25Q425","75.2",25,"John Bowne High School","Queens","Q425",3667,467,422,425,"62.1%",-73.824944,40.738139,507,457,458,1422
-"25Q460","74.5",25,"Flushing High School","Queens","Q460",2186,444,407,405,"46.1%",-73.82789,40.765166,507,457,458,1422
-"25Q525","53.5",25,"Townsend Harris High School","Queens","Q515",1132,680,640,661,"97.1%",-73.821392,40.73439,507,457,458,1422
-"25Q670","80.6",25,"Robert F. Kennedy Community High School","Queens","Q707",701,460,426,423,"67.3%",-73.810697,40.725603,507,457,458,1422
-"26Q415","56.5",26,"Benjamin N. Cardozo High School","Queens","Q415",3505,563,505,510,"75.6%",-73.75599,40.752333,500,459,462,1421
-"26Q430","74.4",26,"Francis Lewis High School","Queens","Q430",4172,562,483,485,"80.7%",-73.79283,40.740724,500,459,462,1421
-"26Q435","71.6",26,"Martin Van Buren High School","Queens","Q435",1742,397,396,391,"40.0%",-73.738756,40.733066,500,459,462,1421
-"26Q495","74.4",26,"Bayside High School","Queens","Q405",3336,523,479,485,"76.7%",-73.780296,40.771755,500,459,462,1421
-"26Q566","63.7",26,"Queens High School of Teaching, Liberal Arts, and the Sciences","Queens","Q566",1120,453,434,439,"72.4%",-73.727535,40.746088,500,459,462,1421
-"27Q260","77.5",27,"Frederick Douglass Academy VI High School","Queens","Q465",409,410,418,407,"30.1%",-73.762795,40.60201,423,420,414,1257
-"27Q262","100.0",27,"Channel View School for Research","Queens","Q410",683,427,430,423,"76.6%",-73.822624,40.586066,423,420,414,1257
-"27Q302","77.4",27,"Queens High School for Information, Research, and Technology","Queens","Q465",381,372,362,352,"44.6%",-73.762795,40.60201,423,420,414,1257
-"27Q308","79.2",27,"Robert H. Goddard High School of Communication Arts and Technology","Queens","Q202",602,426,435,424,"85.1%",-73.845141,40.67124,423,420,414,1257
-"27Q309","77.1",27,"Academy of Medical Technology (College Board)","Queens","Q465",637,422,424,415,"67.6%",-73.762795,40.60201,423,420,414,1257
-"27Q323","49.7",27,"Scholars' Academy","Queens","Q180",1302,588,560,568,"99.2%",-73.825711,40.584109,423,420,414,1257
-"27Q324","100.0",27,"Rockaway Park High School for Environmental Sustainability","Queens","Q410",368,357,381,376,"38.5%",-73.822624,40.586066,423,420,414,1257
-"27Q351","100.0",27,"Rockaway Collegiate High School","Queens","Q410",397,399,403,405,"46.5%",-73.822624,40.586066,423,420,414,1257
-"27Q400","76.0",27,"August Martin High School","Queens","Q400",679,366,372,364,"26.3%",-73.783342,40.675633,423,420,414,1257
-"27Q475","85.4",27,"Richmond Hill High School","Queens","Q475",2175,413,406,399,"37.9%",-73.833681,40.695888,423,420,414,1257
-"27Q475","85.4",27,"Richmond Hill High School","Queens","Q475",2175,413,406,399,"37.9%",-73.833681,40.695888,423,420,414,1257
-"27Q480","89.0",27,"John Adams High School","Queens","Q480",2634,418,401,395,"38.4%",-73.837298,40.679639,423,420,414,1257
-"27Q650","70.4",27,"High School for Construction Trades, Engineering, and Architecture","Queens","Q650",959,489,457,451,"78.9%",-73.840717,40.689591,423,420,414,1257
-"28Q284","77.9",28,"York Early College Academy","Queens","Q008",611,496,481,473,"92.9%",-73.787192,40.69719,478,459,458,1395
-"28Q310","81.8",28,"Queens Collegiate (College Board)","Queens","Q470",661,455,439,441,"74.8%",-73.797237,40.713218,478,459,458,1395
-"28Q325","75.9",28,"Hillside Arts and Letters Academy","Queens","Q470",464,409,399,404,"62.6%",-73.797237,40.713218,478,459,458,1395
-"28Q328","88.8",28,"High School for Community Leadership","Queens","Q470",418,415,392,386,"72.3%",-73.797237,40.713218,478,459,458,1395
-"28Q350","77.1",28,"Jamaica Gateway to the Sciences","Queens","Q470",516,487,460,463,"78.6%",-73.797237,40.713218,478,459,458,1395
-"28Q505","82.3",28,"Hillcrest High School","Queens","Q505",3286,448,432,426,"51.8%",-73.80166,40.709446,478,459,458,1395
-"28Q620","78.4",28,"Thomas A. Edison Career and Technical Education High School","Queens","Q620",2098,514,473,470,"80.0%",-73.800369,40.715389,478,459,458,1395
-"28Q680","71.4",28,"Queens Gateway to Health Sciences Secondary School","Queens","Q695",779,524,511,514,"92.5%",-73.806499,40.718831,478,459,458,1395
-"28Q686","59.2",28,"Queens Metropolitan High School","Queens","Q686",1035,460,448,449,"76.4%",-73.856698,40.711367,478,459,458,1395
-"28Q687","64.6",28,"Queens High School for the Sciences at York College","Queens","Q774",426,701,621,625,"97.9%",-73.798151,40.701049,478,459,458,1395
-"28Q690","72.5",28,"High School for Law Enforcement and Public Safety","Queens","Q690",604,410,431,409,"56.6%",-73.784144,40.686208,478,459,458,1395
-"28Q896","100.0",28,"Young Women's Leadership School in Queens","Queens","Q680",557,415,420,433,"90.4%",-73.806412,40.707527,478,459,458,1395
-"29Q248","72.0",29,"Queens Preparatory Academy","Queens","Q420",492,423,422,403,"83.7%",-73.756839,40.668235,404,418,403,1225
-"29Q259","78.1",29,"Pathways College Preparatory School (College Board)","Queens","Q192",599,405,427,409,"72.4%",-73.753579,40.70646,404,418,403,1225
-"29Q265","82.5",29,"Excelsior Preparatory High School","Queens","Q420",491,384,407,400,"70.1%",-73.756839,40.668235,404,418,403,1225
-"29Q272","73.7",29,"George Washington Carver High School for the Sciences","Queens","Q420",509,439,428,419,"63.5%",-73.756839,40.668235,404,418,403,1225
-"29Q283","73.9",29,"Preparatory Academy for Writers (College Board)","Queens","Q420",552,398,410,393,"69.5%",-73.756839,40.668235,404,418,403,1225
-"29Q326","72.8",29,"Cambria Heights Academy","Queens","Q799",372,418,424,411,"58.5%",-73.771195,40.711849,404,418,403,1225
-"29Q492","81.3",29,"Mathematics, Science Research, and Technology Magnet High School","Queens","Q490",433,380,418,388,"54.9%",-73.745728,40.697819,404,418,403,1225
-"29Q498","78.7",29,"Humanities and Arts Magnet High School","Queens","Q490",525,384,409,401,"60.2%",-73.745728,40.697819,404,418,403,1225
-"30Q286","80.4",30,"Young Women's Leadership School in Astoria","Queens","Q739",572,483,464,477,"100.0%",-73.924591,40.771215,491,468,467,1426
-"30Q301","68.0",30,"Academy for Careers in Television and Film","Queens","Q404",515,444,458,444,"95.0%",-73.959196,40.742956,491,468,467,1426
-"30Q445","76.5",30,"William Cullen Bryant High School","Queens","Q445",2496,466,424,426,"56.9%",-73.910514,40.75823,491,468,467,1426
-"30Q450","84.4",30,"Long Island City High School","Queens","Q452",2123,430,423,412,"51.6%",-73.9328,40.765826,491,468,467,1426
-"30Q501","39.1",30,"Frank Sinatra School of the Arts High School","Queens","Q570",808,536,543,543,"89.5%",-73.925121,40.756534,491,468,467,1426
-"30Q502","80.2",30,"Information Technology High School","Queens","Q725",970,443,420,411,"58.8%",-73.94638,40.748701,491,468,467,1426
-"30Q555","90.8",30,"Newcomers High School","Queens","Q450",993,490,374,381,"47.1%",-73.937445,40.751356,491,468,467,1426
-"30Q575","70.9",30,"Academy of American Studies","Queens","Q451",874,495,482,479,"84.8%",-73.937434,40.751331,491,468,467,1426
-"30Q580","42.7",30,"Baccalaureate School for Global Education","Queens","Q798",478,633,620,628,"98.5%",-73.927169,40.755366,491,468,467,1426
-"31R047","43.1",31,"CSI High School for International Studies","Staten Island","R043",520,477,468,464,"83.5%",-74.158589,40.581315,486,478,474,1438
-"31R064","51.1",31,"Gaynor McCown Expeditionary Learning School","Staten Island","R043",479,442,458,454,"55.8%",-74.158589,40.581315,486,478,474,1438
-"31R080","51.0",31,"Michael J. Petrides School","Staten Island","R880",1327,483,473,470,"79.2%",-74.102078,40.608517,486,478,474,1438
-"31R440","60.8",31,"New Dorp High School","Staten Island","R435",2791,454,446,444,"63.7%",-74.107737,40.569393,486,478,474,1438
-"31R445","71.0",31,"Port Richmond High School","Staten Island","R445",1628,432,427,425,"44.6%",-74.141818,40.634573,486,478,474,1438
-"31R450","77.0",31,"Curtis High School","Staten Island","R450",2499,453,458,444,"64.2%",-74.081222,40.644735,486,478,474,1438
-"31R455","32.7",31,"Tottenville High School","Staten Island","R455",3982,494,476,476,"78.9%",-74.192032,40.528092,486,478,474,1438
-"31R460","56.6",31,"Susan E. Wagner High School","Staten Island","R460",3363,496,490,487,"66.3%",-74.124227,40.596803,486,478,474,1438
-"31R600","70.8",31,"Ralph R. McKee Career and Technical Education High School","Staten Island","R600",624,420,429,409,"38.0%",-74.07873,40.642793,486,478,474,1438
-"31R605","34.8",31,"Staten Island Technical High School","Staten Island","R440",1247,711,660,670,"99.7%",-74.115373,40.567873,486,478,474,1438
-"32K403","100.0",32,"Academy for Environmental Leadership","Brooklyn","K480",340,365,366,348,"71.3%",-73.910791,40.69697,395,381,382,1158
-"32K545","94.7",32,"EBC High School for Public Service in Bushwick","Brooklyn","K913",514,389,374,378,"50.0%",-73.929107,40.694507,395,381,382,1158
-"32K549","100.0",32,"Bushwick School for Social Justice","Brooklyn","K480",405,365,357,357,"50.0%",-73.910791,40.69697,395,381,382,1158
-"32K552","98.2",32,"Academy of Urban Planning","Brooklyn","K480",279,392,374,379,"41.9%",-73.910791,40.69697,395,381,382,1158
-"32K554","88.8",32,"All City Leadership Secondary School","Brooklyn","K554",358,467,446,448,"85.0%",-73.913171,40.69737,395,381,382,1158
-"32K556","96.2",32,"Bushwick Leaders High School for Academic Excellence","Brooklyn","K865",317,393,368,382,"46.8%",-73.92814,40.695056,395,381,382,1158
+"DBN","Poverty","district","School Name","Borough","Building Code","Student Enrollment","SAT_Math","SAT_Reading","SAT_Writing","Longitude","Latitude","district_SAT_Math_Avg","district_SAT_Reading_Avg","district_SAT_Writing_Avg","district_SAT_Avg"
+"01M292","89.0",1,"Henry Street School for International Studies","Manhattan","M056",255,410,406,381,-73.986336,40.713684,505,474,469,1448
+"01M448","89.5",1,"University Neighborhood High School","Manhattan","M446",304,437,355,352,-73.984497,40.712399,505,474,469,1448
+"01M450","74.2",1,"East Side Community School","Manhattan","M060",666,454,428,445,-73.982555,40.729589,505,474,469,1448
+"01M509","86.0",1,"Marta Valle High School","Manhattan","M025",363,438,413,394,-73.985645,40.720581,505,474,469,1448
+"01M539","28.2",1,"New Explorations into Science, Technology and Math High School","Manhattan","M022",1735,657,601,601,-73.979308,40.718895,505,474,469,1448
+"01M696","35.0",1,"Bard High School Early College","Manhattan","M097",545,634,641,639,-73.975891,40.719029,505,474,469,1448
+"02M288","79.4",2,"Food and Finance High School","Manhattan","M535",427,428,435,421,-73.992953,40.765184,459,447,440,1346
+"02M294","68.7",2,"Essex Street Academy","Manhattan","M445",358,395,411,387,-73.989337,40.716778,459,447,440,1346
+"02M296","90.1",2,"High School of Hospitality Management","Manhattan","M535",424,451,433,424,-73.992953,40.765184,459,447,440,1346
+"02M298","80.9",2,"Pace High School","Manhattan","M131",423,430,435,427,-73.993092,40.716553,459,447,440,1346
+"02M300","80.9",2,"Urban Assembly School of Design and Construction","Manhattan","M535",414,445,417,403,-73.992953,40.765184,459,447,440,1346
+"02M303","100.0",2,"Facing History School","Manhattan","M535",406,366,356,371,-73.992953,40.765184,459,447,440,1346
+"02M305","82.4",2,"Urban Assembly Academy of Government and Law","Manhattan","M445",329,389,395,381,-73.989337,40.716778,459,447,440,1346
+"02M308","100.0",2,"Lower Manhattan Arts Academy","Manhattan","M445",383,418,428,415,-73.989337,40.716778,459,447,440,1346
+"02M316","81.5",2,"Urban Assembly School of Business for Young Women","Manhattan","M282",405,418,420,417,-74.013302,40.70568,459,447,440,1346
+"02M374","72.6",2,"Gramercy Arts High School","Manhattan","M460",530,446,459,455,-73.987659,40.735494,459,447,440,1346
+"02M376","45.9",2,"NYC iSchool","Manhattan","M615",442,518,515,503,-74.004625,40.7244,459,447,440,1346
+"02M392","77.4",2,"Manhattan Business Academy","Manhattan","M440",438,410,407,399,-74.002136,40.742867,459,447,440,1346
+"02M393","100.0",2,"Business of Sports School","Manhattan","M625",449,395,386,371,-73.990593,40.76337,459,447,440,1346
+"02M399","85.8",2,"High School for Language and Diplomacy","Manhattan","M460",437,446,433,411,-73.987659,40.735494,459,447,440,1346
+"02M400","74.4",2,"High School for Environmental Studies","Manhattan","M834",1301,469,454,444,-73.987531,40.767791,459,447,440,1346
+"02M407","18.9",2,"Institute for Collaborative Education","Manhattan","M475",482,501,550,541,-73.983031,40.732447,459,447,440,1346
+"02M408","33.4",2,"Professional Performing Arts High School","Manhattan","M017",536,496,520,516,-73.988019,40.761448,459,447,440,1346
+"02M411","59.6",2,"Baruch College Campus High School","Manhattan","M874",451,592,526,531,-73.986521,40.74193,459,447,440,1346
+"02M412","35.8",2,"NYC Lab School for Collaborative Studies","Manhattan","M070",587,595,550,555,-74.002198,40.742129,459,447,440,1346
+"02M413","37.7",2,"School of the Future High School","Manhattan","M660",713,534,533,522,-73.985479,40.738952,459,447,440,1346
+"02M414","72.8",2,"NYC Museum School","Manhattan","M070",471,560,530,522,-74.002198,40.742129,459,447,440,1346
+"02M416","24.6",2,"Eleanor Roosevelt High School","Manhattan","M855",541,641,617,631,-73.953608,40.770187,459,447,440,1346
+"02M418","43.6",2,"Millennium High School","Manhattan","M824",659,577,560,567,-74.011556,40.704487,459,447,440,1346
+"02M419","88.5",2,"Landmark High School","Manhattan","M440",355,386,386,386,-74.002136,40.742867,459,447,440,1346
+"02M420","100.0",2,"High School for Health Professions and Human Services","Manhattan","M475",1664,452,445,430,-73.983031,40.732447,459,447,440,1346
+"02M425","75.8",2,"Leadership and Public Service High School","Manhattan","M894",699,390,396,392,-74.012332,40.70873,459,447,440,1346
+"02M427","85.3",2,"Manhattan Academy for Arts and Language","Manhattan","M620",334,350,334,321,-73.981241,40.746176,459,447,440,1346
+"02M437","81.2",2,"Hudson High School of Learning Technologies","Manhattan","M440",483,378,407,388,-74.002136,40.742867,459,447,440,1346
+"02M438","87.8",2,"International High School at Union Square","Manhattan","M460",353,403,330,316,-73.987659,40.735494,459,447,440,1346
+"02M439","75.9",2,"Manhattan Village Academy","Manhattan","M873",415,522,479,510,-73.991512,40.741497,459,447,440,1346
+"02M449","75.5",2,"Vanguard High School","Manhattan","M480",486,431,409,396,-73.960059,40.765359,459,447,440,1346
+"02M459","100.0",2,"Manhattan International High School","Manhattan","M480",343,438,358,382,-73.960059,40.765359,459,447,440,1346
+"02M475","45.5",2,"Stuyvesant High School","Manhattan","M477",3296,754,697,693,-74.013748,40.71759,459,447,440,1346
+"02M489","79.4",2,"High School of Economics and Finance","Manhattan","M833",796,469,442,447,-74.012022,40.709196,459,447,440,1346
+"02M500","89.4",2,"Unity Center for Urban Technologies","Manhattan","M620",284,375,385,387,-73.981241,40.746176,459,447,440,1346
+"02M507","100.0",2,"Urban Assembly Gateway School for Technology","Manhattan","M625",472,445,432,415,-73.990593,40.76337,459,447,440,1346
+"02M519","54.5",2,"Talent Unlimited High School","Manhattan","M480",506,485,498,496,-73.960059,40.765359,459,447,440,1346
+"02M520","72.9",2,"Murry Bergtraum High School for Business Careers","Manhattan","M520",971,418,415,398,-74.000851,40.711442,459,447,440,1346
+"02M529","78.3",2,"Jacqueline Kennedy Onassis High School","Manhattan","M486",676,418,422,415,-73.983078,40.757729,459,447,440,1346
+"02M531","79.7",2,"Repertory Company High School for Theatre Arts","Manhattan","M896",246,425,451,458,-73.984382,40.755843,459,447,440,1346
+"02M542","100.0",2,"Manhattan Bridges High School","Manhattan","M535",529,409,360,347,-73.992953,40.765184,459,447,440,1346
+"02M543","100.0",2,"New Design High School","Manhattan","M445",441,381,396,372,-73.989337,40.716778,459,447,440,1346
+"02M545","88.7",2,"High School for Dual Language and Asian Studies","Manhattan","M445",416,613,453,463,-73.989337,40.716778,459,447,440,1346
+"02M551","63.3",2,"Urban Assembly New York Harbor School","Manhattan","M877",447,446,453,428,-74.011631,40.701695,459,447,440,1346
+"02M580","85.3",2,"Richard R. Green High School of Teaching","Manhattan","M282",566,411,415,409,-74.013302,40.70568,459,447,440,1346
+"02M600","82.4",2,"High School of Fashion Industries","Manhattan","M600",1770,433,442,427,-73.996074,40.745156,459,447,440,1346
+"02M615","87.9",2,"Chelsea Career and Technical Education High School","Manhattan","M615",439,439,418,400,-74.004625,40.7244,459,447,440,1346
+"02M630","69.2",2,"Art and Design High School","Manhattan","M488",1476,455,475,458,-73.967203,40.75924,459,447,440,1346
+"02M655","75.0",2,"Life Sciences Secondary School","Manhattan","M645",697,435,440,425,-73.945637,40.783625,459,447,440,1346
+"03M299","81.4",3,"High School for Arts, Imagination, and Inquiry","Manhattan","M490",447,375,389,380,-73.984753,40.774351,452,451,447,1350
+"03M307","75.7",3,"Urban Assembly School for Media Studies","Manhattan","M490",412,392,419,396,-73.984753,40.774351,452,451,447,1350
+"03M402","91.2",3,"Urban Assembly School for Green Careers","Manhattan","M470",353,393,371,378,-73.974614,40.785803,452,451,447,1350
+"03M403","86.5",3,"Global Learning Collaborative","Manhattan","M470",496,406,407,413,-73.974614,40.785803,452,451,447,1350
+"03M415","100.0",3,"Wadleigh Secondary School for the Performing and Visual Arts","Manhattan","M088",445,381,401,392,-73.954142,40.802207,452,451,447,1350
+"03M417","50.6",3,"Frank McCourt High School","Manhattan","M470",387,489,491,500,-73.974614,40.785803,452,451,447,1350
+"03M479","28.2",3,"Beacon High School","Manhattan","M837",1285,583,586,595,-73.987479,40.772007,452,451,447,1350
+"03M485","30.8",3,"Fiorello H. LaGuardia High School of Music and Art and Performing Arts","Manhattan","M485",2635,592,592,597,-73.985273,40.773629,452,451,447,1350
+"03M492","90.4",3,"High School for Law, Advocacy, and Community Justice","Manhattan","M490",510,415,417,402,-73.984753,40.774351,452,451,447,1350
+"03M494","91.8",3,"High School of Arts and Technology","Manhattan","M490",594,421,428,406,-73.984753,40.774351,452,451,447,1350
+"03M541","62.3",3,"Manhattan / Hunter Science High School","Manhattan","M490",451,581,531,535,-73.984753,40.774351,452,451,447,1350
+"03M860","73.2",3,"Frederick Douglass Academy II Secondary School","Manhattan","M088",411,390,384,373,-73.954142,40.802207,452,451,447,1350
+"04M409","100.0",4,"Coalition School for Social Change","Manhattan","M045",283,344,368,367,-73.933319,40.798884,446,436,430,1312
+"04M435","81.0",4,"Manhattan Center for Science and Mathematics","Manhattan","M435",1603,556,505,495,-73.934028,40.793856,446,436,430,1312
+"04M495","87.9",4,"Park East High School","Manhattan","M495",413,429,433,435,-73.944356,40.790543,446,436,430,1312
+"04M555","89.7",4,"Central Park East High School","Manhattan","M013",466,483,468,439,-73.949381,40.793763,446,436,430,1312
+"04M610","81.0",4,"Young Women's Leadership School","Manhattan","M895",480,478,465,472,-73.947428,40.792741,446,436,430,1312
+"04M680","87.3",4,"Heritage School","Manhattan","M107",322,385,380,370,-73.946558,40.791881,446,436,430,1312
+"05M304","90.7",5,"Mott Hall High School","Manhattan","M136",428,416,445,440,-73.947712,40.817372,483,471,466,1420
+"05M362","55.8",5,"Columbia Secondary School","Manhattan","M125",659,583,561,546,-73.955809,40.810431,483,471,466,1420
+"05M362","55.8",5,"Columbia Secondary School","Manhattan","M125",659,583,561,546,-73.955997,40.810511,483,471,466,1420
+"05M367","79.5",5,"Academy for Social Action (College Board)","Manhattan","M043",234,357,349,365,-73.955325,40.815256,483,471,466,1420
+"05M369","85.2",5,"Urban Assembly School for the Performing Arts","Manhattan","M043",358,379,399,388,-73.955325,40.815256,483,471,466,1420
+"05M499","73.1",5,"Frederick Douglass Academy","Manhattan","M010",1428,463,452,450,-73.93712,40.824319,483,471,466,1420
+"05M670","77.4",5,"Thurgood Marshall Academy for Learning and Social Change","Manhattan","M970",561,402,394,400,-73.944202,40.815509,483,471,466,1420
+"05M692","51.1",5,"High School for Mathematics, Science, and Engineering at City College","Manhattan","M812",470,683,610,596,-73.949097,40.82074,483,471,466,1420
+"06M293","78.0",6,"City College Academy of the Arts","Manhattan","M218",587,495,445,450,-73.930672,40.86079,413,406,404,1223
+"06M346","90.1",6,"Community Health Academy of the Heights","Manhattan","M814",629,387,389,385,-73.942072,40.833687,413,406,404,1223
+"06M348","100.0",6,"Washington Heights Expeditionary Learning School","Manhattan","M143",705,443,423,434,-73.930948,40.848908,413,406,404,1223
+"06M462","97.8",6,"College Academy","Manhattan","M465",491,367,377,363,-73.927051,40.855954,413,406,404,1223
+"06M463","90.8",6,"High School for Media and Communications","Manhattan","M465",479,378,381,383,-73.927051,40.855954,413,406,404,1223
+"06M467","78.4",6,"High School for Law and Public Service","Manhattan","M465",671,401,394,381,-73.927051,40.855954,413,406,404,1223
+"06M468","98.3",6,"High School for Health Careers and Sciences","Manhattan","M465",605,374,385,389,-73.927051,40.855954,413,406,404,1223
+"06M540","86.9",6,"A. Philip Randolph Campus High School","Manhattan","M540",1354,459,453,447,-73.950356,40.818188,413,406,404,1223
+"07X221","96.8",7,"South Bronx Preparatory (College Board)","Bronx","X149",654,419,414,394,-73.920782,40.813983,395,393,382,1170
+"07X334","96.5",7,"International Community High School","Bronx","X139",463,345,338,312,-73.917792,40.81004,395,393,382,1170
+"07X427","90.7",7,"Community School for Social Justice","Bronx","X884",324,380,382,362,-73.930386,40.815938,395,393,382,1170
+"07X473","95.6",7,"Mott Haven Village Preparatory High School","Bronx","X470",364,377,373,369,-73.91103,40.81825,395,393,382,1170
+"07X495","90.1",7,"University Heights Secondary School","Bronx","X470",486,420,446,424,-73.91103,40.81825,395,393,382,1170
+"07X500","78.3",7,"Hostos-Lincoln Academy of Science","Bronx","X162",544,463,451,435,-73.91224,40.815498,395,393,382,1170
+"07X527","90.3",7,"Bronx Leadership Academy II High School","Bronx","X790",495,384,355,361,-73.923829,40.82231,395,393,382,1170
+"07X547","85.7",7,"New Explorers High School","Bronx","X790",475,390,398,376,-73.923829,40.82231,395,393,382,1170
+"07X548","89.3",7,"Urban Assembly School for Careers in Sports","Bronx","X790",587,402,405,395,-73.923829,40.82231,395,393,382,1170
+"07X551","93.6",7,"Urban Assembly Bronx Academy of Letters","Bronx","X183",591,398,400,405,-73.925313,40.813641,395,393,382,1170
+"07X600","90.7",7,"Alfred E. Smith Career and Technical Education High School","Bronx","X600",375,390,373,371,-73.919867,40.818232,395,393,382,1170
+"07X670","91.3",7,"Health Opportunities High School","Bronx","X884",554,374,386,382,-73.930386,40.815938,395,393,382,1170
+"08X269","77.0",8,"Bronx Studio School for Writers and Artists","Bronx","X392",565,417,412,403,-73.893128,40.820579,398,403,393,1194
+"08X282","89.9",8,"Women's Academy of Excellence","Bronx","X174",345,386,390,389,-73.85658,40.814833,398,403,393,1194
+"08X293","100.0",8,"Renaissance High School for Musical Theater and Technology","Bronx","X405",444,390,411,393,-73.838545,40.840702,398,403,393,1194
+"08X305","100.0",8,"Pablo Neruda Academy","Bronx","X450",315,394,384,383,-73.856167,40.82229,398,403,393,1194
+"08X312","100.0",8,"Millennium Art Academy","Bronx","X450",487,396,413,395,-73.856167,40.82229,398,403,393,1194
+"08X332","89.0",8,"Holcombe L. Rucker School of Community Research","Bronx","X039",236,376,372,369,-73.898212,40.817512,398,403,393,1194
+"08X367","84.8",8,"Archimedes Academy for Math, Science, and Technology Applications","Bronx","X174",637,418,430,403,-73.85658,40.814833,398,403,393,1194
+"08X376","67.1",8,"Antonia Pantoja Preparatory Academy (College Board)","Bronx","X450",450,435,415,423,-73.856167,40.82229,398,403,393,1194
+"08X405","72.6",8,"Herbert H. Lehman High School","Bronx","X405",1535,426,419,407,-73.838545,40.840702,398,403,393,1194
+"08X452","100.0",8,"Bronx Guild","Bronx","X450",326,365,393,357,-73.856167,40.82229,398,403,393,1194
+"08X519","85.3",8,"Felisa Rincon de Gautier Institute for Law and Public Policy","Bronx","X972",307,389,408,413,-73.881479,40.821146,398,403,393,1194
+"08X530","91.7",8,"Banana Kelly High School","Bronx","X039",325,378,391,378,-73.898212,40.817512,398,403,393,1194
+"09X227","100.0",9,"Bronx Collegiate Academy","Bronx","X410",382,395,401,382,-73.91091,40.840422,400,392,392,1184
+"09X231","81.4",9,"Eagle Academy for Young Men","Bronx","X465",608,398,410,397,-73.89705,40.844958,400,392,392,1184
+"09X241","93.4",9,"Urban Assembly School for Applied Math and Science","Bronx","X970",619,445,418,422,-73.901316,40.839244,400,392,392,1184
+"09X250","94.2",9,"Eximius College Preparatory Academy (College Board)","Bronx","X002",449,400,391,397,-73.902499,40.833665,400,392,392,1184
+"09X252","90.0",9,"Mott Hall Bronx High School","Bronx","X970",402,417,399,398,-73.901316,40.839244,400,392,392,1184
+"09X260","83.4",9,"Bronx Center for Science and Mathematics","Bronx","X002",457,513,468,485,-73.902499,40.833665,400,392,392,1184
+"09X263","88.0",9,"Validus Preparatory Academy: An Expeditionary Learning School","Bronx","X970",375,382,375,384,-73.901316,40.839244,400,392,392,1184
+"09X297","92.6",9,"Morris Academy for Collaborative Studies","Bronx","X400",471,407,389,386,-73.904473,40.827642,400,392,392,1184
+"09X324","93.6",9,"Bronx Early College Academy for Teaching and Learning","Bronx","X166",503,424,413,409,-73.917668,40.828696,400,392,392,1184
+"09X329","100.0",9,"DreamYard Preparatory School","Bronx","X410",336,385,385,388,-73.91091,40.840422,400,392,392,1184
+"09X365","97.8",9,"Academy for Language and Technology","Bronx","X082",322,371,334,348,-73.91607,40.849623,400,392,392,1184
+"09X403","90.0",9,"Bronx International High School","Bronx","X400",409,355,330,320,-73.904473,40.827642,400,392,392,1184
+"09X404","91.7",9,"School for Excellence","Bronx","X400",421,377,385,383,-73.904473,40.827642,400,392,392,1184
+"09X412","100.0",9,"Bronx High School of Business","Bronx","X410",339,365,360,346,-73.91091,40.840422,400,392,392,1184
+"09X413","100.0",9,"Bronx High School for Medical Science","Bronx","X410",472,431,421,426,-73.91091,40.840422,400,392,392,1184
+"09X505","92.8",9,"Bronx School for Law, Government, and Justice","Bronx","X460",778,403,409,415,-73.918681,40.827607,400,392,392,1184
+"09X517","86.4",9,"Frederick Douglass Academy III Secondary School","Bronx","X148",427,387,386,386,-73.90449,40.833511,400,392,392,1184
+"09X525","88.8",9,"Bronx Leadership Academy High School","Bronx","X876",686,375,372,374,-73.903236,40.843588,400,392,392,1184
+"09X543","91.9",9,"High School for Violin and Dance","Bronx","X400",384,363,401,396,-73.904473,40.827642,400,392,392,1184
+"10X141","54.7",10,"Riverdale/Kingsbridge Academy","Bronx","X141",1381,496,485,476,-73.913486,40.888338,434,427,422,1283
+"10X213","89.4",10,"Bronx Engineering and Technology Academy","Bronx","X475",417,394,406,391,-73.912256,40.877105,434,427,422,1283
+"10X225","100.0",10,"Theatre Arts Production Company School","Bronx","X137",632,402,421,410,-73.896717,40.854493,434,427,422,1283
+"10X237","100.0",10,"Marie Curie School for Medicine, Nursing, and Health Professions","Bronx","X143",583,423,420,425,-73.901099,40.875911,434,427,422,1283
+"10X243","96.5",10,"West Bronx Academy for the Future","Bronx","X435",599,404,383,378,-73.888267,40.860043,434,427,422,1283
+"10X268","96.1",10,"Kingsbridge International High School","Bronx","X430",461,366,311,310,-73.898309,40.870293,434,427,422,1283
+"10X284","85.2",10,"Bronx School of Law and Finance","Bronx","X475",426,384,394,366,-73.912256,40.877105,434,427,422,1283
+"10X342","98.8",10,"International School for Liberal Arts","Bronx","X430",561,390,387,379,-73.898309,40.870293,434,427,422,1283
+"10X368","90.8",10,"In-Tech Academy","Bronx","X368",1022,426,419,404,-73.909896,40.879368,434,427,422,1283
+"10X374","88.3",10,"Knowledge and Power Preparatory Academy International High School (KAPPA)","Bronx","X435",487,408,417,404,-73.888267,40.860043,434,427,422,1283
+"10X433","89.7",10,"High School for Teaching and the Professions","Bronx","X430",486,372,361,369,-73.898309,40.870293,434,427,422,1283
+"10X434","85.3",10,"Belmont Preparatory High School","Bronx","X435",416,413,408,402,-73.888267,40.860043,434,427,422,1283
+"10X437","88.3",10,"Fordham High School for the Arts","Bronx","X435",401,398,404,412,-73.888267,40.860043,434,427,422,1283
+"10X438","92.2",10,"Fordham Leadership Academy for Business and Technology","Bronx","X435",438,355,373,368,-73.888267,40.860043,434,427,422,1283
+"10X439","91.2",10,"Bronx High School for Law and Community Service","Bronx","X435",398,401,402,386,-73.888267,40.860043,434,427,422,1283
+"10X440","78.6",10,"DeWitt Clinton High School","Bronx","X440",2109,445,436,433,-73.88691,40.882178,434,427,422,1283
+"10X442","87.2",10,"Celia Cruz Bronx High School of Music","Bronx","X430",430,417,434,425,-73.898309,40.870293,434,427,422,1283
+"10X445","47.6",10,"Bronx High School of Science","Bronx","X445",3015,714,660,667,-73.89104,40.87759,434,427,422,1283
+"10X477","92.9",10,"Marble Hill High School for International Studies","Bronx","X475",449,451,417,423,-73.912256,40.877105,434,427,422,1283
+"10X546","85.5",10,"Bronx Theatre High School","Bronx","X475",428,382,384,390,-73.912256,40.877105,434,427,422,1283
+"10X549","83.8",10,"Discovery High School","Bronx","X430",530,432,396,395,-73.898309,40.870293,434,427,422,1283
+"10X696","28.2",10,"High School of American Studies at Lehman College","Bronx","X905",376,669,672,672,-73.895382,40.873938,434,427,422,1283
+"11X249","75.1",11,"Bronx Health Sciences High School","Bronx","X455",374,407,421,427,-73.833904,40.874091,403,408,398,1209
+"11X253","100.0",11,"Bronx High School for Writing and Communication Arts","Bronx","X425",389,380,437,425,-73.86197,40.875953,403,408,398,1209
+"11X265","100.0",11,"Bronx Lab School","Bronx","X425",471,407,416,401,-73.86197,40.875953,403,408,398,1209
+"11X270","72.8",11,"Academy for Scholarship and Entrepreneurship (College Board)","Bronx","X362",371,392,408,400,-73.852694,40.887831,403,408,398,1209
+"11X275","100.0",11,"High School of Computers and Technology","Bronx","X425",567,396,399,377,-73.86197,40.875953,403,408,398,1209
+"11X288","77.0",11,"Collegiate Institute for Math and Science","Bronx","X415",687,488,461,458,-73.861006,40.859665,403,408,398,1209
+"11X290","100.0",11,"Bronx Academy of Health Careers","Bronx","X425",465,386,380,391,-73.86197,40.875953,403,408,398,1209
+"11X299","86.6",11,"Astor Collegiate Academy","Bronx","X415",476,422,417,409,-73.861006,40.859665,403,408,398,1209
+"11X418","73.7",11,"Bronx High School for the Visual Arts","Bronx","X839",483,408,428,404,-73.865036,40.851405,403,408,398,1209
+"11X455","68.3",11,"Harry S. Truman High School","Bronx","X455",2058,400,401,391,-73.833904,40.874091,403,408,398,1209
+"11X508","82.7",11,"Bronxdale High School","Bronx","X415",427,418,432,436,-73.861006,40.859665,403,408,398,1209
+"11X509","98.0",11,"High School of Language and Innovation","Bronx","X415",354,356,340,320,-73.861006,40.859665,403,408,398,1209
+"11X513","97.5",11,"New World High School","Bronx","X362",408,407,363,358,-73.852694,40.887831,403,408,398,1209
+"11X514","78.7",11,"Bronxwood Preparatory Academy","Bronx","X362",423,392,408,392,-73.852694,40.887831,403,408,398,1209
+"11X542","75.1",11,"Pelham Preparatory Academy","Bronx","X415",489,420,433,425,-73.861006,40.859665,403,408,398,1209
+"11X544","100.0",11,"High School for Contemporary Arts","Bronx","X425",493,367,381,361,-73.86197,40.875953,403,408,398,1209
+"11X545","100.0",11,"Bronx Aerospace High School","Bronx","X425",431,403,410,393,-73.86197,40.875953,403,408,398,1209
+"12X242","87.4",12,"Mott Hall V","Bronx","X423",669,430,422,414,-73.877785,40.831416,383,382,375,1140
+"12X248","92.3",12,"Metropolitan High School","Bronx","X099",326,387,388,386,-73.897612,40.827315,383,382,375,1140
+"12X251","92.7",12,"Explorations Academy","Bronx","X098",358,377,372,365,-73.890458,40.8359,383,382,375,1140
+"12X267","94.1",12,"Bronx Latin","Bronx","X158",546,394,381,363,-73.900105,40.827743,383,382,375,1140
+"12X271","91.7",12,"East Bronx Academy for the Future","Bronx","X973",618,418,406,408,-73.888361,40.836356,383,382,375,1140
+"12X372","100.0",12,"Urban Assembly School for Wildlife Conservation","Bronx","X067",571,393,397,379,-73.884788,40.843945,383,382,375,1140
+"12X388","99.5",12,"Pan American International High School at Monroe","Bronx","X420",428,317,315,292,-73.878912,40.831601,383,382,375,1140
+"12X478","84.6",12,"Cinema School","Bronx","X423",338,430,449,448,-73.877785,40.831416,383,382,375,1140
+"12X479","87.1",12,"Bronx Career and College Preparatory High School","Bronx","X158",333,370,379,381,-73.900105,40.827743,383,382,375,1140
+"12X511","86.5",12,"Bronx Envision Academy","Bronx","X098",355,364,385,366,-73.890458,40.8359,383,382,375,1140
+"12X521","90.6",12,"Metropolitan Soundview High School","Bronx","X420",416,444,428,422,-73.878912,40.831601,383,382,375,1140
+"12X550","98.3",12,"High School of World Cultures","Bronx","X420",410,356,359,347,-73.878912,40.831601,383,382,375,1140
+"12X682","100.0",12,"Fannie Lou Hamer Freedom High School","Bronx","X878",470,345,347,339,-73.88626,40.83087,383,382,375,1140
+"12X684","86.4",12,"Wings Academy","Bronx","X879",501,379,372,373,-73.875366,40.841794,383,382,375,1140
+"12X692","92.6",12,"Monroe Academy for Visual Arts and Design","Bronx","X420",445,361,354,351,-73.878912,40.831601,383,382,375,1140
+"13K265","81.0",13,"Dr. Susan S. McKinney Secondary School of the Arts","Brooklyn","K265",421,332,346,350,-73.97578,40.696324,437,426,415,1278
+"13K350","78.3",13,"Urban Assembly High School of Music and Art","Brooklyn","K805",387,372,372,361,-73.985016,40.697339,437,426,415,1278
+"13K412","81.4",13,"Brooklyn Community High School of Communication, Arts, and Media","Brooklyn","K117",404,358,386,380,-73.958794,40.692642,437,426,415,1278
+"13K419","83.3",13,"Science Skills Center High School for Science, Technology, and the Creative Arts","Brooklyn","K805",528,399,397,386,-73.985016,40.697339,437,426,415,1278
+"13K430","65.9",13,"Brooklyn Technical High School","Brooklyn","K430",5447,682,608,606,-73.976905,40.688834,437,426,415,1278
+"13K439","100.0",13,"Brooklyn International High School","Brooklyn","K805",345,432,334,333,-73.985016,40.697339,437,426,415,1278
+"13K483","79.2",13,"Urban Assembly School for Law and Justice","Brooklyn","K313",448,446,443,430,-73.988853,40.694682,437,426,415,1278
+"13K499","85.7",13,"ACORN Community High School","Brooklyn","K909",504,379,395,385,-73.962105,40.678488,437,426,415,1278
+"13K527","84.3",13,"Urban Assembly Institute of Math and Science for Young Women","Brooklyn","K313",470,397,415,407,-73.988853,40.694682,437,426,415,1278
+"13K595","62.1",13,"Bedford Academy High School","Brooklyn","K994",364,505,464,456,-73.954302,40.68538,437,426,415,1278
+"13K605","83.3",13,"George Westinghouse Career and Technical Education High School","Brooklyn","K580",634,394,422,400,-73.986015,40.694926,437,426,415,1278
+"13K670","51.7",13,"Benjamin Banneker Academy","Brooklyn","K914",916,479,484,472,-73.969243,40.695332,437,426,415,1278
+"13K674","73.6",13,"City Polytechnic High School of Engineering, Architecture, and Technology","Brooklyn","K580",458,503,477,427,-73.986015,40.694926,437,426,415,1278
+"14K071","100.0",14,"Juan Morel Campos Secondary School","Brooklyn","K071",692,366,356,353,-73.953146,40.703624,411,413,403,1227
+"14K449","69.1",14,"Brooklyn Latin School","Brooklyn","K049",676,625,588,591,-73.943641,40.709941,411,413,403,1227
+"14K454","83.0",14,"Green School: An Academy for Environmental Careers","Brooklyn","K049",276,384,398,399,-73.943641,40.709941,411,413,403,1227
+"14K474","81.5",14,"PROGRESS High School for Professional Careers","Brooklyn","K450",1098,380,377,384,-73.939722,40.712184,411,413,403,1227
+"14K477","87.8",14,"School for Legal Studies","Brooklyn","K450",598,393,390,394,-73.939722,40.712184,411,413,403,1227
+"14K478","83.2",14,"High School for Enterprise, Business, and Technology","Brooklyn","K450",1001,463,446,425,-73.939722,40.712184,411,413,403,1227
+"14K488","79.6",14,"Brooklyn Preparatory High School","Brooklyn","K650",494,391,406,391,-73.954754,40.715073,411,413,403,1227
+"14K558","78.5",14,"Williamsburg High School for Architecture and Design","Brooklyn","K650",595,415,424,407,-73.954754,40.715073,411,413,403,1227
+"14K561","81.1",14,"Williamsburg Preparatory School","Brooklyn","K650",682,443,440,430,-73.954754,40.715073,411,413,403,1227
+"14K586","87.9",14,"Lyons Community School","Brooklyn","K049",520,374,376,357,-73.943641,40.709941,411,413,403,1227
+"14K610","74.2",14,"Automotive High School","Brooklyn","K610",383,367,381,328,-73.953281,40.721981,411,413,403,1227
+"14K632","89.4",14,"Frances Perkins Academy","Brooklyn","K610",142,399,413,400,-73.953281,40.721981,411,413,403,1227
+"14K685","82.9",14,"El Puente Academy for Peace and Justice","Brooklyn","K778",245,344,380,379,-73.955611,40.705898,411,413,403,1227
+"15K429","86.0",15,"Brooklyn School for Global Studies","Brooklyn","K293",250,393,381,402,-73.993351,40.685419,432,429,425,1286
+"15K448","74.7",15,"Brooklyn Secondary School for Collaborative Studies","Brooklyn","K142",685,401,411,404,-74.001377,40.68007,432,429,425,1286
+"15K462","81.5",15,"Secondary School for Law","Brooklyn","K460",351,420,424,414,-73.979287,40.669629,432,429,425,1286
+"15K463","80.4",15,"Secondary School for Journalism","Brooklyn","K460",285,408,435,415,-73.979287,40.669629,432,429,425,1286
+"15K464","78.5",15,"Park Slope Collegiate","Brooklyn","K460",423,405,377,395,-73.979287,40.669629,432,429,425,1286
+"15K497","74.0",15,"School for International Studies","Brooklyn","K293",466,417,406,394,-73.993351,40.685419,432,429,425,1286
+"15K519","88.6",15,"Cobble Hill School of American Studies","Brooklyn","K804",596,416,420,402,-73.990993,40.684524,432,429,425,1286
+"15K656","73.3",15,"Brooklyn High School of the Arts","Brooklyn","K655",870,439,441,436,-73.98027,40.683559,432,429,425,1286
+"15K667","79.7",15,"Sunset Park High School","Brooklyn","K564",1333,398,380,381,-74.005197,40.65571,432,429,425,1286
+"15K684","42.2",15,"Millennium Brooklyn High School","Brooklyn","K460",566,553,551,539,-73.979287,40.669629,432,429,425,1286
+"16K455","73.9",16,"Boys and Girls High School","Brooklyn","K455",648,399,392,394,-73.932407,40.67944,392,393,388,1173
+"16K498","84.2",16,"Brooklyn High School for Law and Technology","Brooklyn","K987",596,395,401,383,-73.920906,40.688831,392,393,388,1173
+"16K594","100.0",16,"Gotham Professional Arts Academy","Brooklyn","K040",226,377,396,386,-73.922264,40.680463,392,393,388,1173
+"16K688","100.0",16,"Brooklyn Academy of Global Finance","Brooklyn","K057",152,395,382,391,-73.933697,40.691274,392,393,388,1173
+"17K122","68.9",17,"Pathways in Technology Early College High School","Brooklyn","K625",438,446,442,410,-73.938843,40.675612,410,409,399,1218
+"17K382","81.8",17,"Academy for College Preparation and Career Exploration (College Board)","Brooklyn","K465",505,386,397,393,-73.95855,40.649787,410,409,399,1218
+"17K408","93.7",17,"Academy of Hospitality and Tourism","Brooklyn","K465",285,374,385,375,-73.95855,40.649787,410,409,399,1218
+"17K524","100.0",17,"International High School at Prospect Heights","Brooklyn","K440",414,344,302,300,-73.961695,40.670349,410,409,399,1218
+"17K528","86.6",17,"High School for Global Citizenship","Brooklyn","K440",246,377,386,375,-73.961695,40.670349,410,409,399,1218
+"17K531","86.3",17,"School for Human Rights","Brooklyn","K470",424,398,411,400,-73.942458,40.658893,410,409,399,1218
+"17K533","82.4",17,"School for Democracy and Leadership","Brooklyn","K470",319,386,385,390,-73.942458,40.658893,410,409,399,1218
+"17K537","84.6",17,"High School for Youth and Community Development at Erasmus","Brooklyn","K465",384,360,382,359,-73.95855,40.649787,410,409,399,1218
+"17K539","75.5",17,"High School for Service and Learning at Erasmus","Brooklyn","K465",445,377,382,356,-73.95855,40.649787,410,409,399,1218
+"17K543","79.8",17,"Science, Technology, and Research Early College High School at Erasmus","Brooklyn","K465",516,496,491,484,-73.95855,40.649787,410,409,399,1218
+"17K546","84.1",17,"High School for Public Service: Heroes of Tomorrow","Brooklyn","K470",454,468,454,464,-73.942458,40.658893,410,409,399,1218
+"17K547","83.2",17,"Brooklyn Academy of Science and the Environment","Brooklyn","K440",453,419,411,416,-73.961695,40.670349,410,409,399,1218
+"17K548","85.2",17,"Brooklyn School for Music and Theatre","Brooklyn","K440",386,382,393,377,-73.961695,40.670349,410,409,399,1218
+"17K590","72.8",17,"Medgar Evers College Preparatory School","Brooklyn","K590",1271,525,500,481,-73.951167,40.667195,410,409,399,1218
+"17K600","78.2",17,"Clara Barton High School","Brooklyn","K600",1499,408,424,407,-73.961962,40.669567,410,409,399,1218
+"17K751","89.3",17,"Academy for Health Careers","Brooklyn","K625",373,406,405,396,-73.938843,40.675612,410,409,399,1218
+"18K563","76.7",18,"It Takes a Village Academy","Brooklyn","K415",566,364,374,361,-73.922171,40.648657,381,398,390,1169
+"18K566","78.3",18,"Brooklyn Generation School","Brooklyn","K515",286,392,406,403,-73.916735,40.633285,381,398,390,1169
+"18K567","86.1",18,"Brooklyn Theatre Arts High School","Brooklyn","K515",395,379,393,373,-73.916735,40.633285,381,398,390,1169
+"18K569","75.1",18,"Kurt Hahn Expeditionary Learning School","Brooklyn","K415",341,378,394,388,-73.922171,40.648657,381,398,390,1169
+"18K576","70.4",18,"Victory Collegiate High School","Brooklyn","K515",331,386,408,402,-73.916735,40.633285,381,398,390,1169
+"18K589","83.2",18,"Arts and Media Preparatory Academy","Brooklyn","K232",279,370,383,374,-73.929076,40.65843,381,398,390,1169
+"18K617","76.6",18,"High School for Innovation in Advertising and Media","Brooklyn","K500",303,390,410,397,-73.898254,40.641474,381,398,390,1169
+"18K629","75.1",18,"Cultural Academy for the Arts and Sciences","Brooklyn","K415",353,382,395,384,-73.922171,40.648657,381,398,390,1169
+"18K633","92.6",18,"High School for Medical Professions","Brooklyn","K500",432,404,427,424,-73.898254,40.641474,381,398,390,1169
+"18K637","78.9",18,"Academy for Conservation and the Environment","Brooklyn","K515",308,381,397,390,-73.916735,40.633285,381,398,390,1169
+"18K642","74.8",18,"Urban Action Academy","Brooklyn","K500",309,362,396,393,-73.898254,40.641474,381,398,390,1169
+"19K404","77.0",19,"Academy for Young Writers","Brooklyn","K422",547,382,413,391,-73.874756,40.657459,378,380,370,1128
+"19K409","76.2",19,"East New York Family Academy","Brooklyn","K819",479,464,451,421,-73.886942,40.661072,378,380,370,1128
+"19K502","85.2",19,"FDNY High School for Fire and Life Safety","Brooklyn","K435",324,365,369,357,-73.894747,40.667456,378,380,370,1128
+"19K504","76.8",19,"High School for Civil Rights","Brooklyn","K435",319,391,373,376,-73.894747,40.667456,378,380,370,1128
+"19K507","92.4",19,"Performing Arts and Technology High School","Brooklyn","K435",406,375,393,394,-73.894747,40.667456,378,380,370,1128
+"19K510","83.1",19,"World Academy for Total Community Health High School","Brooklyn","K435",284,380,389,384,-73.894747,40.667456,378,380,370,1128
+"19K583","98.7",19,"Multicultural High School","Brooklyn","K420",229,319,323,284,-73.868328,40.691146,378,380,370,1128
+"19K615","76.0",19,"Transit Tech Career and Technical Education High School","Brooklyn","K615",1093,387,387,384,-73.87596,40.678276,378,380,370,1128
+"19K618","80.4",19,"Academy of Innovative Technology","Brooklyn","K420",413,395,376,359,-73.868328,40.691146,378,380,370,1128
+"19K639","86.8",19,"Brooklyn Lab School","Brooklyn","K420",334,383,376,370,-73.868328,40.691146,378,380,370,1128
+"19K659","89.4",19,"Cypress Hills Collegiate Preparatory School","Brooklyn","K420",330,365,370,362,-73.868328,40.691146,378,380,370,1128
+"19K660","87.4",19,"W. H. Maxwell Career and Technical Education High School","Brooklyn","K660",506,326,333,350,-73.89643,40.674135,378,380,370,1128
+"19K683","89.6",19,"School for Classics: An Academy of Thinkers, Writers, and Performers","Brooklyn","K218",308,387,391,383,-73.874208,40.670724,378,380,370,1128
+"20K445","76.8",20,"New Utrecht High School","Brooklyn","K445",3480,488,422,417,-74.003404,40.613262,482,428,427,1337
+"20K485","79.2",20,"High School of Telecommunication Arts and Technology","Brooklyn","K485",1329,475,440,445,-74.023849,40.637282,482,428,427,1337
+"20K490","70.2",20,"Fort Hamilton High School","Brooklyn","K490",4372,513,456,451,-74.040046,40.627835,482,428,427,1337
+"20K505","80.7",20,"Franklin Delano Roosevelt High School","Brooklyn","K505",3220,504,411,407,-73.981795,40.620446,482,428,427,1337
+"20K609","92.7",20,"Urban Assembly School for Criminal Justice","Brooklyn","K223",496,428,413,417,-73.981528,40.634875,482,428,427,1337
+"21K337","91.3",21,"International High School at Lafayette","Brooklyn","K400",358,424,343,337,-73.98577,40.594291,438,415,405,1258
+"21K344","100.0",21,"Rachel Carson High School for Coastal Studies","Brooklyn","K303",560,436,430,421,-73.973132,40.582533,438,415,405,1258
+"21K348","75.2",21,"High School of Sports Management","Brooklyn","K400",290,367,374,361,-73.98577,40.594291,438,415,405,1258
+"21K410","69.0",21,"Abraham Lincoln High School","Brooklyn","K410",2341,441,422,422,-73.967308,40.581681,438,415,405,1258
+"21K468","75.4",21,"Kingsborough Early College School","Brooklyn","K400",564,474,462,449,-73.98577,40.594291,438,415,405,1258
+"21K525","63.3",21,"Edward R. Murrow High School","Brooklyn","K525",3968,500,479,472,-73.959285,40.620525,438,415,405,1258
+"21K540","83.6",21,"John Dewey High School","Brooklyn","K540",2006,512,418,396,-73.981738,40.589268,438,415,405,1258
+"21K559","89.7",21,"Life Academy High School for Film and Music","Brooklyn","K400",271,369,379,378,-73.98577,40.594291,438,415,405,1258
+"21K572","77.1",21,"Expeditionary Learning School for Community Leaders","Brooklyn","K400",271,420,396,396,-73.98577,40.594291,438,415,405,1258
+"21K620","89.4",21,"William E. Grady Career and Technical Education High School","Brooklyn","K620",613,416,423,387,-73.963477,40.582585,438,415,405,1258
+"21K690","76.1",21,"Brooklyn Studio Secondary School","Brooklyn","K721",901,458,434,434,-73.994404,40.604879,438,415,405,1258
+"22K405","54.6",22,"Midwood High School","Brooklyn","K405",3787,550,514,516,-73.952929,40.633237,535,499,501,1535
+"22K425","63.1",22,"James Madison High School","Brooklyn","K425",3088,492,450,444,-73.948512,40.609912,535,499,501,1535
+"22K535","46.8",22,"Leon M. Goldstein High School for the Sciences","Brooklyn","K535",1081,563,534,543,-73.935952,40.580894,535,499,501,1535
+"22K555","73.4",15,"Brooklyn College Academy","Brooklyn","K917",605,502,495,493,-73.971736,40.649404,432,429,425,1286
+"23K493","85.0",23,"Brooklyn Collegiate (College Board)","Brooklyn","K055",353,394,395,399,-73.913273,40.674103,396,400,402,1198
+"23K514","82.8",23,"Frederick Douglass Academy VII High School","Brooklyn","K175",319,400,407,394,-73.911705,40.665878,396,400,402,1198
+"23K697","80.5",23,"Teachers Preparatory High School","Brooklyn","K175",390,394,399,412,-73.911705,40.665878,396,400,402,1198
+"24Q264","82.2",24,"Academy of Finance and Enterprise","Queens","Q735",478,489,456,459,-73.936635,40.745095,454,431,428,1313
+"24Q267","78.6",24,"High School of Applied Communication","Queens","Q735",421,435,437,441,-73.936635,40.745095,454,431,428,1313
+"24Q293","74.9",24,"Civic Leadership Academy","Queens","Q744",479,435,424,418,-73.870642,40.74373,454,431,428,1313
+"24Q296","90.5",24,"Pan American International High School","Queens","Q744",378,340,320,318,-73.870642,40.74373,454,431,428,1313
+"24Q299","44.6",24,"Bard High School Early College Queens","Queens","Q735",623,631,598,610,-73.936635,40.745095,454,431,428,1313
+"24Q455","73.0",24,"Newtown High School","Queens","Q455",1921,434,401,389,-73.874721,40.741122,454,431,428,1313
+"24Q485","71.5",24,"Grover Cleveland High School","Queens","Q485",1828,452,422,416,-73.908814,40.711033,454,431,428,1313
+"24Q520","100.0",24,"Middle College High School at LaGuardia Community College","Queens","Q520",514,377,389,377,-73.93364,40.744412,454,431,428,1313
+"24Q530","100.0",24,"International High School at LaGuardia Community College","Queens","Q520",509,425,367,365,-73.93364,40.744412,454,431,428,1313
+"24Q550","100.0",24,"High School for Arts and Business","Queens","Q456",870,413,405,393,-73.853178,40.737427,454,431,428,1313
+"24Q560","81.0",24,"Robert F. Wagner Jr. Secondary School for Arts and Technology","Queens","Q891",610,478,445,445,-73.936782,40.742839,454,431,428,1313
+"24Q585","69.5",24,"Maspeth High School","Queens","Q585",973,476,471,480,-73.887482,40.729939,454,431,428,1313
+"24Q600","83.9",24,"Queens Vocational and Technical High School","Queens","Q600",1553,467,436,432,-73.928219,40.742205,454,431,428,1313
+"24Q610","100.0",24,"Aviation Career and Technical Education High School","Queens","Q610",2168,511,464,456,-73.929076,40.743509,454,431,428,1313
+"25Q252","60.1",25,"Queens School of Inquiry","Queens","Q168",557,516,493,486,-73.810216,40.724458,507,457,458,1422
+"25Q263","94.5",25,"Flushing International High School","Queens","Q189",437,481,323,323,-73.820548,40.759844,507,457,458,1422
+"25Q281","84.8",25,"East-West School of International Studies","Queens","Q237",666,521,457,451,-73.822073,40.749545,507,457,458,1422
+"25Q285","50.0",25,"World Journalism Preparatory (College Board)","Queens","Q025",610,484,491,487,-73.790083,40.765133,507,457,458,1422
+"25Q425","75.2",25,"John Bowne High School","Queens","Q425",3667,467,422,425,-73.824944,40.738139,507,457,458,1422
+"25Q460","74.5",25,"Flushing High School","Queens","Q460",2186,444,407,405,-73.82789,40.765166,507,457,458,1422
+"25Q525","53.5",25,"Townsend Harris High School","Queens","Q515",1132,680,640,661,-73.821392,40.73439,507,457,458,1422
+"25Q670","80.6",25,"Robert F. Kennedy Community High School","Queens","Q707",701,460,426,423,-73.810697,40.725603,507,457,458,1422
+"26Q415","56.5",26,"Benjamin N. Cardozo High School","Queens","Q415",3505,563,505,510,-73.75599,40.752333,500,459,462,1421
+"26Q430","74.4",26,"Francis Lewis High School","Queens","Q430",4172,562,483,485,-73.79283,40.740724,500,459,462,1421
+"26Q435","71.6",26,"Martin Van Buren High School","Queens","Q435",1742,397,396,391,-73.738756,40.733066,500,459,462,1421
+"26Q495","74.4",26,"Bayside High School","Queens","Q405",3336,523,479,485,-73.780296,40.771755,500,459,462,1421
+"26Q566","63.7",26,"Queens High School of Teaching, Liberal Arts, and the Sciences","Queens","Q566",1120,453,434,439,-73.727535,40.746088,500,459,462,1421
+"27Q260","77.5",27,"Frederick Douglass Academy VI High School","Queens","Q465",409,410,418,407,-73.762795,40.60201,423,420,414,1257
+"27Q262","100.0",27,"Channel View School for Research","Queens","Q410",683,427,430,423,-73.822624,40.586066,423,420,414,1257
+"27Q302","77.4",27,"Queens High School for Information, Research, and Technology","Queens","Q465",381,372,362,352,-73.762795,40.60201,423,420,414,1257
+"27Q308","79.2",27,"Robert H. Goddard High School of Communication Arts and Technology","Queens","Q202",602,426,435,424,-73.845141,40.67124,423,420,414,1257
+"27Q309","77.1",27,"Academy of Medical Technology (College Board)","Queens","Q465",637,422,424,415,-73.762795,40.60201,423,420,414,1257
+"27Q323","49.7",27,"Scholars' Academy","Queens","Q180",1302,588,560,568,-73.825711,40.584109,423,420,414,1257
+"27Q324","100.0",27,"Rockaway Park High School for Environmental Sustainability","Queens","Q410",368,357,381,376,-73.822624,40.586066,423,420,414,1257
+"27Q351","100.0",27,"Rockaway Collegiate High School","Queens","Q410",397,399,403,405,-73.822624,40.586066,423,420,414,1257
+"27Q400","76.0",27,"August Martin High School","Queens","Q400",679,366,372,364,-73.783342,40.675633,423,420,414,1257
+"27Q475","85.4",27,"Richmond Hill High School","Queens","Q475",2175,413,406,399,-73.833681,40.695888,423,420,414,1257
+"27Q475","85.4",27,"Richmond Hill High School","Queens","Q475",2175,413,406,399,-73.833681,40.695888,423,420,414,1257
+"27Q480","89.0",27,"John Adams High School","Queens","Q480",2634,418,401,395,-73.837298,40.679639,423,420,414,1257
+"27Q650","70.4",27,"High School for Construction Trades, Engineering, and Architecture","Queens","Q650",959,489,457,451,-73.840717,40.689591,423,420,414,1257
+"28Q284","77.9",28,"York Early College Academy","Queens","Q008",611,496,481,473,-73.787192,40.69719,478,459,458,1395
+"28Q310","81.8",28,"Queens Collegiate (College Board)","Queens","Q470",661,455,439,441,-73.797237,40.713218,478,459,458,1395
+"28Q325","75.9",28,"Hillside Arts and Letters Academy","Queens","Q470",464,409,399,404,-73.797237,40.713218,478,459,458,1395
+"28Q328","88.8",28,"High School for Community Leadership","Queens","Q470",418,415,392,386,-73.797237,40.713218,478,459,458,1395
+"28Q350","77.1",28,"Jamaica Gateway to the Sciences","Queens","Q470",516,487,460,463,-73.797237,40.713218,478,459,458,1395
+"28Q505","82.3",28,"Hillcrest High School","Queens","Q505",3286,448,432,426,-73.80166,40.709446,478,459,458,1395
+"28Q620","78.4",28,"Thomas A. Edison Career and Technical Education High School","Queens","Q620",2098,514,473,470,-73.800369,40.715389,478,459,458,1395
+"28Q680","71.4",28,"Queens Gateway to Health Sciences Secondary School","Queens","Q695",779,524,511,514,-73.806499,40.718831,478,459,458,1395
+"28Q686","59.2",28,"Queens Metropolitan High School","Queens","Q686",1035,460,448,449,-73.856698,40.711367,478,459,458,1395
+"28Q687","64.6",28,"Queens High School for the Sciences at York College","Queens","Q774",426,701,621,625,-73.798151,40.701049,478,459,458,1395
+"28Q690","72.5",28,"High School for Law Enforcement and Public Safety","Queens","Q690",604,410,431,409,-73.784144,40.686208,478,459,458,1395
+"28Q896","100.0",28,"Young Women's Leadership School in Queens","Queens","Q680",557,415,420,433,-73.806412,40.707527,478,459,458,1395
+"29Q248","72.0",29,"Queens Preparatory Academy","Queens","Q420",492,423,422,403,-73.756839,40.668235,404,418,403,1225
+"29Q259","78.1",29,"Pathways College Preparatory School (College Board)","Queens","Q192",599,405,427,409,-73.753579,40.70646,404,418,403,1225
+"29Q265","82.5",29,"Excelsior Preparatory High School","Queens","Q420",491,384,407,400,-73.756839,40.668235,404,418,403,1225
+"29Q272","73.7",29,"George Washington Carver High School for the Sciences","Queens","Q420",509,439,428,419,-73.756839,40.668235,404,418,403,1225
+"29Q283","73.9",29,"Preparatory Academy for Writers (College Board)","Queens","Q420",552,398,410,393,-73.756839,40.668235,404,418,403,1225
+"29Q326","72.8",29,"Cambria Heights Academy","Queens","Q799",372,418,424,411,-73.771195,40.711849,404,418,403,1225
+"29Q492","81.3",29,"Mathematics, Science Research, and Technology Magnet High School","Queens","Q490",433,380,418,388,-73.745728,40.697819,404,418,403,1225
+"29Q498","78.7",29,"Humanities and Arts Magnet High School","Queens","Q490",525,384,409,401,-73.745728,40.697819,404,418,403,1225
+"30Q286","80.4",30,"Young Women's Leadership School in Astoria","Queens","Q739",572,483,464,477,-73.924591,40.771215,491,468,467,1426
+"30Q301","68.0",30,"Academy for Careers in Television and Film","Queens","Q404",515,444,458,444,-73.959196,40.742956,491,468,467,1426
+"30Q445","76.5",30,"William Cullen Bryant High School","Queens","Q445",2496,466,424,426,-73.910514,40.75823,491,468,467,1426
+"30Q450","84.4",30,"Long Island City High School","Queens","Q452",2123,430,423,412,-73.9328,40.765826,491,468,467,1426
+"30Q501","39.1",30,"Frank Sinatra School of the Arts High School","Queens","Q570",808,536,543,543,-73.925121,40.756534,491,468,467,1426
+"30Q502","80.2",30,"Information Technology High School","Queens","Q725",970,443,420,411,-73.94638,40.748701,491,468,467,1426
+"30Q555","90.8",30,"Newcomers High School","Queens","Q450",993,490,374,381,-73.937445,40.751356,491,468,467,1426
+"30Q575","70.9",30,"Academy of American Studies","Queens","Q451",874,495,482,479,-73.937434,40.751331,491,468,467,1426
+"30Q580","42.7",30,"Baccalaureate School for Global Education","Queens","Q798",478,633,620,628,-73.927169,40.755366,491,468,467,1426
+"31R047","43.1",31,"CSI High School for International Studies","Staten Island","R043",520,477,468,464,-74.158589,40.581315,486,478,474,1438
+"31R064","51.1",31,"Gaynor McCown Expeditionary Learning School","Staten Island","R043",479,442,458,454,-74.158589,40.581315,486,478,474,1438
+"31R080","51.0",31,"Michael J. Petrides School","Staten Island","R880",1327,483,473,470,-74.102078,40.608517,486,478,474,1438
+"31R440","60.8",31,"New Dorp High School","Staten Island","R435",2791,454,446,444,-74.107737,40.569393,486,478,474,1438
+"31R445","71.0",31,"Port Richmond High School","Staten Island","R445",1628,432,427,425,-74.141818,40.634573,486,478,474,1438
+"31R450","77.0",31,"Curtis High School","Staten Island","R450",2499,453,458,444,-74.081222,40.644735,486,478,474,1438
+"31R455","32.7",31,"Tottenville High School","Staten Island","R455",3982,494,476,476,-74.192032,40.528092,486,478,474,1438
+"31R460","56.6",31,"Susan E. Wagner High School","Staten Island","R460",3363,496,490,487,-74.124227,40.596803,486,478,474,1438
+"31R600","70.8",31,"Ralph R. McKee Career and Technical Education High School","Staten Island","R600",624,420,429,409,-74.07873,40.642793,486,478,474,1438
+"31R605","34.8",31,"Staten Island Technical High School","Staten Island","R440",1247,711,660,670,-74.115373,40.567873,486,478,474,1438
+"32K403","100.0",32,"Academy for Environmental Leadership","Brooklyn","K480",340,365,366,348,-73.910791,40.69697,395,381,382,1158
+"32K545","94.7",32,"EBC High School for Public Service in Bushwick","Brooklyn","K913",514,389,374,378,-73.929107,40.694507,395,381,382,1158
+"32K549","100.0",32,"Bushwick School for Social Justice","Brooklyn","K480",405,365,357,357,-73.910791,40.69697,395,381,382,1158
+"32K552","98.2",32,"Academy of Urban Planning","Brooklyn","K480",279,392,374,379,-73.910791,40.69697,395,381,382,1158
+"32K554","88.8",32,"All City Leadership Secondary School","Brooklyn","K554",358,467,446,448,-73.913171,40.69737,395,381,382,1158
+"32K556","96.2",32,"Bushwick Leaders High School for Academic Excellence","Brooklyn","K865",317,393,368,382,-73.92814,40.695056,395,381,382,1158
