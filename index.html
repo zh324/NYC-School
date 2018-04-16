@@ -71,7 +71,13 @@ polyline{
     float: left;
 }
 
-#chart{
+
+
+#aster{
+    float: left;
+}
+
+#pie{
     float: left;
 }
 
@@ -110,6 +116,26 @@ polyline{
 
 .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
 
+.solidArc {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.solidArc:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.aster-Poverty { 
+  line-height: 1;
+  font-width: bold;
+  font-size: 500%;
+}
+
 
 
 </style>
@@ -130,7 +156,8 @@ polyline{
         <svg id="fillgauge3" width="150" height="150"></svg>
 
 </div>
-<div id="chart"></div>
+
+<div id="aster"></div>
 <div id="pie"></div>
 
 <!-- <button class="randomize">randomize</button> -->
@@ -273,7 +300,230 @@ d3.csv("Data.csv", function(error, datum) {
         
 
 
+          // ASTER PLOT
         
+        var data_aster = [{"id":"1","Poverty":"67"},
+                          {"id":"2","Poverty":"75"},
+                          {"id":"3","Poverty":"72"},
+                          {"id":"4","Poverty":"88"},
+                          {"id":"5","Poverty":"71"},
+                          {"id":"6","Poverty":"90"},
+                          {"id":"7","Poverty":"91"},
+                          {"id":"8","Poverty":"88"},
+                          {"id":"9","Poverty":"92"},
+                          {"id":"10","Poverty":"84"},
+                          {"id":"11","Poverty":"87"},
+                          {"id":"12","Poverty":"92"},
+                          {"id":"13","Poverty":"78"},
+                          {"id":"14","Poverty":"83"},
+                          {"id":"15","Poverty":"76"},
+                          {"id":"16","Poverty":"90"},
+                          {"id":"17","Poverty":"83"},
+                          {"id":"18","Poverty":"79"},
+                          {"id":"19","Poverty":"85"},
+                          {"id":"20","Poverty":"80"},
+                          {"id":"21","Poverty":"81"},
+                          {"id":"22","Poverty":"55"},
+                          {"id":"23","Poverty":"83"},
+                          {"id":"24","Poverty":"82"},
+                          {"id":"25","Poverty":"72"},
+                          {"id":"26","Poverty":"68"},
+                          {"id":"27","Poverty":"82"},
+                          {"id":"28","Poverty":"77"},
+                          {"id":"29","Poverty":"77"},
+                          {"id":"30","Poverty":"70"},
+                          {"id":"31","Poverty":"55"},
+                          {"id":"32","Poverty":"96"}]
+                       
+        var width_aster = 300 
+            height_aster = 300 ;
+
+            var svg_aster = d3.select('#aster').append('svg')
+            .attr('class', 'aster_svg')
+            .attr("width", width_aster )
+            .attr("height", height_aster)
+            .append("g")
+            .attr("transform", "translate(" + width_aster / 2 + "," + height_aster / 2  + ")");
+
+        var radius = Math.min(width_aster, height_aster) / 2
+        console.log(radius);
+        var innerRadius = 0.3 * radius;
+
+        console.log(radius, innerRadius);
+        var svg_aster;
+        var path_aster;
+        var pie_aster; 
+        var arc_aster;
+        var outlineArc;
+        var aster_length;
+
+        var sca = new generate(data_aster);
+
+        
+        
+        function generate(data) {
+            //console.log(data);
+        aster_length = data.length;
+        console.log(aster_length);
+        
+        // var radius = Math.min(width_aster, height_aster) / 2 ,
+        //     innerRadius = 0.3 * radius;
+
+        // need to comeback
+        pie_aster = d3.pie()
+            .sort(null)
+            .value(function (d) {
+              return 10 / aster_length;
+            });
+
+        arc_aster = d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(function (d) {
+              return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+            });
+
+        outlineArc = d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(radius);
+
+       
+        //svg_aster.call(tip);
+
+
+
+        var path_aster = svg_aster.selectAll(".solidArc")
+            .data(pie_aster(data))
+            .enter().append("path")
+            .style('fill', '#e8441e')
+            .style('opacity', function(d, i) { return data_aster[i].Poverty / 100; })
+            .attr("class", "solidArc")
+            .attr("d", arc_aster)
+        //console.log(path_aster._groups);
+        
+        // path_aster.exit()
+        //     .remove();
+
+        //console.log(path_aster);
+            // .on("mouseover", function (d) {
+            //   $(this).tooltip({
+            //     'container': 'body',
+            //     'placement': 'top',
+            //     'title': d.data.label + " | " + d.data.value,
+            //     'trigger': 'hover'
+            //   })
+            //       .tooltip('show');
+            // })
+            // .on("mouseout", function(d) {
+            //   $(this).tooltip('destroy');
+            // });
+        
+            //console.log(pie_aster(data))
+        var outerPath = svg_aster.selectAll(".outlineArc")
+            .data(pie_aster(data))
+            .enter().append("path")
+            .attr("fill", "none")
+            .attr("class", "outlineArc")
+            .attr("stroke", "gray")
+            .attr("d", outlineArc);
+
+            // var Poverty =
+            // data.reduce(function(a, b) {
+            // //console.log('a:' + a + ', b.Poverty: ' + b.Poverty + ', b.width: ' + b.width);
+            // return a + (b.Poverty * b.width);
+            // }, 0) /
+            // data.reduce(function(a, b) {
+            // return a + b.width;
+            // }, 0);
+
+        // svg_aster.append("svg:text")
+        //     .attr("class", "asterCenterText")
+        //     .text('DEMO');
+
+        
+
+        }
+
+
+        function redraw(data_redraw) {
+       
+        
+       // // path_aster.exit()
+       // //     .remove();
+       // console.log(pie_aster(data_redraw));
+       // path_aster._groups = (pie_aster(data_redraw))
+       // console.log(path_aster)
+       d3.selectAll(".solidArc").remove().exit();
+       d3.selectAll(".outlineArc").remove().exit();
+       
+
+       radius = 150;
+       innerRadius = 45;
+
+       aster_length = data_redraw.length;
+
+       pie_aster = d3.pie()
+           .sort(null)
+           .value(function (d) {
+             return 10 / aster_length;
+           });
+
+       arc_aster = d3.arc()
+           .innerRadius(innerRadius)
+           .outerRadius(function (d) {
+             return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+           });
+
+       outlineArc = d3.arc()
+           .innerRadius(innerRadius)
+           .outerRadius(radius);
+
+        
+       path_aster = svg_aster.selectAll(".solidArc")
+           .data(pie_aster(data_redraw))
+           .enter().append("path")
+           .transition()
+           .duration(200)
+           .attr("class", "solidArc")
+           .style('fill', '#e8441e')
+           .style('opacity', function(d, i) { return data_redraw[i].Poverty / 100; })
+           .attr("id", function(d, i) { return data_redraw[i]["School Name"]; })
+           .attr("d", arc_aster.innerRadius(innerRadius)
+                               .outerRadius(function (d) {
+                                   return (radius - innerRadius) * (d.data.Poverty / 100) + innerRadius;
+                               }));
+                               //console.log(path_aster);
+       var outlineArc = d3.arc()
+           .innerRadius(innerRadius)
+           .outerRadius(radius);
+       svg_aster.selectAll(".outlineArc")
+           .data(pie_aster(data_redraw))
+           .enter().append("path")
+           .transition()
+           .duration(200)
+           .attr("fill", "none")
+           .attr("class", "outlineArc")
+           .attr("stroke", "gray")
+           .attr("d", outlineArc);
+
+      
+       }
+
+
+
+     
+
+       function redraw_aster(data_change){
+           
+           //console.log(sca.getSvg()['path_aster']);
+           
+           var data_redraw = districts[data_change.properties.SchoolDist - 1].values
+           console.log(data_redraw);
+
+           //generate(data_redraw);
+
+           redraw(data_redraw);
+           
+       }
 
 
         // PIE CHART
@@ -289,13 +539,13 @@ d3.csv("Data.csv", function(error, datum) {
 
         var width_3 = 400,
         height_3 = 200,
-        radius = Math.min(width_3, height_3) / 2;
+        radius = Math.min(width_3, height_3) / 1.2;
 
         var piechart = d3.select("#pie")
         .append("svg")
 		.attr("id","pies")
-        .attr('width', width_3 + margin.left + margin.left + margin.right + margin.right)
-        .attr('height', height_3 + margin.top + margin.top + margin.bottom + margin.bottom + margin.bottom)
+        .attr('width', width_3 + margin.top + margin.top + margin.top)
+        .attr('height', height_3 +  margin.top+ margin.top + margin.top + margin.top)
         .append("g");
 
 
@@ -637,7 +887,12 @@ d3.csv("Data.csv", function(error, datum) {
 	
 	
 		
+<<<<<<< HEAD
+      redraw_aster(d);
+
+=======
 		
+>>>>>>> 521c3d609148b73f99a47b8edfef361cd6a5f97a
 		
 
 	distAvgMap = d3.nest()
