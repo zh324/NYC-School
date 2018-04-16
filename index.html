@@ -578,6 +578,11 @@ d3.csv("Data.csv", function(error, datum) {
            
        }
 
+       function redraw_aster_circle(district_num){
+           var data_redraw = districts[district_num - 1].values;
+           redraw(data_redraw);
+       }
+
 
         // PIE CHART
         //
@@ -981,6 +986,7 @@ d3.csv("Data.csv", function(error, datum) {
 			
 		d3.select(this).style('fill', '#A132BC');
 
+        console.log(d.district);
 	
 		var schoolName = d["School Name"];
 		totalAvg2 = Number(d.district_SAT_Math_Avg)+Number(d.district_SAT_Reading_Avg)+Number(d.district_SAT_Writing_Avg);
@@ -990,8 +996,9 @@ d3.csv("Data.csv", function(error, datum) {
 		clicked_circle(d);
 		generatePie(d);
 		generateGauge(d);
+        redraw_aster_circle(d.district);
         
-        console.log('hey')
+        //console.log('hey')
         var path_select = d3.select(schoolName)
 		
 		d3.selectAll("#Title")
