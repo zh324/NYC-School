@@ -1265,6 +1265,26 @@ d3.csv("Data.csv", function(error, datum) {
        svg.append("text")
 		.attr("id","Title")
         .attr("x", 45)
+        .attr("y", 783)
+        .attr("font-size", "16px")
+        .attr("font-weight", "300")
+        .style("fill", "#2D2C2C")
+		.style("letter-spacing", "1")
+        .text("A comparison of SAT scores and poverty rates across NYC public ");
+
+		      svg.append("text")
+		.attr("id","Title")
+        .attr("x", 45)
+        .attr("y", 800)
+        .attr("font-size", "16px")
+        .attr("font-weight", "300")
+        .style("fill", "#2D2C2C")
+		.style("letter-spacing", "1")
+        .text("high schools from 2014-2015.");
+
+       svg.append("text")
+		.attr("id","Title")
+        .attr("x", 45)
         .attr("y", 100+20)
         .attr("font-size", "120px")
         .attr("font-weight", "900")
