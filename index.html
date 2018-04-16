@@ -243,10 +243,10 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
+			waveColor: "#6A4B7D",
+			textColor: "#6A4B7D",
+			waveTextColor: "#d5b1e3",// The color of the outer circle.
+			circleColor: "#6A4B7D",
             displayPercent: false
         })
 		.style("padding-left", margin.left)
@@ -256,7 +256,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#6A4B7D")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 		
@@ -269,10 +269,10 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
+			waveColor: "#6A4B7D",
+			textColor: "#6A4B7D",
+			waveTextColor: "#d5b1e3",// The color of the outer circle.
+			circleColor: "#6A4B7D",
             displayPercent: false
         })
 		.style("padding-left","25")
@@ -282,7 +282,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#6A4B7D")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
 
@@ -292,10 +292,10 @@ d3.csv("Data.csv", function(error, datum) {
             maxValue: 800,
 			width: 125,
 			height: 125,
-			waveColor: "#65adad",
-			textColor: "#65adad",
-			waveTextColor: "#d9ebeb",// The color of the outer circle.
-			circleColor: "#65adad",
+			waveColor: "#6A4B7D",
+			textColor: "#6A4B7D",
+			waveTextColor: "#d5b1e3",// The color of the outer circle.
+			circleColor: "#6A4B7D",
 
             displayPercent: false
         })
@@ -306,7 +306,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
 		.attr("y","145")
 		.style("padding-botton","40")
-		.style("fill", "#65adad")
+		.style("fill", "#6A4B7D")
 		.style("font-family","helvetica")
 		.style("font-weight","bold");
         
@@ -372,7 +372,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", "-180")
         .attr("font-size", "25px")
 		.attr("font-weight", "900")
-        .style("fill", "#e8441e")
+        .style("fill", "#A8102E")
         .text("Poverty Rates");
         
         //svg_aster.call(tip);
@@ -428,7 +428,7 @@ d3.csv("Data.csv", function(error, datum) {
         var path_aster = svg_aster.selectAll(".solidArc")
             .data(pie_aster(data))
             .enter().append("path")
-            .style('fill', '#e8441e')
+            .style('fill', '#A8102E')
             .style('opacity', function(d, i) { return data_aster[i].Poverty / 100; })
             .attr("class", "solidArc")
             .attr("d", arc_aster)
@@ -529,7 +529,7 @@ d3.csv("Data.csv", function(error, datum) {
            .data(pie_aster(data_redraw))
            .enter().append("path")
            .attr("class", "solidArc")
-           .style('fill', '#e8441e')
+           .style('fill', '#A8102E')
            .style('opacity', function(d, i) { return data_redraw[i].Poverty / 100; })
            .attr("id", function(d, i) { return data_redraw[i]["School Name"]; })
            .attr("d", arc_aster.innerRadius(innerRadius)
@@ -858,7 +858,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 110)
         .attr("font-size", "25px")
 		.attr("font-weight", "900")
-        .style("fill", "#65adad")
+        .style("fill", "#6A4B7D")
         .text("SAT Scores");
 
       var mapCircles = maplayer.selectAll("circle")
@@ -999,7 +999,17 @@ d3.csv("Data.csv", function(error, datum) {
         redraw_aster_circle(d.district);
         
         //console.log('hey')
-        var path_select = d3.select(schoolName)
+    //     setTimeout(function(){
+    // //do what you need here
+    //      var path_select = d3.select(schoolName)
+    //     console.log(path_select);
+    //     path_select.style('fill','black')
+    //     }, 2000);
+
+        var path_select = document.getElementById(schoolName)
+        console.log(path_select);
+        path_select.style.fill = '#F4F0A5';
+        console.log('okkk');
 		
 		d3.selectAll("#Title")
 		.style("display","none");
