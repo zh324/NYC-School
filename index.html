@@ -212,7 +212,7 @@ d3.csv("Data.csv", function(error, datum) {
         var gauge1 = d3.select("#fillgauge1");
 		
         gauge1
-		.call(d3.liquidfillgauge, 455,{
+		.call(d3.liquidfillgauge, 433,{
             minValue: 200,
             maxValue: 800,
 			width: 125,
@@ -234,7 +234,7 @@ d3.csv("Data.csv", function(error, datum) {
     
 
         var gauge2 = d3.select("#fillgauge2");
-        gauge2.call(d3.liquidfillgauge, 440,{
+        gauge2.call(d3.liquidfillgauge, 425,{
             minValue: 200,
             maxValue: 800,
 			width: 125,
@@ -253,7 +253,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.style("font-weight","bold");
 
         var gauge3 = d3.select("#fillgauge3");
-        gauge3.call(d3.liquidfillgauge, 425,{
+        gauge3.call(d3.liquidfillgauge, 418,{
             minValue: 200,
             maxValue: 800,
 			width: 125,
@@ -346,10 +346,10 @@ d3.csv("Data.csv", function(error, datum) {
         .range(["#386035", "#54AA4C", "#80CC78", "#BCFCB5", "#EAFFE8"]);
 
 
-        console.log('run');
+        //console.log('run');
 
         function generatePie(){
-            console.log('ok');
+            //console.log('ok');
             change(randomData());
         }
 
@@ -377,8 +377,7 @@ d3.csv("Data.csv", function(error, datum) {
         /* ------- PIE SLICES -------*/
         var slice = piechart.select(".slices").selectAll("path.slice")
             .data(pie(data), key);
-        console.log(data);
-        console.log(pie(data));
+
         
 
         slice.enter()
@@ -479,13 +478,28 @@ d3.csv("Data.csv", function(error, datum) {
 	  }
 
       function reset() {
+		
+		
       active.classed("active", false);
+	  
+	  
       active = d3.select(null);
 
       svg.transition()
           .duration(300)
           // .call( zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1) ); // not in d3 v4
           .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
+
+		function generateGauge_d(){
+		//d3.selectAll("#nycInfo1").remove()
+
+		
+		gauge1.on("valueChanged")(433);
+		gauge2.on("valueChanged")(425);
+		gauge3.on("valueChanged")(418);
+        }
+		
+		generateGauge_d();
       }
 
       maplayer.selectAll('path')
@@ -507,6 +521,19 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("id", "bar")
         .attr('width', "600")
         .attr('height', "125");
+		
+	var nycInfo =
+		d3.select('#bar');
+		
+		nycInfo.append("text")
+		.attr("id","nycInfo1")
+		.attr("x", "50")
+        .attr("y", "35")
+		.attr("font-size", "18px")
+		.attr("font-weight", "400")
+        .style("fill", "#1C1B1B")
+        .text("New York City Average");
+
 
 		schoolInfo.append("text")
 	    .attr("x", "50%")
@@ -521,7 +548,8 @@ d3.csv("Data.csv", function(error, datum) {
         .data(stats)
         .enter()
         .append("circle")
-        .attr('fill', '#FFFFFF')
+        .attr('fill', "#ffffff")
+		.style("stroke","none")
         .attr("cx", d => projection([d.Longitude, d.Latitude])[0])
         .attr("cy", d => projection([d.Longitude, d.Latitude])[1])
         .attr("r", 2.5)
@@ -537,17 +565,18 @@ d3.csv("Data.csv", function(error, datum) {
 //			
 //		schoolInfo.append("text")
 //	    .attr("x", margin.left)
+//		.attr("id","nSchool")
 //        .attr("y", 30)
 //        .attr("font-size", "20px")
 //		.attr("font-weight", "700")
 //        .style("fill", "#000000")
-//        .text("Name of school");
+//        .text(d["School Name"]);
 //
 //			})
-		.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
-		.on('mouseout', function(d){
-			d3.select(this).style('fill',"white")
-			})
+		//.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
+		//.on('mouseout', function(d){
+		//	d3.select(this).style('fill',"white")
+		//	})
 
       function mouseover(d){
       // Highlight hovered province
@@ -559,12 +588,41 @@ d3.csv("Data.csv", function(error, datum) {
       d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
       }
 	  
+
 	var distInfo = d3.select('#distInfo').append('svg')
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "165")
+        .attr('height', "165");
+		
+		distInfo.append("text")
+		.attr("id","distInit")
+	    .attr("x", margin.left)
+        .attr("y", 100-60)
+        .attr("font-size", "30px")
+		.attr("font-weight", "900")
+        .style("fill", "#1C1B1B")
+        .text("All NYC Public Schools");
+		
+		distInfo.append("text")
+		.attr("id","distInit")
+	    .attr("x", margin.left)
+        .attr("y", 130-60)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Avg SAT Score: 1283");
 
+
+	distInfo.append("text")
+		.attr("id","distInit")
+		.attr("x", margin.left)
+        .attr("y", 160-60)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Number of Schools: 374");
+		
 		
       function clicked(d) {
 
@@ -573,45 +631,59 @@ d3.csv("Data.csv", function(error, datum) {
       active = d3.select(this).classed("active", true);
 
 
-      console.log(d.properties.SchoolDist);
+      //console.log(d.properties.SchoolDist);
 	  
 	  var distNum = d.properties.SchoolDist;
 	
+	
+		
+		
+		
+
 	distAvgMap = d3.nest()
 	.key(function (d) {
 		return d.district; })
 	.entries(stats);
-	
-	console.log("distAvgMap");
-	console.log(distAvgMap);
-
 	currentDist = distAvgMap[distNum-1];
 	
-	console.log("current dist");
-	console.log(currentDist);
-	
-	console.log(currentDist.values[0].district_SAT_Math_Avg);
-	console.log(currentDist.values[0].district_SAT_Reading_Avg);
-	console.log(currentDist.values[0].district_SAT_Writing_Avg);
+	console.log("Dist Num");
+	console.log(distNum);
 	
 	totalAvg = Number(currentDist.values[0].district_SAT_Math_Avg)+Number(currentDist.values[0].district_SAT_Reading_Avg)+Number(currentDist.values[0].district_SAT_Writing_Avg);
 	numberOfSchools = distAvgMap[distNum-1].values.length
+	borough = distAvgMap[distNum-1].values[0].Borough
 	
-	console.log(distAvgMap)
+	console.log("borough")
+	console.log(borough)
 
 
 	mapCircles
+	.attr("fill","#FFFFFF")
+	.on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
+	.on('mouseout', function(d){
+			d3.select(this).style('fill',"white")
+			})
+
 	.on('click', function (d){
-	var schoolName = d["School Name"];
-		
-		console.log(d);
-		console.log("circled");
+			
+		d3.select(this).style('fill', '#A132BC');
+
+	
+		var schoolName = d["School Name"];
+		totalAvg2 = Number(d.district_SAT_Math_Avg)+Number(d.district_SAT_Reading_Avg)+Number(d.district_SAT_Writing_Avg);
+		numberOfSchools2 = distAvgMap[Number(d.district)-1].values.length
+
 		clicked_circle(d);
-		
 		generatePie(d);
 		generateGauge(d);
+		
 		d3.selectAll("#Title")
 		.style("display","none");
+
+		d3.selectAll("#distInit")
+		.style("display","none");
+		
+		d3.select("#nycInfo1").remove()
 
 		schoolInfo.append("text")
 		.attr("id","nSchool")
@@ -620,10 +692,48 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("font-size", "18px")
 		.attr("font-weight", "400")
         .style("fill", "#1C1B1B")
-        .text(schoolName);
+        .text("School: "+schoolName);
+		
+	distInfo.append("text")
+		.attr("id","distInfo1")
+	    .attr("x", margin.left)
+        .attr("y", 100-60)
+        .attr("font-size", "30px")
+		.attr("font-weight", "900")
+        .style("fill", "#1C1B1B")
+        .text("School District: #"+d.district);
+
+	distInfo.append("text")
+		.attr("id","distInfo1")
+	    .attr("x", margin.left)
+        .attr("y", 130-60)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Avg SAT Score: "+totalAvg2);
+
+
+	distInfo.append("text")
+		.attr("id","distInfo1")
+		.attr("x", margin.left)
+        .attr("y", 160-60)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Number of Schools: "+numberOfSchools2);
+		
+	distInfo.append("text")
+		.attr("id","distInfo1")
+		.attr("x", margin.left)
+        .attr("y", 160-30)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Borough: "+d.Borough);
 
 			})
-		
+
+
       var bounds = path.bounds(d),
           dx = bounds[1][0] - bounds[0][0],
           dy = bounds[1][1] - bounds[0][1],
@@ -640,13 +750,15 @@ d3.csv("Data.csv", function(error, datum) {
 
 		//set remove text here
 		d3.selectAll("#Title")
-		//.style("opacity","0")
-		.style("display","none");
+		.style("display","none")
+		
+		d3.selectAll("#distInit")
+		.style("display","none")
 
 	distInfo.append("text")
 		.attr("id","distInfo1")
 	    .attr("x", margin.left)
-        .attr("y", 100-20)
+        .attr("y", 100-60)
         .attr("font-size", "30px")
 		.attr("font-weight", "900")
         .style("fill", "#1C1B1B")
@@ -655,22 +767,42 @@ d3.csv("Data.csv", function(error, datum) {
 	distInfo.append("text")
 		.attr("id","distInfo1")
 	    .attr("x", margin.left)
-        .attr("y", 130-20)
+        .attr("y", 130-60)
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#1C1B1B")
         .text("Avg SAT Score: "+totalAvg);
 
+
 	distInfo.append("text")
 		.attr("id","distInfo1")
 		.attr("x", margin.left)
-        .attr("y", 160-20)
+        .attr("y", 160-60)
         .attr("font-size", "25px")
 		.attr("font-weight", "700")
         .style("fill", "#1C1B1B")
         .text("Number of Schools: "+numberOfSchools);
-      }
+		
+	distInfo.append("text")
+		.attr("id","distInfo1")
+		.attr("x", margin.left)
+        .attr("y", 160-30)
+        .attr("font-size", "25px")
+		.attr("font-weight", "700")
+        .style("fill", "#1C1B1B")
+        .text("Borough: "+borough);
 
+	    function generateGauge_d(d){
+		d3.selectAll("#nycInfo1").remove()
+
+		
+		gauge1.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Math_Avg)));
+		gauge2.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Reading_Avg)));
+		gauge3.on("valueChanged")(Number(Number(distAvgMap[currentDist.key].values[0].district_SAT_Writing_Avg)));
+        }
+		
+		generateGauge_d(d);  
+	  }
 
       function stopped() {
       if (d3.event.defaultPrevented) {
@@ -679,9 +811,11 @@ d3.csv("Data.csv", function(error, datum) {
 	  
 		console.log("stopped");
 
-		d3.selectAll("#distInfo1")
-		.style("opacity","0.0");
+		//d3.selectAll("#distInfo1").remove();
 
+		d3.selectAll("#distInit")
+		.style("display","block");
+		
 
 		d3.selectAll("#Title")
 	//.style("opacity","1.0")
@@ -691,7 +825,7 @@ d3.csv("Data.csv", function(error, datum) {
 	  
 	  
 	  
-      }
+     d3.selectAll("#distInfo1").remove(); }
 
 
 
@@ -702,7 +836,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 100+20)
         .attr("font-size", "150px")
         .attr("font-weight", "900")
-        .style("fill", "#1C1B1B")
+        .style("fill", "#2D2C2C")
 		.style("letter-spacing", "10")
         .text("NYC");
 
@@ -712,7 +846,7 @@ d3.csv("Data.csv", function(error, datum) {
         .attr("y", 100+50+20)
         .attr("font-size", "50px")
         .attr("font-weight", "900")
-        .style("fill", "#1C1B1B")
+        .style("fill", "#2D2C2C")
         .text("Public Schools");
 	
 	svg.append("text")
@@ -720,7 +854,7 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("x", 50)
         .attr("y", 100+25+50+25)
         .attr("font-size", "18px")
-        .style("fill", "#1C1B1B")
+        .style("fill", "#2D2C2C")
         .text("SAT Scores | Poverty Rates | Demographics");
 //
 //        svg.append("text")
@@ -781,7 +915,6 @@ d3.csv("Data.csv", function(error, datum) {
 
         
         myChart.call(tip);
-        //console.log(xScale);
 
         var allbars = myChart.append('g')
                     .attr('transform','translate(' + margin.left+','+ margin.top + ')')
@@ -912,8 +1045,8 @@ d3.csv("Data.csv", function(error, datum) {
 
 
         function clicked_circle(d) {
-			d3.selectAll("#nSchool")
-			.style("display","none");
+			d3.selectAll("#nSchool").remove();
+			
 
 
             bardata = [d.SAT_Math, d.SAT_Reading, d.SAT_Writing];
