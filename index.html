@@ -372,18 +372,72 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("text-anchor","middle")
         .attr("y", "-180")
         .attr("font-size", "25px")
-		.attr("font-weight", "900")
+		.attr("font-weight", "300")
         .style("fill", "#A8102E")
         .text("Poverty Rate Distribution");
+		
+		
+		svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -75)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#da969e")
+		.style("stroke", "#2D2C2C")
+		.style("stroke-width", ".5")
+		;
+		svg_aster.append("text")
+		.attr("x", 215)
+		.attr("y", -75+20)
+		.attr("font-weight", "300")
+		.attr("font-size", "18px")
+		.style("fill", "#2D2C2C")
+		.text("Min Poverty Rate");
+
+		
+	svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -50+15)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#950003")
+		.style("stroke", "#2D2C2C")
+		.style("stroke-width", ".5");
+	svg_aster.append("text")
+		.attr("x", 215)
+        .attr("y", -35+20)
+		.attr("font-weight", "300")
+		.attr("font-size", "18px")
+		.style("fill", "#2D2C2C")
+		.text("Max Poverty Rate");
+
+
+	svg_aster.append("rect")
+		.attr("x", 180)
+        .attr("y", -10+15)
+		.attr("width", 25)
+        .attr("height", 25)
+        .style("fill", "#f8f5c7")
+		.style("stroke", "#2d2c2c")
+		.style("stroke-width", ".5");
+	svg_aster.append("text")
+	.attr("x", 215)
+	.attr("y", -10+15+20)
+	.attr("font-size", "18px")
+	.attr("font-weight", "300")
+	.style("fill", "#2D2C2C")
+	.text("Selected School");
+		
+		
 
 		svg_aster.append("text")
 	    .attr("x", "100")
 		.attr("text-anchor","middle")
         .attr("y", "-160")
-        .attr("font-size", "15px")
-		.attr("font-weight", "400")
+        .attr("font-size", "16px")
+		.attr("font-weight", "300")
         .style("fill", "#A8102E")
-        .text("*Hover for Details*");
+        .text("Hover for Details");
 
 
         //svg_aster.call(tip);
@@ -840,7 +894,7 @@ d3.csv("Data.csv", function(error, datum) {
         .style('background', 'white')
         .attr("id", "bar")
         .attr('width', "600")
-        .attr('height', "120");
+        .attr('height', "140");
 		
 	var nycInfo =
 		d3.select('#bar');
@@ -849,8 +903,8 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("id","nycInfo1")
 		.attr("x", "50")
         .attr("y", "35")
-		.attr("font-size", "18px")
-		.attr("font-weight", "700")
+		.attr("font-size", "30px")
+		.attr("font-weight", "300")
         .style("fill", "#1C1B1B")
         .text("New York City Average");
 
@@ -858,9 +912,9 @@ d3.csv("Data.csv", function(error, datum) {
 		schoolInfo.append("text")
 	    .attr("x", "50%")
 		.attr("text-anchor","middle")
-        .attr("y", 110)
+        .attr("y", 125)
         .attr("font-size", "25px")
-		.attr("font-weight", "900")
+		.attr("font-weight", "300")
         .style("fill", "#6A4B7D")
         .text("SAT Scores");
 
@@ -1059,8 +1113,8 @@ d3.csv("Data.csv", function(error, datum) {
 		.attr("id","nSchool")
 	    .attr("x", margin.left)
         .attr("y", 35)
-        .attr("font-size", "18px")
-		.attr("font-weight", "700")
+        .attr("font-size", "27px")
+		.attr("font-weight", "300")
         .style("fill", "#1C1B1B")
         .text("School: "+schoolName)
         .call(wrap, 400);
