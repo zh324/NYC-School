@@ -448,11 +448,20 @@ polyline{
         .attr("stroke", "black")
         .attr('stroke-width', .5)
         .attr("d", outlineArc);
+
+        svg_aster.append("svg:text")
+        .data(pie_aster(data))
+        .attr("class", "aster-score")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle") // text-align: right
+
+        .text(function(d, i) { return 'AVG: ' + Math.round(data[i].Poverty) + '%'})
       }
 
       function redraw(data_redraw) {
         d3.selectAll(".solidArc").remove().exit();
         d3.selectAll(".outlineArc").remove().exit();
+        d3.selectAll(".aster-score").remove().exit();
 
         radius = 150;
         innerRadius = 45;
@@ -511,6 +520,14 @@ polyline{
         .attr("stroke", "black")
         .attr('stroke-width', 0.5)
         .attr("d", outlineArc);
+
+        svg_aster.append("svg:text")
+        .data(pie_aster(data))
+        .attr("class", "aster-score")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle") // text-align: right
+
+        .text(function(d, i) { return 'AVG: ' + Math.round(data_redraw[i].Poverty) + '%'})
       }
 
       function redraw_aster(data_change){
@@ -693,6 +710,7 @@ polyline{
       function reset() {
         active.classed("active", false);
         d3.selectAll("#nSchool").remove();
+        d3.selectAll(".aster-score").remove().exit();
 
         active = d3.select(null);
 
@@ -1036,7 +1054,7 @@ polyline{
           .attr("font-weight", "300")
           .style("fill", "#2D2C2C")
           .style("letter-spacing", "1")
-          .text("high schools from 2014-2015.");
+          .text("high schools from 2014-2015. Note, there may be multiple schools per location.");
 
           svg.append("text")
           .attr("id","Title")
@@ -1189,6 +1207,6 @@ polyline{
           }
         });
       });
-    </script>
-  </body>
-  </html>
+      </script>
+    </body>
+    </html>
