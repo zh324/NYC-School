@@ -789,7 +789,11 @@ polyline{
 
       function mouseout(d){
         // Reset school district color
-        d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
+        if (!d3.select(this).classed('active')) {
+          d3.select(this).style('fill', d => colorScale(districts[d.properties.SchoolDist - 1].values[0].district_SAT_Avg));
+        } else {
+          d3.select(this).style('fill', '#494949');
+        }
       }
 
       var distInfo = d3.select('#distInfo').append('svg')
@@ -829,7 +833,7 @@ polyline{
 
         if (active.node() === this) return reset();
         active.classed("active", false);
-        active = d3.select(this).classed("active", true);
+        active = d3.select(this).classed("active", true)
 
         var distNum = d.properties.SchoolDist;
 
@@ -848,7 +852,7 @@ polyline{
 
           mapCircles
           .attr("fill","#FFFFFF")
-          .on('mouseover', function(d){d3.select(this).style('fill', '#494949');})
+          .on('mouseover', function(d){d3.select(this).style('fill', '#A132BC');})
           .on('mouseout', function(d){
             d3.select(this).style('fill',"white")
           })
